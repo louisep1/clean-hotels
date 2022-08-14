@@ -1,0 +1,10 @@
+// for react setup sass differently, just npm i sass
+// then add import statement to index.js or wherever you want it
+// import './scss/style.scss'
+// no need to watch/compile on save each time - I guess will only compile once before you deploy (and then run using node package in development mode)
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
