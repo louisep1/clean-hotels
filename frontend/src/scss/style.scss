@@ -21,28 +21,32 @@ ul {
 
 // Navbar:
 nav {
-  border: 3px black solid;
+  // border: 3px black solid;
   display: flex;
   justify-content: space-between;
-  padding: 0 2rem;
+  align-items: center;
+  padding: 0.5rem 2rem;
 
   .logo {
-    border: red 3px solid;
+    // border: red 3px solid;
+    font-size: 2rem;
+    // padding: 5px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
   }
 
   ul {
-    border: 3px blue solid;
+    // border: 3px blue solid;
     display: flex;
     grid-gap: 20px;
-    padding: 10px;
+    // padding: 10px;
   }
 }
 
 // Banner:
 .banner {
-  border: black 3px solid;
+  // border: black 3px solid;
   height: 30rem;
-  // height: 10rem;
   position: relative;
   // height: 50vh;
 
@@ -58,6 +62,7 @@ nav {
     // top: 20%;
     // left: 8%;
     top: 35%;
+    // left: 36%;
 
     text-align: center;
     // width: max-content;
@@ -66,6 +71,7 @@ nav {
     font-weight: 400;
     padding: 10px 20px;
     // background-color: rgba(0, 0, 0, 0.25);
+    // letter-spacing: 2px;
   }
 
   img {
@@ -81,7 +87,7 @@ nav {
   position: absolute;
   top: 0;
   left: 0;
-  border: pink 3px solid;
+  // border: pink 3px solid;
   background-color: rgba(0, 0, 0, 0.25);
 }
 
