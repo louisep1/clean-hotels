@@ -8,3 +8,66 @@
   margin: 0;
   padding: 0;
 }
+
+ul {
+  list-style: none;
+}
+
+// Navbar:
+nav {
+  border: 3px black solid;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2rem;
+
+  .logo {
+    border: red 3px solid;
+  }
+
+  ul {
+    border: 3px blue solid;
+    display: flex;
+    grid-gap: 20px;
+    padding: 10px;
+  }
+}
+
+// Banner:
+.banner {
+  border: black 3px solid;
+  height: 30rem;
+  // height: 10rem;
+  position: relative;
+  // height: 50vh;
+
+  // !!! make this a function so url is different image for each page:
+  background: url('../imgs/hotel-2-xs.jpg') no-repeat center center/cover;
+  width: 100%;
+
+  .title {
+    color: #fff;
+    font-size: 4rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  img {
+    width: 30rem;
+    height: 30rem;
+  }
+}
+
+.overlay {
+  width: 100%;
+  height: 100%;
+  // height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: pink 3px solid;
+  background-color: rgba(0, 0, 0, 0.25);
+}
+
+@import 'utilities';
+@import 'media';
