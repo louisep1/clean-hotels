@@ -7,7 +7,7 @@ function App() {
       <Navbar />
 
       {/* move this banner to the top of each page and put the image as a prop ??? */}
-      <Banner title="Clean Hotels" />
+      <Banner title="Rooms" />
       {/* img={require('./imgs/hotel-1.jpg')} */}
     </div>
   )
