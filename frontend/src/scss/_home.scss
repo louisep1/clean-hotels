@@ -4,6 +4,7 @@
   width: 100%;
 }
 
+// Panels for enlarged text
 .panel {
   // border: pink 3px solid;
   margin: 0.5rem 0;
@@ -25,39 +26,9 @@
     line-height: 1.6;
     font-family: 'Roboto', sans-serif;
   }
-
-  .facilities {
-    // border: #000 3px solid;
-    margin: 0.5rem 0;
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    justify-items: center;
-    // gap: 1rem;
-  }
 }
 
-.grid-line {
-  // border: pink solid 3px;
-  border-right: #000 solid 2px;
-  width: 100%;
-  margin: 5rem auto 2rem;
-}
-
-.grid-line:last-child {
-  border-right: none;
-}
-
-.background-panel {
-  background: url('../imgs/room-lg.jpg') no-repeat center center/cover;
-  height: 30rem;
-  // border: #fff 3px solid;
-
-  .panel {
-    background-color: rgba(235, 235, 235, 0.2);
-    height: 30rem;
-  }
-}
-
+// Cards (incl. locations cards)
 .card-container {
   // border: 3px black solid;
   display: grid;
@@ -125,4 +96,37 @@
     border-radius: 0 0 20px 20px;
     // background-color: rgba(0, 0, 0, 0.5);
   }
+}
+
+// Rooms section:
+.background-panel {
+  background: url('../imgs/room-lg.jpg') no-repeat center center/cover;
+  height: 30rem;
+  // border: #fff 3px solid;
+
+  .panel {
+    background-color: rgba(235, 235, 235, 0.2);
+    height: 30rem;
+  }
+}
+
+// Facilities section:
+.facilities {
+  // border: #000 3px solid;
+  margin: 0.5rem 0;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  justify-items: center;
+  // gap: 1rem;
+}
+
+.grid-line {
+  // border: pink solid 3px;
+  border-right: #000 solid 2px;
+  width: 100%;
+  margin: 5rem auto 2rem;
+}
+
+.grid-line:last-child {
+  border-right: none;
 }
