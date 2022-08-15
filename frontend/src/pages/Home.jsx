@@ -44,6 +44,14 @@ const Home = () => {
             </div>
           </div>
 
+          <div className="card card-okinawa">
+            <div className="card-title">
+              <div className="overlay">
+                <p className='card-title-text'>Okinawa</p>
+              </div>
+            </div>
+          </div>
+
         </div>
 
 
