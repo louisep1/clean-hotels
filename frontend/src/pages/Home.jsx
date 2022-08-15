@@ -1,5 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { BiRestaurant } from 'react-icons/bi'
+import { MdLocalLaundryService } from 'react-icons/md'
+import { FaWifi, FaParking } from 'react-icons/fa'
+import { CgScreen } from 'react-icons/cg'
 import Banner from '../components/Banner'
 
 
@@ -58,12 +62,6 @@ const Home = () => {
       </div>
 
       <div className="section">
-
-        {/* <div className="panel">
-          <div className='panel-title'>Room types</div>
-          <p className='panel-text'>Find a room that's right for you</p>
-        </div> */}
-
         <div className="background-panel">
           <div className="panel">
             <Link to='/rooms'><div className='panel-title'>Room types</div></Link>
@@ -71,7 +69,36 @@ const Home = () => {
 
           </div>
         </div>
+      </div>
 
+      <div className="section">
+        <div className="panel">
+          <Link to='/services'><div className="panel-title">Facilities & Services</div></Link>
+
+          <div className="facilities">
+            <Link to='/services' className="grid-line">
+              <BiRestaurant />
+              <p>Dining</p>
+            </Link>
+            <Link to='/services' className="grid-line">
+              <MdLocalLaundryService />
+              <p>Laundry</p>
+            </Link>
+            <Link to='/services' className="grid-line">
+              <FaWifi />
+              <p>Wifi</p>
+            </Link>
+            <Link to='/services' className="grid-line">
+              <CgScreen />
+              <p>TV</p>
+            </Link>
+            <Link to='/services' className="grid-line">
+              <FaParking />
+              <p>Parking</p>
+            </Link>
+
+          </div>
+        </div>
       </div>
 
 
