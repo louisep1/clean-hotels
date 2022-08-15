@@ -90,3 +90,14 @@
     font-size: 0.8rem;
   }
 }
+
+@media (max-width: 400px) {
+  .text {
+    font-size: 0.8rem;
+    padding-bottom: 0;
+  }
+
+  nav li {
+    padding: 13px 20px;
+  }
+}

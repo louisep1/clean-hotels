@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import Banner from '../components/Banner'
 
 const Rooms = () => {
@@ -17,6 +18,7 @@ const Rooms = () => {
             <div className="text">Spacious single room with wider-sized bed.
               {/* Our classic room for when you want to be away from home, whilst still feeling at home. */}
             </div>
+            <Link to='/reservation' className='text'>Book now!</Link>
           </div>
         </div>
 
@@ -25,7 +27,10 @@ const Rooms = () => {
           <div className="room-card-body">
             <div className="title">Double Room </div>
             <div className="text">Our renouned double rooms provide enough space for a comfortable stay. For families, additional beds can be provided for children. Please enquire upon booking.</div>
+
+            <Link to='/reservation' className='text'>Book now!</Link>
           </div>
+
         </div>
 
         {/* could have a twin room here */}
