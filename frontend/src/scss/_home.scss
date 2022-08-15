@@ -1,3 +1,42 @@
+.section {
+  margin: 1rem 0 3rem;
+}
+
+.panel {
+  // border: pink 3px solid;
+  margin: 0.5rem 0;
+  padding: 2rem;
+  text-align: center;
+  background-color: rgb(235, 235, 235);
+
+  &-title {
+    // border: 3px black solid;
+    padding: 5px 0;
+    font-size: 2.5rem;
+    // font-weight: 400;
+    // font-weight: 600;
+    font-family: 'Roboto', sans-serif;
+  }
+
+  &-text {
+    // border: 3px black solid;
+    line-height: 1.6;
+    font-family: 'Roboto', sans-serif;
+  }
+}
+
+.background-panel {
+  background: url('../imgs/room-lg.jpg') no-repeat center center/cover;
+  height: 30rem;
+  // border: #fff 3px solid;
+
+  .panel {
+    background-color: rgba(235, 235, 235, 0.2);
+    margin: 1rem 0;
+    height: 30rem;
+  }
+}
+
 .card-container {
   // border: 3px black solid;
   display: grid;
@@ -39,6 +78,10 @@
   &-okinawa {
     background: url('../imgs/locations/okinawa.jpg') no-repeat center
       center/cover;
+  }
+
+  &-black {
+    background: #000;
   }
 
   &-title {

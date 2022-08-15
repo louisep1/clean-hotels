@@ -1,15 +1,18 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import Banner from '../components/Banner'
-import Tokyo from '../imgs/locations/tokyo.jpg'
+
 
 const Home = () => {
   return (
     <div>
       {/* !!! either 'Clean Hotels' or 'Welcome' or 'Book Your Stay' */}
       <Banner title='Book Your Stay' classes='banner-home' />
-      <div className="panel">
-        <h1>Discover</h1>
-        <p>With cleanliness and comfort guaranteed, take a look at our locations</p>
+      <div className='section'>
+        <div className="panel">
+          <div className='panel-title'>Discover</div>
+          <p className='panel-text'>With cleanliness and comfort guaranteed, take a look at our locations</p>
+        </div>
 
         <div className="card-container">
           <div className="card card-tokyo">
@@ -51,12 +54,29 @@ const Home = () => {
               </div>
             </div>
           </div>
+        </div>
+      </div>
 
+      <div className="section">
+
+        {/* <div className="panel">
+          <div className='panel-title'>Room types</div>
+          <p className='panel-text'>Find a room that's right for you</p>
+        </div> */}
+
+        <div className="background-panel">
+          <div className="panel">
+            <Link to='/rooms'><div className='panel-title'>Room types</div></Link>
+            <Link to='/rooms'><p className='panel-text'>Find a room that's right for you</p></Link>
+
+          </div>
         </div>
 
-
-
       </div>
+
+
+
+
     </div>
   )
 }
