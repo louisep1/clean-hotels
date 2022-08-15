@@ -1,0 +1,31 @@
+.room-card {
+  // border: black 3px solid;
+  width: 80%;
+  margin: 4rem auto;
+  background-color: #fff;
+
+  &-img {
+    height: 30rem;
+  }
+
+  .single {
+    background: url('../imgs/room-lg.jpg') no-repeat center center/cover;
+  }
+
+  .double {
+    background: url('../imgs/room-small-2.jpg') no-repeat center center/cover;
+  }
+
+  // .twin {
+  //   background: url('../imgs/room-small.jpg') no-repeat center center/cover;
+  // }
+
+  &-body {
+    // border: pink 3px solid;
+    height: 10rem;
+    padding: 1rem;
+  }
+}
+
+.room-card-text {
+}

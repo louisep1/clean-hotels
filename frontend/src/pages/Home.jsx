@@ -88,11 +88,11 @@ const Home = () => {
               <FaWifi />
               <p>Wifi</p>
             </Link>
-            <Link to='/services' className="grid-line">
+            <Link to='/services' className="grid-line row-2">
               <CgScreen />
               <p>TV</p>
             </Link>
-            <Link to='/services' className="grid-line">
+            <Link to='/services' className="grid-line row-2">
               <FaParking />
               <p>Parking</p>
             </Link>

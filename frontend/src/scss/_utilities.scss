@@ -1,3 +1,5 @@
+$grey: rgb(235, 235, 235);
+
 .overlay {
   // border: pink 3px solid;
   width: 100%;
@@ -7,6 +9,38 @@
   left: 0;
   background-color: rgba(0, 0, 0, 0.25);
   // 0.25 or 0.3 or 0.4 ??
+}
+
+.grey {
+  background-color: $grey;
+}
+
+.footnote {
+  padding: 0.1rem 2rem;
+  font-size: 0.8rem;
+  color: #333;
+}
+
+// Fonts/Text styles
+.text {
+  // border: 3px black solid;
+  padding: 5px 0;
+  line-height: 1.4;
+  font-weight: 300;
+  font-family: 'Roboto', sans-serif;
+}
+
+.title {
+  font-size: 2rem;
+  font-family: 'Roboto', sans-serif;
+}
+
+// Not sure if I'll use this:
+.title-lg {
+  // border: 3px black solid;
+  padding: 5px 0;
+  font-size: 2.5rem;
+  font-family: 'Roboto', sans-serif;
 }
 
 // .panel-text {

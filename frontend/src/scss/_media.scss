@@ -5,6 +5,15 @@
 }
 
 @media (max-width: 750px) {
+  // Utilities:
+  .title {
+    font-size: 1.1rem;
+  }
+
+  .text {
+    font-size: 0.9rem;
+  }
+
   // Nav:
   nav {
     padding: 0.8rem 1rem 0.1rem;
@@ -25,7 +34,7 @@
     }
   }
 
-  // Home:
+  // Home page:
   .panel {
     &-title {
       font-size: 2rem;
@@ -58,7 +67,9 @@
   .facilities {
     grid-template-columns: repeat(3, 1fr);
 
-    // !!! go back and fix the second row
+    .row-2 {
+      transform: translate(50%, 0);
+    }
   }
 
   .grid-line {
@@ -67,5 +78,15 @@
     &:nth-child(3) {
       border-right: none;
     }
+  }
+
+  // Rooms page:
+  .room-card-img {
+    height: 15rem;
+  }
+
+  footer {
+    padding: 2rem;
+    font-size: 0.8rem;
   }
 }

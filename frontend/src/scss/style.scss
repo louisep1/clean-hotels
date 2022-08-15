@@ -136,9 +136,12 @@ nav {
 footer {
   // height: 10rem;
   padding: 5rem;
-  border: #ccc 1px solid;
+  border-top: #ccc 1px solid;
+  line-height: 1.5;
+  font-size: 0.9rem;
 }
 
 @import 'utilities';
 @import 'home';
+@import 'rooms';
 @import 'media';
