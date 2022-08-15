@@ -133,6 +133,7 @@ nav {
 }
 
 .overlay {
+  // border: pink 3px solid;
   width: 100%;
   height: 100%;
   position: absolute;
@@ -142,5 +143,13 @@ nav {
   // 0.25 or 0.3 or 0.4 ??
 }
 
+// Footer:
+footer {
+  // height: 10rem;
+  padding: 5rem;
+  border: #ccc 1px solid;
+}
+
 @import 'utilities';
+@import 'home';
 @import 'media';

@@ -4,6 +4,7 @@ import Home from './pages/Home'
 import Rooms from './pages/Rooms'
 import Services from './pages/Services'
 import Reservation from './pages/Reservation'
+import Footer from './components/Footer'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/services" element={<Services />} />
         <Route path="/reservation" element={<Reservation />} />
       </Routes>
+      <Footer />
     </Router>
   )
 }
