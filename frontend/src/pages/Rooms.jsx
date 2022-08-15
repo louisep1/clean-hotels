@@ -36,7 +36,7 @@ const Rooms = () => {
         {/* could have a twin room here */}
 
         <p className='footnote'>**An additional charge for breakfast and meals will apply.</p>
-        <p className='footnote'>***All of our rooms are equipped with air conditioning, fridge, TV, table with chair, telephone, hairdryer and include the following ammenities: toothbrush, toothpaste, shampoo, conditioner, body soap, bath towels and robe and slippers.</p>
+        <p className='footnote'>***All of our rooms are equipped with air conditioning, fridge, kettle, TV, table with chair, telephone, hairdryer and include the following ammenities: tea and coffee, toothbrush, toothpaste, shampoo, conditioner, body soap, bath towels and robe and slippers.</p>
 
       </div>
     </div>

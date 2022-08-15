@@ -5,6 +5,8 @@ const Reservation = () => {
   return (
     <div>
       <Banner title='Reservation' />
+
+      <div className="section"></div>
     </div>
   )
 }
