@@ -15,6 +15,13 @@
   font-family: 'Montserrat', sans-serif;
 }
 
+a {
+  text-decoration: none;
+  color: #000;
+  // !!! I still can't decide between roboto and monserrat
+  // font-family: 'Roboto', sans-serif;
+}
+
 ul {
   list-style: none;
 }
@@ -25,13 +32,13 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.5rem 2rem;
+  padding: 0.6rem 3rem;
+  // x-axis either 2 or 3rem
 
   .logo {
     // border: red 3px solid;
     font-size: 2rem;
     // padding: 5px;
-    font-family: 'Roboto', sans-serif;
     font-weight: 300;
   }
 
@@ -41,6 +48,26 @@ nav {
     grid-gap: 20px;
     // padding: 10px;
   }
+
+  // !!!!! GO BACK AND STYLE THIS PROPERLY
+  // !!! add some kind of icon at the bottom if either active or hovered over
+  a:hover {
+    color: #ccc;
+  }
+
+  .logo a {
+    color: #000;
+    // !!! I still can't decide between roboto and monserrat
+    font-family: 'Roboto', sans-serif;
+  }
+
+  .reservation {
+    font-weight: 600;
+    // // !!! either 500 or 600 maybe ?
+    text-decoration: underline;
+    // !!! I still can't decide between roboto and monserrat
+    font-family: 'Roboto', sans-serif;
+  }
 }
 
 // Banner:
@@ -48,11 +75,25 @@ nav {
   // border: black 3px solid;
   height: 30rem;
   position: relative;
-  // height: 50vh;
-
-  // !!! make this a function so url is different image for each page:
-  background: url('../imgs/hotel-2-xs.jpg') no-repeat center center/cover;
   width: 100%;
+
+  &-rooms {
+    background: url('../imgs/hotel-2-xs.jpg') no-repeat center center/cover;
+    // background: url('../imgs/clean-room-pillows.jpg') no-repeat center
+    //   center/cover;
+
+    // !!!! could even make this a slide show...
+    // background: url('../imgs/room-lg.jpg') no-repeat center center/cover;
+    // background: url('../imgs/room-small-2.jpg') no-repeat center center/cover;
+    // background: url('../imgs/room-small.jpg') no-repeat center center/cover;
+  }
+
+  &-services {
+    background: url('../imgs/breakfast-banner.png') no-repeat center
+      center/cover;
+    // background: url('../imgs/nice-break-plate-zoom.jpg') no-repeat center
+    //   center/cover;
+  }
 
   .title {
     text-transform: uppercase;
@@ -89,6 +130,7 @@ nav {
   left: 0;
   // border: pink 3px solid;
   background-color: rgba(0, 0, 0, 0.25);
+  // 0.25 or 0.3 or 0.4 ??
 }
 
 @import 'utilities';

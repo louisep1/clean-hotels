@@ -1,15 +1,21 @@
-import Banner from './components/Banner'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
+import Home from './pages/Home'
+import Rooms from './pages/Rooms'
+import Services from './pages/Services'
+import Reservation from './pages/Reservation'
 
 function App() {
   return (
-    <div>
+    <Router>
       <Navbar />
-
-      {/* move this banner to the top of each page and put the image as a prop ??? */}
-      <Banner title="Rooms" />
-      {/* img={require('./imgs/hotel-1.jpg')} */}
-    </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/rooms" element={<Rooms />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/reservation" element={<Reservation />} />
+      </Routes>
+    </Router>
   )
 }
 
