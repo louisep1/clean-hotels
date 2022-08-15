@@ -3,6 +3,10 @@
     padding: 0.5rem 1rem;
     flex-direction: column;
     gap: 5px;
+
+    .logo {
+      transform: translate(-10px, 0);
+    }
   }
 
   .banner {
