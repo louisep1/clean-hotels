@@ -11,15 +11,12 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  // font-family: 'Roboto', sans-serif;
   font-family: 'Montserrat', sans-serif;
 }
 
 a {
   text-decoration: none;
   color: #000;
-  // !!! I still can't decide between roboto and monserrat
-  // font-family: 'Roboto', sans-serif;
 }
 
 ul {
@@ -28,27 +25,18 @@ ul {
 
 // Navbar:
 nav {
-  // border: 3px black solid;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  // padding: 0.5rem 3rem;
+  // margin: 1px 0;
 
   .logo {
-    // border: red 3px solid;
     font-size: 2rem;
     font-weight: 300;
 
     // this is instead of the previous nav padding
-    padding-top: 5px;
+    padding-top: 6px;
     padding-left: 1rem;
-  }
-
-  .logo div {
-    // border: #000 solid 3px;
-    display: inline-block;
-    transform: translate(-13px, -8px);
-    font-family: 'Roboto', sans-serif;
   }
 
   .logo img {
@@ -56,31 +44,21 @@ nav {
     // border: black 3px solid;
   }
 
+  // text part of logo
+  .logo div {
+    display: inline-block;
+    transform: translate(-11px, -8px);
+    font-family: 'Roboto', sans-serif;
+  }
+
   ul {
-    // border: 3px blue solid;
     display: flex;
     gap: 1px;
-    // grid-gap: 20px;
-    // border: #ccc 1px solid;
   }
 
   li {
-    // position: relative;
     padding: 20px 30px;
-    // border: #ccc 1px solid;
   }
-
-  // .active:after {
-  //   content: '';
-  //   background: black;
-  //   position: absolute;
-  //   // bottom: -50%;
-  //   // left: 37%;
-  //   bottom: 10%;
-  //   left: 45%;
-  //   height: 3px;
-  //   width: 15px;
-  // }
 
   .active {
     background-color: #ccc;
@@ -92,25 +70,16 @@ nav {
     color: #fff;
   }
 
-  // put this after a:hover to stop the hover colour change:
-  .logo a {
-    color: #000;
-    // !!! I still can't decide between roboto and monserrat
-    // font-family: 'Roboto', sans-serif;
-  }
-
   .reservation {
     font-weight: 600;
     // // !!! either 500 or 600 maybe ?
     text-decoration: underline;
-    // !!! I still can't decide between roboto and monserrat
     font-family: 'Roboto', sans-serif;
   }
 }
 
 // Banner:
 .banner {
-  // border: black 3px solid;
   height: 30rem;
   position: relative;
   width: 100%;
@@ -126,10 +95,6 @@ nav {
 
   &-rooms {
     background: url('../imgs/room-small-2.jpg') no-repeat center center/cover;
-
-    // !!!! could even make this a slide show...
-    // background: url('../imgs/room-lg.jpg') no-repeat center center/cover;
-    // background: url('../imgs/room-small.jpg') no-repeat center center/cover;
   }
 
   &-services {
@@ -154,10 +119,10 @@ nav {
     text-align: center;
     // width: max-content;
     width: 100%;
+    // background-color: rgba(0, 0, 0, 0.25);
 
     font-weight: 400;
     padding: 10px 20px;
-    // background-color: rgba(0, 0, 0, 0.25);
     // letter-spacing: 2px;
   }
 
@@ -170,11 +135,9 @@ nav {
 .overlay {
   width: 100%;
   height: 100%;
-  // height: 100vh;
   position: absolute;
   top: 0;
   left: 0;
-  // border: pink 3px solid;
   background-color: rgba(0, 0, 0, 0.25);
   // 0.25 or 0.3 or 0.4 ??
 }

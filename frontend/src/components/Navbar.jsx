@@ -1,9 +1,16 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import Clean from '../imgs/clean.jpg'
+import { useEffect } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import Logo from '../imgs/hotel-logo.jpg'
 
 const Navbar = () => {
+  // get the url and style
+  const { pathname } = useLocation()
+  // useEffect(() => {
+  //   console.log(location.pathname)
+  // }, [])
+
+
+
   return (
     <nav>
       <div className='logo'>
@@ -13,13 +20,9 @@ const Navbar = () => {
         </Link>
       </div>
       <ul>
-        <Link to={'/rooms'}><li>Rooms</li></Link>
-        <Link to={'/services'}><li className='active'>Services</li></Link>
-        <Link to={'/reservation'}><li className='reservation'>Reservation</li></Link>
-
-        {/* <li><Link to={'/rooms'}>Rooms</Link></li>
-        <li className='active'><Link to={'/services'}>Services</Link></li>
-        <li><Link to={'/reservation'} className='reservation'>Reservation</Link></li> */}
+        <Link to={'/rooms'}><li className={pathname === '/rooms' ? 'active' : ''}>Rooms</li></Link>
+        <Link to={'/services'}><li className={pathname === '/services' ? 'active' : ''}>Services</li></Link>
+        <Link to={'/reservation'}><li className={`reservation ${pathname === '/reservation' && 'active'}`}>Reservation</li></Link>
       </ul>
     </nav>
   )
