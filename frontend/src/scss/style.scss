@@ -32,37 +32,64 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.5rem 3rem;
+  // padding: 0.5rem 3rem;
 
   .logo {
     // border: red 3px solid;
     font-size: 2rem;
     font-weight: 300;
+
+    // this is instead of the previous nav padding
+    padding-top: 5px;
+    padding-left: 1rem;
   }
 
   .logo div {
     // border: #000 solid 3px;
     display: inline-block;
-    transform: translate(-15px, -10px);
+    transform: translate(-13px, -8px);
     font-family: 'Roboto', sans-serif;
   }
 
   .logo img {
-    width: 90px;
+    width: 70px;
     // border: black 3px solid;
   }
 
   ul {
     // border: 3px blue solid;
     display: flex;
-    grid-gap: 20px;
-    // padding: 10px;
+    gap: 1px;
+    // grid-gap: 20px;
+    // border: #ccc 1px solid;
   }
 
-  // !!!!! GO BACK AND STYLE THIS PROPERLY
-  // !!! add some kind of icon at the bottom if either active or hovered over
-  a:hover {
-    color: #ccc;
+  li {
+    // position: relative;
+    padding: 20px 30px;
+    // border: #ccc 1px solid;
+  }
+
+  // .active:after {
+  //   content: '';
+  //   background: black;
+  //   position: absolute;
+  //   // bottom: -50%;
+  //   // left: 37%;
+  //   bottom: 10%;
+  //   left: 45%;
+  //   height: 3px;
+  //   width: 15px;
+  // }
+
+  .active {
+    background-color: #ccc;
+    color: #fff;
+  }
+
+  li:hover {
+    background-color: #ccc;
+    color: #fff;
   }
 
   // put this after a:hover to stop the hover colour change:
@@ -90,8 +117,6 @@ nav {
 
   &-home {
     background: url('../imgs/hotel-2-xs.jpg') no-repeat center center/cover;
-    // background: url('../imgs/clean-room-pillows.jpg') no-repeat center
-    //   center/cover;
 
     // !!!! could even make this a slide show...
     // background: url('../imgs/room-lg.jpg') no-repeat center center/cover;
@@ -102,9 +127,6 @@ nav {
   &-rooms {
     background: url('../imgs/room-small-2.jpg') no-repeat center center/cover;
 
-    // background: url('../imgs/clean-room-pillows.jpg') no-repeat center
-    //   center/cover;
-
     // !!!! could even make this a slide show...
     // background: url('../imgs/room-lg.jpg') no-repeat center center/cover;
     // background: url('../imgs/room-small.jpg') no-repeat center center/cover;
@@ -113,8 +135,6 @@ nav {
   &-services {
     background: url('../imgs/breakfast-banner.png') no-repeat center
       center/cover;
-    // background: url('../imgs/nice-break-plate-zoom.jpg') no-repeat center
-    //   center/cover;
   }
 
   &-reservation {

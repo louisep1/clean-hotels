@@ -13,9 +13,13 @@ const Navbar = () => {
         </Link>
       </div>
       <ul>
-        <li><Link to={'/rooms'}>Rooms</Link></li>
-        <li><Link to={'/services'}>Services</Link></li>
-        <li><Link to={'/reservation'} className='reservation'>Reservation</Link></li>
+        <Link to={'/rooms'}><li>Rooms</li></Link>
+        <Link to={'/services'}><li className='active'>Services</li></Link>
+        <Link to={'/reservation'}><li className='reservation'>Reservation</li></Link>
+
+        {/* <li><Link to={'/rooms'}>Rooms</Link></li>
+        <li className='active'><Link to={'/services'}>Services</Link></li>
+        <li><Link to={'/reservation'} className='reservation'>Reservation</Link></li> */}
       </ul>
     </nav>
   )
