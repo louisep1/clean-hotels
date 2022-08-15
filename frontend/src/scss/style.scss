@@ -44,10 +44,11 @@ nav {
     // border: #000 solid 3px;
     display: inline-block;
     transform: translate(-15px, -10px);
+    font-family: 'Roboto', sans-serif;
   }
 
   .logo img {
-    width: 100px;
+    width: 90px;
     // border: black 3px solid;
   }
 
@@ -68,7 +69,7 @@ nav {
   .logo a {
     color: #000;
     // !!! I still can't decide between roboto and monserrat
-    font-family: 'Roboto', sans-serif;
+    // font-family: 'Roboto', sans-serif;
   }
 
   .reservation {
