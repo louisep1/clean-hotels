@@ -1,28 +1,5 @@
-// Panels for enlarged text
-.panel {
-  // border: pink 3px solid;
-  margin: 0.5rem 0;
-  padding: 2rem;
-  text-align: center;
-  background-color: $grey;
-
-  &-title {
-    // border: 3px black solid;
-    padding: 5px 0;
-    font-size: 2.5rem;
-    // font-weight: 400;
-    // font-weight: 600;
-    font-family: 'Roboto', sans-serif;
-  }
-
-  &-text {
-    line-height: 1.6;
-    font-family: 'Roboto', sans-serif;
-  }
-}
-
-// Cards (incl. locations cards)
-.card-container {
+// Postcards (for location)
+.postcard-container {
   // border: 3px black solid;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -34,7 +11,7 @@
   padding: 2rem 0;
 }
 
-.card {
+.postcard {
   // border: black 3px solid;
   width: 20rem;
   height: 25rem;

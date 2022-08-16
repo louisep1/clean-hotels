@@ -1,5 +1,17 @@
 $grey: rgb(235, 235, 235);
 
+// !!!! MARGIN AND PADDING FUNCTIONS
+
+.grey {
+  background-color: $grey;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
 .section {
   padding: 1rem 0 3rem;
   height: 100%;
@@ -18,14 +30,80 @@ $grey: rgb(235, 235, 235);
   // 0.25 or 0.3 or 0.4 ??
 }
 
-.grey {
-  background-color: $grey;
+// Card:
+.card {
+  // border: black 3px solid;
+  width: 80%;
+  margin: 4rem auto;
+  background-color: #fff;
+
+  &-full {
+    width: 100%;
+    margin: 0;
+  }
+
+  &-img {
+    height: 30rem;
+  }
+
+  &-img-sm {
+    height: 20rem;
+  }
+
+  .single {
+    background: url('../imgs/room-lg.jpg') no-repeat center center/cover;
+  }
+
+  .double {
+    background: url('../imgs/room-small-2.jpg') no-repeat center center/cover;
+  }
+
+  .breakfast {
+    background: url('../imgs/nice-break-plate-zoom.jpg') no-repeat center
+      center/cover;
+  }
+
+  // .twin {
+  //   background: url('../imgs/room-small.jpg') no-repeat center center/cover;
+  // }
+
+  &-body {
+    // border: pink 3px solid;
+    height: 10rem;
+    padding: 1rem;
+
+    &-sm {
+      height: 5rem;
+      // border: pink 3px solid;
+    }
+  }
 }
 
-.footnote {
-  padding: 0.1rem 2rem;
-  font-size: 0.8rem;
-  color: #333;
+// Panels for strips of text across the whole width of page (like half-sized banner)
+.panel {
+  // border: pink 3px solid;
+  margin: 0.5rem 0;
+  padding: 2rem;
+  text-align: center;
+  background-color: $grey;
+
+  &-white {
+    background-color: #fff;
+  }
+
+  &-title {
+    // border: 3px black solid;
+    padding: 5px 0;
+    font-size: 2.5rem;
+    // font-weight: 400;
+    // font-weight: 600;
+    font-family: 'Roboto', sans-serif;
+  }
+
+  &-text {
+    line-height: 1.6;
+    font-family: 'Roboto', sans-serif;
+  }
 }
 
 // Fonts/Text styles
@@ -35,6 +113,10 @@ $grey: rgb(235, 235, 235);
   line-height: 1.4;
   font-weight: 300;
   font-family: 'Roboto', sans-serif;
+
+  &-md {
+    font-size: 1.4rem;
+  }
 }
 
 .title {
@@ -42,20 +124,12 @@ $grey: rgb(235, 235, 235);
   font-family: 'Roboto', sans-serif;
 }
 
-// Not sure if I'll use this:
-.title-lg {
-  // border: 3px black solid;
-  padding: 5px 0;
-  font-size: 2.5rem;
-  font-family: 'Roboto', sans-serif;
+.footnote {
+  padding: 0.1rem 2rem;
+  font-size: 0.8rem;
+  color: #333;
 }
 
-// .panel-text {
-//   font-size: 2.5rem;
-//   font-weight: 600;
-//   font-family: 'Roboto', sans-serif;
-// }
-
-// p {
-//   line-height: 1.6;
-// }
+.center {
+  text-align: center;
+}

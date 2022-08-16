@@ -11,9 +11,9 @@ const Rooms = () => {
 
       <div className="section grey">
 
-        <div className="room-card">
-          <div className="room-card-img single"></div>
-          <div className="room-card-body">
+        <div className="card">
+          <div className="card-img single"></div>
+          <div className="card-body">
             <div className="title">Single Room </div>
             <div className="text">Spacious single room with wider-sized bed.
               {/* Our classic room for when you want to be away from home, whilst still feeling at home. */}
@@ -22,9 +22,9 @@ const Rooms = () => {
           </div>
         </div>
 
-        <div className="room-card">
-          <div className="room-card-img double"></div>
-          <div className="room-card-body">
+        <div className="card">
+          <div className="card-img double"></div>
+          <div className="card-body">
             <div className="title">Double Room </div>
             <div className="text">Our renouned double rooms provide enough space for a comfortable stay. For families, additional beds can be provided for children. Please enquire upon booking.</div>
 

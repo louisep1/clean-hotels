@@ -1,6 +1,12 @@
 @media (max-width: 1100px) {
-  .card-container {
+  .postcard-container {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 950px) {
+  .card-img-sm {
+    height: 15rem;
   }
 }
 
@@ -12,6 +18,14 @@
 
   .text {
     font-size: 0.9rem;
+  }
+
+  .footnote {
+    font-size: 0.7rem;
+  }
+
+  .card-img-sm {
+    height: 10rem;
   }
 
   // Nav:
@@ -41,11 +55,11 @@
     }
   }
 
-  .card-container {
+  .postcard-container {
     grid-template-columns: 1fr;
   }
 
-  .card {
+  .postcard {
     height: 12.5rem;
 
     &-title {
@@ -81,7 +95,7 @@
   }
 
   // Rooms page:
-  .room-card-img {
+  .card-img {
     height: 15rem;
   }
 
@@ -95,6 +109,10 @@
   .text {
     font-size: 0.8rem;
     padding-bottom: 0;
+  }
+
+  .grid-2 {
+    grid-template-columns: 1fr;
   }
 
   nav li {
