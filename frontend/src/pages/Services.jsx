@@ -11,66 +11,61 @@ const Services = () => {
         <div className="grid-2">
 
           <div className="card card-full">
-            <div className="card-img-sm breakfast"></div>
+            <div className="card-img-sm wifi"></div>
             <div className="card-body-sm">
-              <div className="text text-md center">Test</div>
+              <div className="text-md center">Wifi</div>
             </div>
           </div>
 
           <div className="card card-full">
-            <div className="card-img-sm breakfast"></div>
+            <div className="card-img-sm tv"></div>
             <div className="card-body-sm">
-              <div className="text text-md center">Test</div>
+              <div className="text-md center">TV</div>
             </div>
           </div>
 
           <div className="card card-full">
-            <div className="card-img-sm breakfast"></div>
+            <div className="card-img-sm laundry"></div>
             <div className="card-body-sm">
-              <div className="text text-md center">Test</div>
+              <div className="text-md center">Laundry</div>
             </div>
           </div>
 
           <div className="card card-full">
-            <div className="card-img-sm breakfast"></div>
+            <div className="card-img-sm luggage"></div>
             <div className="card-body-sm">
-              <div className="text text-md center">Test</div>
+              <div className="text-md center">Luggage deposit</div>
+            </div>
+          </div>
+
+          <div className="card card-full">
+            <div className="card-img-sm parking"></div>
+            <div className="card-body-sm">
+              <div className="text-md center">Parking</div>
             </div>
           </div>
 
         </div>
 
-        <div className="panel panel-white title">Additional</div>
-        <div className="grid-2">
+        <div className="mt-1">
+          <div className="panel panel-white title">Additional</div>
+          <div className="grid-2">
 
-          <div className="card card-full">
-            <div className="card-img-sm breakfast"></div>
-            <div className="card-body-sm">
-              <div className="text text-md center">Test</div>
+            <div className="card card-full">
+              <div className="card-img-sm breakfast"></div>
+              <div className="card-body-sm">
+                <div className="text-md center">Dining</div>
+              </div>
             </div>
-          </div>
 
-          <div className="card card-full">
-            <div className="card-img-sm breakfast"></div>
-            <div className="card-body-sm">
-              <div className="text text-md center">Test</div>
+            <div className="card card-full">
+              <div className="card-img-sm breakfast yoga"></div>
+              <div className="card-body-sm">
+                <div className="text-md center">Recreational activities</div>
+              </div>
             </div>
-          </div>
 
-          <div className="card card-full">
-            <div className="card-img-sm breakfast"></div>
-            <div className="card-body-sm">
-              <div className="text text-md center">Test</div>
-            </div>
           </div>
-
-          <div className="card card-full">
-            <div className="card-img-sm breakfast"></div>
-            <div className="card-body-sm">
-              <div className="text text-md center">Test</div>
-            </div>
-          </div>
-
         </div>
 
 

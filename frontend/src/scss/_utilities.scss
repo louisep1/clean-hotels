@@ -59,8 +59,35 @@ $grey: rgb(235, 235, 235);
   }
 
   .breakfast {
-    background: url('../imgs/nice-break-plate-zoom.jpg') no-repeat center
+    background: url('../imgs/facilities/nice-break-plate-zoom.jpg') no-repeat
+      center center/cover;
+  }
+
+  .parking {
+    background: url('../imgs/facilities/parking.jpg') no-repeat center
       center/cover;
+  }
+
+  .laundry {
+    background: url('../imgs/facilities/laundry.avif') no-repeat center
+      center/cover;
+  }
+
+  .luggage {
+    background: url('../imgs/facilities/luggage.jpg') no-repeat center
+      center/cover;
+  }
+
+  .tv {
+    background: url('../imgs/facilities/tv.jpg') no-repeat center center/cover;
+  }
+
+  .wifi {
+    background: url('../imgs/facilities/wifi.png') no-repeat center center/cover;
+  }
+
+  .yoga {
+    background: url('../imgs/facilities/yoga.jpg') no-repeat center center/cover;
   }
 
   // .twin {
@@ -108,11 +135,14 @@ $grey: rgb(235, 235, 235);
 
 // Fonts/Text styles
 .text {
-  // border: 3px black solid;
-  padding: 5px 0;
-  line-height: 1.4;
-  font-weight: 300;
-  font-family: 'Roboto', sans-serif;
+  &,
+  &-md {
+    // border: 3px black solid;
+    padding: 5px 0;
+    line-height: 1.4;
+    font-weight: 300;
+    font-family: 'Roboto', sans-serif;
+  }
 
   &-md {
     font-size: 1.4rem;
