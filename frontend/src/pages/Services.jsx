@@ -47,7 +47,8 @@ const Services = () => {
 
         </div>
 
-        <div className="mt-1">
+
+        <div className="section grey">
           <div className="panel panel-white title">Additional</div>
           <div className="grid-2">
 
