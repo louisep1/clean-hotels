@@ -1,42 +1,43 @@
 // Margin and padding each/in loop
 $spacingArray: (1, 2, 3, 4);
-// can't do 0.5, so px might be better for smaller sizes...
+// can't do 0.5
+//  1 = 0.25, 2 = 0.5, 3 = 0.75, 4 = 1
 
 @each $spacing in $spacingArray {
   // Margin/padding all
   .m-#{$spacing} {
-    margin: #{$spacing}rem;
+    margin: #{$spacing / 4}rem;
   }
 
   .p-#{$spacing} {
-    padding: #{$spacing}rem;
+    padding: #{$spacing / 4}rem;
   }
 
   // Margin/padding top/bottom
   .my-#{$spacing} {
-    margin: #{$spacing}rem 0;
+    margin: #{$spacing / 4}rem 0;
   }
 
   .py-#{$spacing} {
-    padding: #{$spacing}rem 0;
+    padding: #{$spacing / 4}rem 0;
   }
 
   // Margin/padding top
   .mt-#{$spacing} {
-    margin: #{$spacing}rem 0 0;
+    margin: #{$spacing / 4}rem 0 0;
   }
 
   .pt-#{$spacing} {
-    padding: #{$spacing}rem 0 0;
+    padding: #{$spacing / 4}rem 0 0;
   }
 
   // Margin/padding left/right
   .mx-#{$spacing} {
-    margin: 0 #{$spacing}rem;
+    margin: 0 #{$spacing / 4}rem;
   }
 
   .px-#{$spacing} {
-    padding: 0 #{$spacing}rem;
+    padding: 0 #{$spacing / 4}rem;
   }
 }
 // template literal #{}
