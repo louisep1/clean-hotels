@@ -3,7 +3,7 @@ import Banner from '../components/Banner'
 
 const Services = () => {
   return (
-    <div>
+    <>
       <Banner title='Services' />
 
       <div className="section grey">
@@ -71,7 +71,7 @@ const Services = () => {
 
 
       </div>
-    </div >
+    </>
   )
 }
 

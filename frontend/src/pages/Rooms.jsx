@@ -4,7 +4,7 @@ import Banner from '../components/Banner'
 
 const Rooms = () => {
   return (
-    <div>
+    <>
       <Banner title='Rooms' />
       {/* BOTH RESERVATION SEARCH AND ROOM TYPE DETAILS HERE */}
       {/* SEPARATE PAGE FOR SEARCH RESULTS */}
@@ -42,7 +42,7 @@ const Rooms = () => {
         </div>
 
       </div>
-    </div>
+    </>
   )
 }
 
