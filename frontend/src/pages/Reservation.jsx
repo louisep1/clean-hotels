@@ -2,6 +2,12 @@ import { useState } from 'react'
 import Banner from '../components/Banner'
 
 const Reservation = () => {
+  const [searching, setSearching] = useState(false)
+
+  const [results, setResults] = useState({})
+  // null is false, but {} is true
+  // ('' is also false)
+
   const [search, setSearch] = useState({
     location: 'Tokyo',
     date: '',
@@ -26,6 +32,8 @@ const Reservation = () => {
   const handleSubmit = e => {
     e.preventDefault()
     console.log(search)
+    setSearching(true)
+    // !!! find a cute hotel searching/processing gif
   }
 
   return (
@@ -106,8 +114,15 @@ const Reservation = () => {
             </div>
             <button className='btn my-3' type="submit">Check availability</button>
           </form>
-
         </div>
+
+        {results && (
+          <section className='p-4'>
+            <div className='title'>Results</div>
+
+            {/* have some kind of panel or something to display each room type matching the search */}
+          </section>
+        )}
 
       </div>
     </>
