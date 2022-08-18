@@ -1,0 +1,17 @@
+.form-container {
+  border: #333 solid 2px;
+  margin: 2rem;
+}
+
+.reservation-form {
+  // border: pink 3px solid;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  input,
+  select {
+    display: block;
+    margin-bottom: 0.6rem;
+    margin-top: 0.1rem;
+  }
+}

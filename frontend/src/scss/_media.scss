@@ -100,6 +100,22 @@
     height: 15rem;
   }
 
+  // Reservation page
+  .form-container {
+    margin: 0.4rem;
+  }
+
+  .reservation-form {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  label,
+  input,
+  select {
+    font-size: 0.8rem;
+  }
+
+  // Footer
   footer {
     padding: 2rem;
     font-size: 0.8rem;
@@ -112,8 +128,13 @@
     padding-bottom: 0;
   }
 
+  // .grid-2 {
+  //   grid-template-columns: 1fr;
+  // }
+
   .grid-2 {
-    grid-template-columns: 1fr;
+    // grid-template-columns: 1fr;
+    display: block;
   }
 
   nav li {
