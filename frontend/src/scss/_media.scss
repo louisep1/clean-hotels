@@ -12,6 +12,10 @@
 
 @media (max-width: 750px) {
   // Utilities:
+  .card {
+    margin: 2rem auto;
+  }
+
   .title {
     font-size: 1.1rem;
   }

@@ -31,6 +31,15 @@ $spacingArray: (1, 2, 3, 4);
     padding: #{$spacing / 4}rem 0 0;
   }
 
+  // Margin/padding bottom
+  .mb-#{$spacing} {
+    margin: 0 0 #{$spacing / 4}rem;
+  }
+
+  .pb-#{$spacing} {
+    padding: 0 0 #{$spacing / 4}rem;
+  }
+
   // Margin/padding left/right
   .mx-#{$spacing} {
     margin: 0 #{$spacing / 4}rem;

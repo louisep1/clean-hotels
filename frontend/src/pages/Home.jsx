@@ -71,7 +71,7 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="section">
+      <div className="section my-4">
         <div className="panel">
           <Link to='/services'><div className="panel-title">Facilities & Services</div></Link>
 

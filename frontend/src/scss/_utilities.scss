@@ -13,7 +13,7 @@ $grey: rgb(235, 235, 235);
 }
 
 .section {
-  padding: 1rem 0 1.5rem;
+  padding: 1rem 0 0.5rem;
   height: 100%;
   width: 100%;
   // border: pink 3px solid;
@@ -131,6 +131,22 @@ $grey: rgb(235, 235, 235);
     line-height: 1.6;
     font-family: 'Roboto', sans-serif;
   }
+}
+
+// Button
+button:hover {
+  cursor: pointer;
+  color: #000;
+  background: #fff;
+  // background: $grey;
+}
+
+.btn {
+  padding: 0.5rem;
+  color: #fff;
+  background: #000;
+  border: #000 1.5px solid;
+  border-radius: 2px;
 }
 
 // Fonts/Text styles

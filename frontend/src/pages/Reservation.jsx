@@ -73,6 +73,7 @@ const Reservation = () => {
             {/* display room type on next search result page */}
 
           </form>
+          <button className='btn my-3' type="submit">Check availability</button>
         </div>
 
       </div>
