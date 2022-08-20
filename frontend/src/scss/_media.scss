@@ -12,6 +12,10 @@
 
 @media (max-width: 750px) {
   // Utilities:
+  .line {
+    margin: 1rem auto;
+  }
+
   .card {
     margin: 2rem auto;
   }
@@ -106,7 +110,8 @@
 
   // Reservation page
   .form-container {
-    margin: 0.4rem;
+    // margin: 0.4rem;
+    margin: 0;
   }
 
   .reservation-form {
@@ -141,6 +146,10 @@
   input,
   select {
     font-size: 0.8rem;
+  }
+
+  .results-container {
+    padding: 0.5rem 1rem 2rem;
   }
 
   // Footer

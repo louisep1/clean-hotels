@@ -33,11 +33,14 @@ const Reservation = () => {
     console.log(search)
 
     // check if date has already passed => error
+    // check that check-out date is after (or check-in is before)  =>  error
     // check number of rooms <= number of people   otherwise  =>   error
     setSearching(true)
     // !!! find a cute hotel searching/processing gif
 
-    // maybe then fetch in useEffect, then once returned results, setSearchng(false) iin useEffect
+    // return rooms that are available for consecutive nights only => if not, don't return
+
+    // maybe then fetch in useEffect, then once returned results, setSearching(false) iin useEffect
   }
 
   return (
@@ -45,7 +48,7 @@ const Reservation = () => {
       <Banner title='Reservation' />
 
       <div className="section">
-        <div className="form-container p-4">
+        <div className="form-container px-4">
           <p className='text-md'>Book your stay</p>
           <form onSubmit={handleSubmit}>
             <div className='reservation-form'>
