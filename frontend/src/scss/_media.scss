@@ -110,7 +110,31 @@
   }
 
   .reservation-form {
-    grid-template-columns: 1fr 1fr;
+    // grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      'location location'
+      'check-in check-out'
+      'guests rooms';
+
+    .location {
+      grid-area: location;
+    }
+
+    .check-in {
+      grid-area: check-in;
+    }
+
+    .check-out {
+      grid-area: check-out;
+    }
+
+    .guests {
+      grid-area: guests;
+    }
+
+    .rooms {
+      grid-area: rooms;
+    }
   }
 
   label,

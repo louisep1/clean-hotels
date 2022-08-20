@@ -10,19 +10,20 @@ const Reservation = () => {
 
   const [search, setSearch] = useState({
     location: 'Tokyo',
-    date: '',
+    checkIn: '',
+    checkOut: '',
     // !!! CHECK CORRECT FORMAT FOR DATES
-    nights: 1,
+    // nights: 1,
     guests: 1,
     rooms: 1
   })
 
-  const { location, date, nights, guests, rooms } = search
+  const { location, checkIn, checkOut, guests, rooms } = search
 
   const handleChange = e => {
     setSearch(prevState => ({
       ...prevState,
-      [e.target.name]: e.target.name === 'location' || e.target.name === 'date' ? e.target.value : Number(e.target.value)
+      [e.target.name]: e.target.name === 'guests' || e.target.name === 'rooms' ? Number(e.target.value) : e.target.value
     })
     )
   }
@@ -49,8 +50,7 @@ const Reservation = () => {
           <form onSubmit={handleSubmit}>
             <div className='reservation-form'>
 
-              {/* <div> */}
-              <div className="input-group">
+              <div className="input-group location">
                 <label htmlFor="hotel-location">Location</label>
                 <select value={location} name="location" id="hotel-location" onChange={handleChange}>
                   <option value='Tokyo'>Tokyo</option>
@@ -58,33 +58,17 @@ const Reservation = () => {
                 </select>
               </div>
 
-
-              <div className="input-group">
+              <div className="input-group check-in">
                 <label htmlFor="">Check-in date</label>
-                <input value={date} name='date-in' onChange={handleChange} type="date" />
+                <input value={checkIn} name='checkIn' onChange={handleChange} type="date" />
               </div>
 
-              <div className="input-group">
+              <div className="input-group check-out">
                 <label htmlFor="">Check-out date</label>
-                <input value={date} name='date-out' onChange={handleChange} type="date" />
+                <input value={checkOut} name='checkOut' onChange={handleChange} type="date" />
               </div>
-              {/* </div> */}
 
-              {/* <div> */}
-              {/* <div className="input-group">
-                  <label htmlFor="">Nights</label>
-                  <select value={nights} name="nights" onChange={handleChange} id="">
-                    <option value={1}>1</option>
-                    <option value={2}>2</option>
-                    <option value={3}>3</option>
-                    <option value={4}>4</option>
-                    <option value={5}>5</option>
-                    <option value={6}>6</option>
-                    <option value={7}>7</option>
-                  </select>
-                </div> */}
-
-              <div className="input-group">
+              <div className="input-group guests">
                 <label htmlFor="total-guests">Number of guests (adults)</label>
                 <select name="guests" value={guests} id="total-guests" onChange={handleChange}>
                   <option value={1}>1</option>
@@ -94,11 +78,7 @@ const Reservation = () => {
                 </select>
               </div>
 
-              {/* </div> */}
-
-
-
-              <div className="input-group">
+              <div className="input-group rooms">
                 <label htmlFor="total-rooms">Number of rooms</label>
                 <select name="rooms" value={rooms} id="total-rooms" onChange={handleChange}>
                   <option value={1}>1</option>
