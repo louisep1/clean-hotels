@@ -49,24 +49,29 @@ const Reservation = () => {
           <form onSubmit={handleSubmit}>
             <div className='reservation-form'>
 
-              <div>
-                <div className="input-group">
-                  <label htmlFor="hotel-location">Location</label>
-                  <select value={location} name="location" id="hotel-location" onChange={handleChange}>
-                    <option value='Tokyo'>Tokyo</option>
-                    <option value='Yokohama'>Yokohama</option>
-                  </select>
-                </div>
-
-
-                <div className="input-group">
-                  <label htmlFor="">Check-in date</label>
-                  <input value={date} name='date' onChange={handleChange} type="date" />
-                </div>
+              {/* <div> */}
+              <div className="input-group">
+                <label htmlFor="hotel-location">Location</label>
+                <select value={location} name="location" id="hotel-location" onChange={handleChange}>
+                  <option value='Tokyo'>Tokyo</option>
+                  <option value='Yokohama'>Yokohama</option>
+                </select>
               </div>
 
-              <div>
-                <div className="input-group">
+
+              <div className="input-group">
+                <label htmlFor="">Check-in date</label>
+                <input value={date} name='date-in' onChange={handleChange} type="date" />
+              </div>
+
+              <div className="input-group">
+                <label htmlFor="">Check-out date</label>
+                <input value={date} name='date-out' onChange={handleChange} type="date" />
+              </div>
+              {/* </div> */}
+
+              {/* <div> */}
+              {/* <div className="input-group">
                   <label htmlFor="">Nights</label>
                   <select value={nights} name="nights" onChange={handleChange} id="">
                     <option value={1}>1</option>
@@ -76,24 +81,20 @@ const Reservation = () => {
                     <option value={5}>5</option>
                     <option value={6}>6</option>
                     <option value={7}>7</option>
-                    <option value={8}>8</option>
-                    <option value={9}>9</option>
-                    <option value={10}>10</option>
                   </select>
-                </div>
+                </div> */}
 
-                <div className="input-group">
-                  <label htmlFor="total-guests">Number of guests (adults)</label>
-                  <select name="guests" value={guests} id="total-guests" onChange={handleChange}>
-                    {/* !!! maybe make this dynamic so only includes 2 per room, then suggest children are not included ? */}
-                    <option value={1}>1</option>
-                    <option value={2}>2</option>
-                    <option value={3}>3</option>
-                    <option value={4}>4</option>
-                  </select>
-                </div>
-
+              <div className="input-group">
+                <label htmlFor="total-guests">Number of guests (adults)</label>
+                <select name="guests" value={guests} id="total-guests" onChange={handleChange}>
+                  <option value={1}>1</option>
+                  <option value={2}>2</option>
+                  <option value={3}>3</option>
+                  <option value={4}>4</option>
+                </select>
               </div>
+
+              {/* </div> */}
 
 
 
