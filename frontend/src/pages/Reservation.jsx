@@ -91,15 +91,18 @@ const Reservation = () => {
             </div>
             <button className='btn my-3' type="submit">Check availability</button>
           </form>
+          <div className="line"></div>
+
         </div>
+
 
         {
           results && (
-            <section className='p-4'>
+            <div className='results-container'>
               <div className='title'>Results</div>
 
               {/* have some kind of panel or something to display each room type matching the search results */}
-            </section>
+            </div>
           )
         }
 
