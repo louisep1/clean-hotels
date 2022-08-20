@@ -20,4 +20,26 @@
 .results-container {
   // border: black 3px solid;
   padding: 0 2rem 2rem;
+
+  .result {
+    border: black 3px solid;
+    margin: 1rem auto;
+  }
+}
+
+.searching {
+  // border: black 3px solid;
+  padding: 0 5rem;
+  color: rgb(94, 131, 203);
+
+  .text {
+    font-size: 1.4rem;
+    padding-bottom: 0.7rem;
+  }
+
+  &-gifs {
+    display: flex;
+    justify-content: space-between;
+    height: 8rem;
+  }
 }

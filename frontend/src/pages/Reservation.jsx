@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Banner from '../components/Banner'
+import running from '../imgs/hotel-loading-gif.gif'
 
 const Reservation = () => {
   const [searching, setSearching] = useState(false)
@@ -98,11 +99,29 @@ const Reservation = () => {
 
         </div>
 
+        {searching && (
+          <div className='searching'>
+            <div className="text">Searching... Please wait... </div>
+            <div className="searching-gifs">
+              <img src={running} alt="" />
+              <img src={running} alt="" />
+              <img src={running} alt="" />
+              <img src={running} alt="" />
+            </div>
+          </div>
+        )}
+
+
 
         {
-          results && (
+          results && !searching && (
             <div className='results-container'>
               <div className='title'>Results</div>
+
+              <div className="result"></div>
+              <div className="result"></div>
+              <div className="result"></div>
+
 
               {/* have some kind of panel or something to display each room type matching the search results */}
             </div>
