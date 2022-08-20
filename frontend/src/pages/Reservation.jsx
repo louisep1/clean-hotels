@@ -20,11 +20,9 @@ const Reservation = () => {
   const { location, date, nights, guests, rooms } = search
 
   const handleChange = e => {
-    // console.log(e.target.value)
-    // console.log(e.target.name)
     setSearch(prevState => ({
       ...prevState,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.name === 'location' || e.target.name === 'date' ? e.target.value : Number(e.target.value)
     })
     )
   }
@@ -32,8 +30,13 @@ const Reservation = () => {
   const handleSubmit = e => {
     e.preventDefault()
     console.log(search)
+
+    // check if date has already passed => error
+    // check number of rooms <= number of people   otherwise  =>   error
     setSearching(true)
     // !!! find a cute hotel searching/processing gif
+
+    // maybe then fetch in useEffect, then once returned results, setSearchng(false) iin useEffect
   }
 
   return (
@@ -50,12 +53,8 @@ const Reservation = () => {
                 <div className="input-group">
                   <label htmlFor="hotel-location">Location</label>
                   <select value={location} name="location" id="hotel-location" onChange={handleChange}>
-                    {/* <option value="Tokyo">Tokyo</option>
-                    <option value="Yokohama">Yokohama</option> */}
-                    <option>Yokohama</option>
-                    <option>Tokyo</option>
-                    {/* !!! for some reason, e.target.value is coming back as the value inside the option - is this correct ??? */}
-                    {/* !!! check state and onChange done correctly */}
+                    <option value='Tokyo'>Tokyo</option>
+                    <option value='Yokohama'>Yokohama</option>
                   </select>
                 </div>
 
@@ -70,27 +69,27 @@ const Reservation = () => {
                 <div className="input-group">
                   <label htmlFor="">Nights</label>
                   <select value={nights} name="nights" onChange={handleChange} id="">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                    <option>6</option>
-                    <option>7</option>
-                    <option>8</option>
-                    <option>9</option>
-                    <option>10</option>
+                    <option value={1}>1</option>
+                    <option value={2}>2</option>
+                    <option value={3}>3</option>
+                    <option value={4}>4</option>
+                    <option value={5}>5</option>
+                    <option value={6}>6</option>
+                    <option value={7}>7</option>
+                    <option value={8}>8</option>
+                    <option value={9}>9</option>
+                    <option value={10}>10</option>
                   </select>
                 </div>
 
                 <div className="input-group">
                   <label htmlFor="total-guests">Number of guests (adults)</label>
                   <select name="guests" value={guests} id="total-guests" onChange={handleChange}>
-                    {/* !!! maybe make this dynamic so only includes 2 per room, then suggest children are not included  */}
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
+                    {/* !!! maybe make this dynamic so only includes 2 per room, then suggest children are not included ? */}
+                    <option value={1}>1</option>
+                    <option value={2}>2</option>
+                    <option value={3}>3</option>
+                    <option value={4}>4</option>
                   </select>
                 </div>
 
@@ -101,30 +100,29 @@ const Reservation = () => {
               <div className="input-group">
                 <label htmlFor="total-rooms">Number of rooms</label>
                 <select name="rooms" value={rooms} id="total-rooms" onChange={handleChange}>
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
+                  <option value={1}>1</option>
+                  <option value={2}>2</option>
+                  <option value={3}>3</option>
+                  <option value={4}>4</option>
                 </select>
               </div>
-
-
-              {/* display room type on next search result page */}
 
             </div>
             <button className='btn my-3' type="submit">Check availability</button>
           </form>
         </div>
 
-        {results && (
-          <section className='p-4'>
-            <div className='title'>Results</div>
+        {
+          results && (
+            <section className='p-4'>
+              <div className='title'>Results</div>
 
-            {/* have some kind of panel or something to display each room type matching the search */}
-          </section>
-        )}
+              {/* have some kind of panel or something to display each room type matching the search results */}
+            </section>
+          )
+        }
 
-      </div>
+      </div >
     </>
   )
 }
