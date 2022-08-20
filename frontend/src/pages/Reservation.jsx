@@ -1,6 +1,11 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
+import { BsFillPersonFill } from 'react-icons/bs'
+import { MdNightlight } from 'react-icons/md'
 import Banner from '../components/Banner'
 import running from '../imgs/hotel-loading-gif.gif'
+
+import room from '../imgs/room-small-2.jpg'
 
 const Reservation = () => {
   const [searching, setSearching] = useState(false)
@@ -118,9 +123,32 @@ const Reservation = () => {
             <div className='results-container'>
               <div className='title'>Results</div>
 
-              <div className="result"></div>
-              <div className="result"></div>
-              <div className="result"></div>
+              <div className="result">
+                <img src={room} alt="room" className='img' />
+                <p className='room'>Double Room</p>
+                <p className='cost'>$50</p>
+                <p className='details'>2 nights, 2 people</p>
+                <Link to='/' className='link'><button className='btn'>See more</button></Link>
+                <Link to='/' className='reserve'><button className='btn'>Reserve</button></Link>
+              </div>
+
+              <div className="result">
+                <img src={room} alt="room" className='img' />
+                <p className='room'>Double Room</p>
+                <p className='cost'>$50</p>
+                <p className='details'>2 nights, 2 people</p>
+                <Link to='/' className='link'><button className='btn'>See more</button></Link>
+                <Link to='/' className='reserve'><button className='btn'>Reserve</button></Link>
+              </div>
+
+              <div className="result">
+                <img src={room} alt="room" className='img' />
+                <p className='room'>Double Room</p>
+                <p className='cost'>$50</p>
+                <p className='details'>2 <BsFillPersonFill className='icon' /> / 2 <MdNightlight className='icon' /></p>
+                <Link to='/' className='link'><button className='btn'>See more</button></Link>
+                <Link to='/' className='reserve'><button className='btn'>Reserve</button></Link>
+              </div>
 
 
               {/* have some kind of panel or something to display each room type matching the search results */}

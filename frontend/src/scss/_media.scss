@@ -151,6 +151,45 @@
 
   .results-container {
     padding: 0.5rem 1rem 2rem;
+
+    .result {
+      gap: 0 0.2rem;
+      grid-template-columns: auto;
+      grid-template-areas:
+        'img room'
+        'img cost'
+        'img details'
+        'img link'
+        'img reserve';
+
+      img {
+        width: 100%;
+      }
+
+      .img {
+        grid-area: img;
+      }
+
+      .room {
+        grid-area: room;
+      }
+
+      .cost {
+        grid-area: cost;
+      }
+
+      .details {
+        grid-area: details;
+      }
+
+      .link {
+        grid-area: link;
+      }
+
+      .reserve {
+        grid-area: reserve;
+      }
+    }
   }
 
   // Footer

@@ -148,11 +148,16 @@ button:hover {
 }
 
 .btn {
+  // !!!! this looks really bad when not wrapped inside a container with a defined width (e.g. in a grid, takes up entire column/space unless you add a div)
   padding: 0.5rem;
   color: #fff;
   background: #000;
   border: #000 1.5px solid;
   border-radius: 2px;
+}
+
+// !!! make button functions so that dark one has light font and inverse hover\
+.btn-light {
 }
 
 // Fonts/Text styles
