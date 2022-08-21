@@ -1,6 +1,8 @@
 $grey: rgb(235, 235, 235);
 
-// !!!! MARGIN AND PADDING FUNCTIONS
+.hide {
+  display: none;
+}
 
 .grey {
   background-color: $grey;

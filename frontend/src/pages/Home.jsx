@@ -11,7 +11,13 @@ const Home = () => {
   return (
     <>
       {/* !!! either 'Clean Hotels' or 'Welcome' or 'Book Your Stay' */}
-      <Banner title='Book Your Stay' classes='banner-home' />
+      <Banner title='Book Your Stay' classes='banner-home banner-tea banner-sunset banner-room1 banner-room2' slide={true} />
+
+      {/* <Banner title='Book Your Stay' classes='banner-home' slide={true} />
+      <Banner title='Book Your Stay' classes='banner-tea hide' />
+      <Banner title='Book Your Stay' classes='banner-sunset hide' />
+      <Banner title='Book Your Stay' classes='banner-room1 hide' />
+      <Banner title='Book Your Stay' classes='banner-room2 hide' /> */}
       <div className='section'>
         <div className="panel">
           <div className='panel-title'>Discover</div>

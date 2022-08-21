@@ -55,6 +55,20 @@
     .title {
       font-size: 2rem;
     }
+
+    .arrow {
+      height: 1.6rem;
+      top: 45%;
+      font-size: 1rem;
+
+      &-left {
+        transform: translate(-2px, 0);
+      }
+
+      // &-right {
+      //   transform: translate(1px, 0);
+      // }
+    }
   }
 
   // Home page:
