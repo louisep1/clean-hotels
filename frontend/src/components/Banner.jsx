@@ -14,6 +14,12 @@ const Banner = ({ title, classes, slide }) => {
 
   useEffect(() => {
     slide && setSlideClass(classArray[imgNo])
+
+    // const setSlideTimer = setTimeout(handleRightClick, 3000)
+
+    // return () => {
+    //   clearTimeout(setSlideTimer)
+    // }
   }, [imgNo])
 
   const handleLeftClick = () => {
@@ -24,14 +30,26 @@ const Banner = ({ title, classes, slide }) => {
     imgNo === classArray.length - 1 ? setImgNo(0) : setImgNo(prevNo => prevNo + 1)
   }
 
+  const handleDotClick = i => {
+    classArray[i] !== slideClass && setImgNo(i)
+  }
+
+  // !!! the fade feature doesn't work - go back and sort
+  // https://www.w3schools.com/w3css/w3css_animate.asp
+  // https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_animate-opacity
   return (
-    <div className={`banner banner-${title.toLowerCase()} ${slide ? slideClass : classes}`}>
+    <div className={`fade banner banner-${title.toLowerCase()} ${slide ? slideClass : classes}`}>
       <div className="overlay">
         <h1 className='title'>{title}</h1>
         {slide && (
           <>
             <button className="arrow arrow-left" onClick={handleLeftClick}><FiChevronLeft /></button>
             <button className="arrow arrow-right" onClick={handleRightClick}><FiChevronRight /></button>
+            <div className="dots">
+              {classArray.map((classes, i) => (
+                <div key={classes} className={`dot ${classArray[i] === slideClass ? 'dot-current' : 'dot-hover'}`} onClick={() => handleDotClick(i)}></div>
+              ))}
+            </div>
           </>
         )}
       </div>

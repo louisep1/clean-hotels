@@ -83,6 +83,21 @@ nav {
 }
 
 // Banner:
+.fade {
+  animation: fading 5s;
+}
+@keyframes fading {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 .banner {
   height: 30rem;
   position: relative;
@@ -161,6 +176,30 @@ nav {
 
     &-right {
       right: 0;
+    }
+  }
+
+  .dots {
+    position: absolute;
+    bottom: 5%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .dot {
+    background: rgb(124, 124, 124);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+
+    &-hover:hover {
+      cursor: pointer;
+    }
+
+    &-current {
+      background-color: #fff;
     }
   }
 }

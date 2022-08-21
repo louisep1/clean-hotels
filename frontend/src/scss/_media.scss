@@ -69,6 +69,15 @@
       //   transform: translate(1px, 0);
       // }
     }
+
+    .dots {
+      gap: 0.5rem;
+
+      .dot {
+        width: 8px;
+        height: 8px;
+      }
+    }
   }
 
   // Home page:
