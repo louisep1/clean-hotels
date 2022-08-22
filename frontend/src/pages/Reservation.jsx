@@ -28,14 +28,18 @@ const Reservation = () => {
   useEffect(() => {
 
     // This useEffecy logs out each date inbetween the check-in date, up to but not including the check-out date
-    var start = new Date(checkIn);
-    var end = new Date(checkOut);
+    let current = new Date(checkIn);
+    const end = new Date(checkOut);
+    const dateArray = []
 
-    var loop = new Date(start);
-    while (loop < end) {
-      console.log(loop);
-      var newDate = loop.setDate(loop.getDate() + 1);
-      loop = new Date(newDate);
+    while (current < end) {
+      dateArray.push(new Date(current))
+
+      // console.log(dateArray)
+      // console.log(current);
+
+      let newDate = current.setDate(current.getDate() + 1);
+      current = new Date(newDate);
     }
   }, [checkOut])
 

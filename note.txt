@@ -1,1 +1,7 @@
 images slide into view as scroll page
+
+
+
+
+date yyyy-mm-dd
+https://stackoverflow.com/questions/23593052/format-javascript-date-as-yyyy-mm-dd#:~:text=The%20simplest%20way%20to%20convert,getTimezoneOffset()%20*%2060000%20))%20.
