@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { BsFillPersonFill } from 'react-icons/bs'
 import { MdNightlight } from 'react-icons/md'
@@ -19,12 +19,49 @@ const Reservation = () => {
     checkIn: '',
     checkOut: '',
     // !!! CHECK CORRECT FORMAT FOR DATES
-    // nights: 1,
     guests: 1,
     rooms: 1
   })
 
   const { location, checkIn, checkOut, guests, rooms } = search
+
+  useEffect(() => {
+
+    // This useEffecy logs out each date inbetween the check-in date, up to but not including the check-out date
+    var start = new Date(checkIn);
+    var end = new Date(checkOut);
+
+    var loop = new Date(start);
+    while (loop < end) {
+      console.log(loop);
+      var newDate = loop.setDate(loop.getDate() + 1);
+      loop = new Date(newDate);
+    }
+  }, [checkOut])
+
+
+  useEffect(() => {
+    // Updates the check-out date to be the next day from the check in date
+    // console.log(checkIn)
+    if (checkIn) {
+      let date = new Date(checkIn);
+      date.setDate(date.getDate() + 1);
+
+      setSearch(prevState => ({
+        ...prevState,
+        checkOut: new Date(date).toLocaleDateString('en-CA')
+        // this en-CA formats dates as YYYY-MM-DD which is the required format
+      }))
+    }
+  }, [checkIn])
+
+  // useEffect(() => {
+  //   // Updates the check-out date to be the same as the check in date
+  //   setSearch(prevState => ({
+  //     ...prevState,
+  //     checkOut: checkIn
+  //   }))
+  // }, [checkIn])
 
   const handleChange = e => {
     setSearch(prevState => ({
