@@ -14,6 +14,8 @@ const Reservation = () => {
   // null is false, but {} is true
   // ('' is also false)
 
+  const [dateRange, setDateRange] = useState([])
+
   const [search, setSearch] = useState({
     location: 'Tokyo',
     checkIn: '',
@@ -41,6 +43,9 @@ const Reservation = () => {
       let newDate = current.setDate(current.getDate() + 1);
       current = new Date(newDate);
     }
+
+    setDateRange(dateArray)
+    // !!! not sure if this is correct as not sure if it waits for the loop or not ?
   }, [checkOut])
 
 
