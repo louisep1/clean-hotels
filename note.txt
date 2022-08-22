@@ -1,4 +1,1 @@
-fade in slide show images
-put homepage img slideshow on timer as well as scroll
-
 images slide into view as scroll page

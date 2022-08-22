@@ -8,6 +8,9 @@ const Banner = ({ title, classes, slide }) => {
   const [imgNo, setImgNo] = useState(0)
   const [slideClass, setSlideClass] = useState(classes)
 
+  const [swipeStart, setSwipeStart] = useState(0)
+  const [swipeEnd, setSwipeEnd] = useState(0)
+
   useEffect(() => {
     slide && setSlideClass(classes.split(' ')[0])
   }, [])
@@ -15,11 +18,11 @@ const Banner = ({ title, classes, slide }) => {
   useEffect(() => {
     slide && setSlideClass(classArray[imgNo])
 
-    // const setSlideTimer = setTimeout(handleRightClick, 3000)
+    const setSlideTimer = setTimeout(handleRightClick, 4000)
 
-    // return () => {
-    //   clearTimeout(setSlideTimer)
-    // }
+    return () => {
+      clearTimeout(setSlideTimer)
+    }
   }, [imgNo])
 
   const handleLeftClick = () => {
@@ -34,11 +37,16 @@ const Banner = ({ title, classes, slide }) => {
     classArray[i] !== slideClass && setImgNo(i)
   }
 
+  const handleSwipe = e => {
+    setSwipeEnd(e.changedTouches[0].screenX)
+    swipeStart > swipeEnd ? handleLeftClick() : handleRightClick()
+  }
+
   // !!! the fade feature doesn't work - go back and sort
   // https://www.w3schools.com/w3css/w3css_animate.asp
   // https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_animate-opacity
   return (
-    <div className={`fade banner banner-${title.toLowerCase()} ${slide ? slideClass : classes}`}>
+    <div className={`banner banner-${title.toLowerCase()} ${slide ? slideClass : classes}`} onTouchStart={e => setSwipeStart(e.changedTouches[0].screenX)} onTouchEnd={e => handleSwipe(e)}>
       <div className="overlay">
         <h1 className='title'>{title}</h1>
         {slide && (
@@ -53,7 +61,7 @@ const Banner = ({ title, classes, slide }) => {
           </>
         )}
       </div>
-    </div>
+    </div >
   )
 }
 

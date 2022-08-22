@@ -103,6 +103,11 @@ nav {
   position: relative;
   width: 100%;
 
+  // TESTING START =====================================
+  transition: 1s;
+
+  // TESTING END =====================================
+
   &-home {
     background: url('../imgs/hotel-2-xs.jpg') no-repeat center center/cover;
   }
@@ -216,4 +221,5 @@ footer {
 @import 'config';
 @import 'home';
 @import 'reservation';
+
 @import 'media';
