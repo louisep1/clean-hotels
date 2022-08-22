@@ -42,10 +42,7 @@ const Reservation = () => {
     // check that check-out date is after (or check-in is before)  =>  error
     // check number of rooms <= number of people   otherwise  =>   error
     setSearching(true)
-    // !!! find a cute hotel searching/processing gif
-
     // return rooms that are available for consecutive nights only => if not, don't return
-
     // maybe then fetch in useEffect, then once returned results, setSearching(false) iin useEffect
   }
 
@@ -127,18 +124,9 @@ const Reservation = () => {
                 <img src={room} alt="room" className='img' />
                 <p className='room'>Double Room</p>
                 <p className='cost'>$50</p>
-                <p className='details'>2 nights, 2 people</p>
-                <Link to='/' className='link'><button className='btn'>See more</button></Link>
-                <Link to='/' className='reserve'><button className='btn'>Reserve</button></Link>
-              </div>
-
-              <div className="result">
-                <img src={room} alt="room" className='img' />
-                <p className='room'>Double Room</p>
-                <p className='cost'>$50</p>
-                <p className='details'>2 nights, 2 people</p>
-                <Link to='/' className='link'><button className='btn'>See more</button></Link>
-                <Link to='/' className='reserve'><button className='btn'>Reserve</button></Link>
+                <p className='details'>2 <BsFillPersonFill className='icon' /> / 2 <MdNightlight className='icon' /></p>
+                <Link to='/rooms' className='link'><button className='btn'>See more</button></Link>
+                <Link to='/' className='reserve'><button className='btn btn-light'>Reserve</button></Link>
               </div>
 
               <div className="result">
@@ -146,16 +134,26 @@ const Reservation = () => {
                 <p className='room'>Double Room</p>
                 <p className='cost'>$50</p>
                 <p className='details'>2 <BsFillPersonFill className='icon' /> / 2 <MdNightlight className='icon' /></p>
-                <Link to='/' className='link'><button className='btn'>See more</button></Link>
-                <Link to='/' className='reserve'><button className='btn'>Reserve</button></Link>
+                <Link to='/rooms' className='link'><button className='btn'>See more</button></Link>
+                <Link to='/' className='reserve'><button className='btn btn-light'>Reserve</button></Link>
               </div>
 
-
-              {/* have some kind of panel or something to display each room type matching the search results */}
+              <div className="result">
+                <img src={room} alt="room" className='img' />
+                <p className='room'>Double Room</p>
+                <p className='cost'>$50</p>
+                <p className='details'>2 <BsFillPersonFill className='icon' /> / 2 <MdNightlight className='icon' /></p>
+                <Link to='/rooms' className='link'><button className='btn'>See more</button></Link>
+                <Link to='/' className='reserve'><button className='btn btn-light'>Reserve</button></Link>
+              </div>
             </div>
           )
+
+          // !!!! design a room not available error too
         }
 
+        {/* !!! maybe have either a modal or an actual separate page for reserving the actual room bit and makng the put/post calls */}
+        {/* !!! should it be an entry for each room for each day ??? with a available: true/false boolean ??? */}
       </div >
     </>
   )

@@ -42,9 +42,6 @@ const Banner = ({ title, classes, slide }) => {
     swipeStart > swipeEnd ? handleLeftClick() : handleRightClick()
   }
 
-  // !!! the fade feature doesn't work - go back and sort
-  // https://www.w3schools.com/w3css/w3css_animate.asp
-  // https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_animate-opacity
   return (
     <div className={`banner banner-${title.toLowerCase()} ${slide ? slideClass : classes}`} onTouchStart={e => setSwipeStart(e.changedTouches[0].screenX)} onTouchEnd={e => handleSwipe(e)}>
       <div className="overlay">

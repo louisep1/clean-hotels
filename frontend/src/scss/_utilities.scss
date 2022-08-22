@@ -144,23 +144,37 @@ $grey: rgb(235, 235, 235);
 // Button
 button:hover {
   cursor: pointer;
-  color: #000;
-  background: #fff;
-  // background: $grey;
 }
 
 .btn {
-  // !!!! this looks really bad when not wrapped inside a container with a defined width (e.g. in a grid, takes up entire column/space unless you add a div)
   padding: 0.5rem;
-  color: #fff;
-  background: #000;
-  border: #000 1.5px solid;
-  border-radius: 2px;
+
+  &:hover {
+    color: #fff;
+    background: #000;
+  }
+
+  &-dark {
+    color: #fff;
+    background: #000;
+    border: #000 1.5px solid;
+    border-radius: 2px;
+
+    &:hover {
+      color: #000;
+      background: #fff;
+    }
+  }
+
+  &-light {
+    color: #000;
+    background: #fff;
+    border: #000 1.5px solid;
+    border-radius: 2px;
+  }
 }
 
-// !!! make button functions so that dark one has light font and inverse hover\
-.btn-light {
-}
+// !!! maybe make button functions so that dark one has light font and inverse hover ?
 
 // Fonts/Text styles
 .text {
