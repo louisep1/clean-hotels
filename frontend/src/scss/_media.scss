@@ -8,6 +8,10 @@
   .card-img-sm {
     height: 15rem;
   }
+
+  footer {
+    font-size: 0.8rem;
+  }
 }
 
 @media (max-width: 750px) {
@@ -172,6 +176,10 @@
     font-size: 0.8rem;
   }
 
+  .searching {
+    padding: 0 2rem;
+  }
+
   .results-container {
     padding: 0.5rem 1rem 2rem;
 
@@ -218,7 +226,7 @@
   // Footer
   footer {
     padding: 2rem;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
   }
 }
 

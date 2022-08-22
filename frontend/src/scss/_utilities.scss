@@ -177,6 +177,10 @@ button:hover {
 // !!! maybe make button functions so that dark one has light font and inverse hover ?
 
 // Fonts/Text styles
+.bold {
+  font-weight: bold;
+}
+
 .text {
   &,
   &-md {

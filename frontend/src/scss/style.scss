@@ -210,11 +210,19 @@ nav {
 
 // Footer:
 footer {
-  // height: 10rem;
   padding: 4rem;
   border-top: #ccc 1px solid;
   line-height: 1.5;
   font-size: 0.9rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  // border: #000 3px solid;
+
+  .links {
+    line-height: 1.8;
+    justify-self: center;
+    // justify-self: end;
+  }
 }
 
 @import 'config';

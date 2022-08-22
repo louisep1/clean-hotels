@@ -10,7 +10,7 @@ import room from '../imgs/room-small-2.jpg'
 const Reservation = () => {
   const [searching, setSearching] = useState(false)
 
-  const [results, setResults] = useState({})
+  const [results, setResults] = useState(null)
   // null is false, but {} is true
   // ('' is also false)
 
@@ -51,64 +51,66 @@ const Reservation = () => {
       <Banner title='Reservation' />
 
       <div className="section">
-        <div className="form-container px-4">
-          <p className='text-md'>Book your stay</p>
-          <form onSubmit={handleSubmit}>
-            <div className='reservation-form'>
+        {!searching &&
+          <div className="form-container px-4">
+            <p className='text-md'>Book your stay</p>
+            <form onSubmit={handleSubmit}>
+              <div className='reservation-form'>
 
-              <div className="input-group location">
-                <label htmlFor="hotel-location">Location</label>
-                <select value={location} name="location" id="hotel-location" onChange={handleChange}>
-                  <option value='Tokyo'>Tokyo</option>
-                  <option value='Yokohama'>Yokohama</option>
-                </select>
+                <div className="input-group location">
+                  <label htmlFor="hotel-location">Location</label>
+                  <select value={location} name="location" id="hotel-location" onChange={handleChange}>
+                    <option value='Tokyo'>Tokyo</option>
+                    <option value='Yokohama'>Yokohama</option>
+                  </select>
+                </div>
+
+                <div className="input-group check-in">
+                  <label htmlFor="">Check-in date</label>
+                  <input value={checkIn} name='checkIn' onChange={handleChange} type="date" />
+                </div>
+
+                <div className="input-group check-out">
+                  <label htmlFor="">Check-out date</label>
+                  <input value={checkOut} name='checkOut' onChange={handleChange} type="date" />
+                </div>
+
+                <div className="input-group guests">
+                  <label htmlFor="total-guests">Number of guests (adults)</label>
+                  <select name="guests" value={guests} id="total-guests" onChange={handleChange}>
+                    <option value={1}>1</option>
+                    <option value={2}>2</option>
+                    <option value={3}>3</option>
+                    <option value={4}>4</option>
+                  </select>
+                </div>
+
+                <div className="input-group rooms">
+                  <label htmlFor="total-rooms">Number of rooms</label>
+                  <select name="rooms" value={rooms} id="total-rooms" onChange={handleChange}>
+                    <option value={1}>1</option>
+                    <option value={2}>2</option>
+                    <option value={3}>3</option>
+                    <option value={4}>4</option>
+                  </select>
+                </div>
+
               </div>
+              <button className='btn my-3' type="submit">Check availability</button>
+            </form>
+            <div className="line"></div>
 
-              <div className="input-group check-in">
-                <label htmlFor="">Check-in date</label>
-                <input value={checkIn} name='checkIn' onChange={handleChange} type="date" />
-              </div>
-
-              <div className="input-group check-out">
-                <label htmlFor="">Check-out date</label>
-                <input value={checkOut} name='checkOut' onChange={handleChange} type="date" />
-              </div>
-
-              <div className="input-group guests">
-                <label htmlFor="total-guests">Number of guests (adults)</label>
-                <select name="guests" value={guests} id="total-guests" onChange={handleChange}>
-                  <option value={1}>1</option>
-                  <option value={2}>2</option>
-                  <option value={3}>3</option>
-                  <option value={4}>4</option>
-                </select>
-              </div>
-
-              <div className="input-group rooms">
-                <label htmlFor="total-rooms">Number of rooms</label>
-                <select name="rooms" value={rooms} id="total-rooms" onChange={handleChange}>
-                  <option value={1}>1</option>
-                  <option value={2}>2</option>
-                  <option value={3}>3</option>
-                  <option value={4}>4</option>
-                </select>
-              </div>
-
-            </div>
-            <button className='btn my-3' type="submit">Check availability</button>
-          </form>
-          <div className="line"></div>
-
-        </div>
+          </div>
+        }
 
         {searching && (
           <div className='searching'>
             <div className="text">Searching... Please wait... </div>
             <div className="searching-gifs">
               <img src={running} alt="" />
+              {/* <img src={running} alt="" />
               <img src={running} alt="" />
-              <img src={running} alt="" />
-              <img src={running} alt="" />
+              <img src={running} alt="" /> */}
             </div>
           </div>
         )}
@@ -148,9 +150,10 @@ const Reservation = () => {
               </div>
             </div>
           )
-
-          // !!!! design a room not available error too
         }
+
+        {/* !!!! design a room not available error too */}
+        {/* <div className="results-container"><div className="text-md">Sorry, no rooms were available matching your search.</div></div> */}
 
         {/* !!! maybe have either a modal or an actual separate page for reserving the actual room bit and makng the put/post calls */}
         {/* !!! should it be an entry for each room for each day ??? with a available: true/false boolean ??? */}
