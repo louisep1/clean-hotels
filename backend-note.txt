@@ -1,0 +1,6 @@
+How to connect phpmyadmin to clearDB database remotely (not using local ip address)
+https://dev.to/jovialcore/how-to-remotely-connect-heroku-clearmysql-db-to-your-local-phpmyadmin-database-4jnm
+
+
+How to setup clearDB in heroku and then config (but not phpmyadmin)
+https://www.youtube.com/watch?v=16OIg7cyLw4
