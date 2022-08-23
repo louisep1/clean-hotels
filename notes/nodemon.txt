@@ -1,0 +1,15 @@
+if using command
+cd backend
+nodemon server.js
+
+then it seems .env needs to be in the same folder as the server.js
+
+!!!! BUT
+
+if using the package.json scripts to use nodemon
+e.g.
+"start": "node backend/server.js",
+"server": "nodemon backend/server.js",
+
+then .env needs to be in the root directory (or maybe just with the package.json ?)
+(BUT it still sometimes fails though and crashes.....)

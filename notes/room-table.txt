@@ -1,0 +1,22 @@
+-- ROOMS TABLE
+id: 12345678
+room_number: 101
+location: tokyo
+type: single/double
+
+
+-- AVAILABILITY TABLE
+room_id: 12345678
+date: 2022-01-09
+available: true
+
+
+== RESERVATIONS TABLE
+roomId: 1234567
+check-in-date
+check-out-date
+check-in-time: 14:00 (default)
+check-out-time: 11:00 (default)
+nights: 9
+bookedBy: email@email.com
+

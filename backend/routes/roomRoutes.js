@@ -6,6 +6,11 @@ const { searchRooms } = require('../controllers/roomController')
 //   res.send('Test')
 // })
 
-router.get('/filter/:query', searchRooms)
+// Both of these work:
+// router.get('/filter/:location/:type/:date', searchRooms)
+// http://localhost:5000/api/rooms/filter/tokyo/single/2022-09-01
+
+router.get('/filter/:location&:type&:date', searchRooms)
+// http://localhost:5000/api/rooms/filter/tokyo&single&2022-09-01
 
 module.exports = router
