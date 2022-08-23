@@ -26,32 +26,39 @@ const searchRooms = async (req, res) => {
   }
 
   // const dateQuery = dateArray.join(' OR availability.date=')
-
   // console.log(dateArray)
-
   // console.log(dateQuery)
 
-  const resultsArray = []
-
   try {
-    dateArray.map(date => {
-      const query =
-        'SELECT * FROM availability INNER JOIN rooms ON availability.room_id = rooms.id WHERE rooms.location=? AND availability.available=? AND availability.date=?;'
+    const resultsArray = []
 
-      const searchResults = connection.query(
-        query,
-        [location, 1, date],
-        (err, results) => {
-          if (err) throw new Error(err.message)
+    const searchDates = await Promise.all(
+      dateArray.map(date => {
+        const query =
+          'SELECT * FROM availability INNER JOIN rooms ON availability.room_id = rooms.id WHERE rooms.location=? AND availability.available=? AND availability.date=?;'
 
-          if (results) {
-            console.log(results)
-            // res.json(results)
+        const searchResults = connection.query(
+          query,
+          [location, 1, date],
+          (err, results) => {
+            if (err) throw new Error(err.message)
+
+            if (results) {
+              // console.log(results)
+              resultsArray.push(results)
+              // res.json(results)
+            }
           }
-        }
-      )
-      if (!searchResults) throw new Error('Could not search')
-    })
+        )
+        if (!searchResults) throw new Error('Could not search')
+      })
+    )
+
+    console.log(resultsArray)
+
+    // if (resultsArray.length > 0) {
+    //   res.json(resultsArray)
+    // }
 
     // const query =
     //   'SELECT * FROM availability INNER JOIN rooms ON availability.room_id = rooms.id WHERE rooms.location=? AND availability.available=? AND availability.date=?;'

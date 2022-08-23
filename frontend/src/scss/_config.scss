@@ -6,47 +6,47 @@ $spacingArray: (1, 2, 3, 4);
 @each $spacing in $spacingArray {
   // Margin/padding all
   .m-#{$spacing} {
-    margin: #{$spacing / 4}rem;
+    margin: #{calc($spacing / 4)}rem;
   }
 
   .p-#{$spacing} {
-    padding: #{$spacing / 4}rem;
+    padding: #{calc($spacing / 4)}rem;
   }
 
   // Margin/padding top/bottom
   .my-#{$spacing} {
-    margin: #{$spacing / 4}rem 0;
+    margin: #{calc($spacing / 4)}rem 0;
   }
 
   .py-#{$spacing} {
-    padding: #{$spacing / 4}rem 0;
+    padding: #{calc($spacing / 4)}rem 0;
   }
 
   // Margin/padding top
   .mt-#{$spacing} {
-    margin: #{$spacing / 4}rem 0 0;
+    margin: #{calc($spacing / 4)}rem 0 0;
   }
 
   .pt-#{$spacing} {
-    padding: #{$spacing / 4}rem 0 0;
+    padding: #{calc($spacing / 4)}rem 0 0;
   }
 
   // Margin/padding bottom
   .mb-#{$spacing} {
-    margin: 0 0 #{$spacing / 4}rem;
+    margin: 0 0 #{calc($spacing / 4)}rem;
   }
 
   .pb-#{$spacing} {
-    padding: 0 0 #{$spacing / 4}rem;
+    padding: 0 0 #{calc($spacing / 4)}rem;
   }
 
   // Margin/padding left/right
   .mx-#{$spacing} {
-    margin: 0 #{$spacing / 4}rem;
+    margin: 0 #{calc($spacing / 4)}rem;
   }
 
   .px-#{$spacing} {
-    padding: 0 #{$spacing / 4}rem;
+    padding: 0 #{calc($spacing / 4)}rem;
   }
 }
 // template literal #{}
