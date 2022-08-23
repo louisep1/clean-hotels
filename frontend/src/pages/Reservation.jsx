@@ -28,8 +28,11 @@ const Reservation = () => {
   const { location, checkIn, checkOut, guests, rooms } = search
 
   useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
-    // This useEffecy logs out each date inbetween the check-in date, up to but not including the check-out date
+  useEffect(() => {
+    // This useEffect loops through each date inbetween the check-in date, up to but not including the check-out date
     let current = new Date(checkIn);
     const end = new Date(checkOut);
     const dateArray = []
@@ -51,7 +54,6 @@ const Reservation = () => {
 
   useEffect(() => {
     // Updates the check-out date to be the next day from the check in date
-    // console.log(checkIn)
     if (checkIn) {
       let date = new Date(checkIn);
       date.setDate(date.getDate() + 1);
@@ -63,14 +65,6 @@ const Reservation = () => {
       }))
     }
   }, [checkIn])
-
-  // useEffect(() => {
-  //   // Updates the check-out date to be the same as the check in date
-  //   setSearch(prevState => ({
-  //     ...prevState,
-  //     checkOut: checkIn
-  //   }))
-  // }, [checkIn])
 
   const handleChange = e => {
     setSearch(prevState => ({

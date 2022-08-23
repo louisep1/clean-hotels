@@ -1,4 +1,5 @@
-images slide into view as scroll page
+images slide into view effects as scroll page
+=> learn about transitions and animations
 
 
 

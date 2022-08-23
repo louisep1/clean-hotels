@@ -32,13 +32,11 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  // margin: 1px 0;
 
   .logo {
     font-size: 1.9rem;
     font-weight: 300;
 
-    // this is instead of the previous nav padding
     padding-top: 6px;
     padding-left: 1rem;
   }

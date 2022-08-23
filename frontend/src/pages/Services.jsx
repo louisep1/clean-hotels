@@ -1,7 +1,12 @@
-import React from 'react'
+import { useEffect } from 'react'
 import Banner from '../components/Banner'
 
 const Services = () => {
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   return (
     <>
       <Banner title='Services' />
