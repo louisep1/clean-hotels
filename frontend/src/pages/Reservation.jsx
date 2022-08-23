@@ -1,5 +1,9 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+
+import { useDispatch, useSelector } from 'react-redux'
+import { searchRooms } from '../features/rooms/roomSlice'
+
 import { BsFillPersonFill } from 'react-icons/bs'
 import { MdNightlight } from 'react-icons/md'
 import Banner from '../components/Banner'
@@ -26,6 +30,10 @@ const Reservation = () => {
   })
 
   const { location, checkIn, checkOut, guests, rooms } = search
+
+  const dispatch = useDispatch()
+  const { searchResults, isLoading, isSuccess } = useSelector(state => state.rooms)
+
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -66,6 +74,12 @@ const Reservation = () => {
     }
   }, [checkIn])
 
+  useEffect(() => {
+    if (!isLoading) {
+      setSearching(false)
+    }
+  }, [isLoading, isSuccess])
+
   const handleChange = e => {
     setSearch(prevState => ({
       ...prevState,
@@ -78,12 +92,26 @@ const Reservation = () => {
     e.preventDefault()
     console.log(search)
 
-    // check if date has already passed => error
-    // check that check-out date is after (or check-in is before)  =>  error
-    // check number of rooms <= number of people   otherwise  =>   error
+    // !!!check if date has already passed => error
+    // !!!check that check-out date is after (or check-in is before)  =>  error
+    // !!!check number of rooms <= number of people   otherwise  =>   error
     setSearching(true)
-    // return rooms that are available for consecutive nights only => if not, don't return
-    // maybe then fetch in useEffect, then once returned results, setSearching(false) iin useEffect
+
+    const searchParams = {
+      location: location.toLowerCase(),
+      type: 'single',
+      date: checkIn
+    }
+
+    // @@@@@@@@@@
+    // !!!!! this is sample data - go back and fix after text => maybe don't need to have the type at this state
+    // maybe need to include the number of people and number of rooms for this bit
+    // also need to include all the dates somehow, not just one
+    // Need to go back and fix the backend
+
+    dispatch(searchRooms(searchParams))
+    // !!!return rooms that are available for consecutive nights only => if not, don't return
+    // !!!maybe then fetch in useEffect, then once returned results, setSearching(false) iin useEffect
   }
 
   return (
@@ -155,41 +183,48 @@ const Reservation = () => {
           </div>
         )}
 
+        {/* These are from the actual state: */}
+        {searchResults && (
+          searchResults.map(result => (
+            <p className='title' key={result.id}>ROOM {result.room_number}</p>
+          ))
+        )
+        }
 
 
-        {
-          results && !searching && (
-            <div className='results-container'>
-              <div className='title'>Results</div>
 
-              <div className="result">
-                <img src={room} alt="room" className='img' />
-                <p className='room'>Double Room</p>
-                <p className='cost'>$50</p>
-                <p className='details'>2 <BsFillPersonFill className='icon' /> / 2 <MdNightlight className='icon' /></p>
-                <Link to='/rooms' className='link'><button className='btn'>See more</button></Link>
-                <Link to='/' className='reserve'><button className='btn btn-light'>Reserve</button></Link>
-              </div>
+        {results && !searching && (
+          <div className='results-container'>
+            <div className='title'>Results</div>
 
-              <div className="result">
-                <img src={room} alt="room" className='img' />
-                <p className='room'>Double Room</p>
-                <p className='cost'>$50</p>
-                <p className='details'>2 <BsFillPersonFill className='icon' /> / 2 <MdNightlight className='icon' /></p>
-                <Link to='/rooms' className='link'><button className='btn'>See more</button></Link>
-                <Link to='/' className='reserve'><button className='btn btn-light'>Reserve</button></Link>
-              </div>
-
-              <div className="result">
-                <img src={room} alt="room" className='img' />
-                <p className='room'>Double Room</p>
-                <p className='cost'>$50</p>
-                <p className='details'>2 <BsFillPersonFill className='icon' /> / 2 <MdNightlight className='icon' /></p>
-                <Link to='/rooms' className='link'><button className='btn'>See more</button></Link>
-                <Link to='/' className='reserve'><button className='btn btn-light'>Reserve</button></Link>
-              </div>
+            <div className="result">
+              <img src={room} alt="room" className='img' />
+              <p className='room'>Double Room</p>
+              <p className='cost'>$50</p>
+              <p className='details'>2 <BsFillPersonFill className='icon' /> / 2 <MdNightlight className='icon' /></p>
+              <Link to='/rooms' className='link'><button className='btn'>See more</button></Link>
+              <Link to='/' className='reserve'><button className='btn btn-light'>Reserve</button></Link>
             </div>
-          )
+
+            <div className="result">
+              <img src={room} alt="room" className='img' />
+              <p className='room'>Double Room</p>
+              <p className='cost'>$50</p>
+              <p className='details'>2 <BsFillPersonFill className='icon' /> / 2 <MdNightlight className='icon' /></p>
+              <Link to='/rooms' className='link'><button className='btn'>See more</button></Link>
+              <Link to='/' className='reserve'><button className='btn btn-light'>Reserve</button></Link>
+            </div>
+
+            <div className="result">
+              <img src={room} alt="room" className='img' />
+              <p className='room'>Double Room</p>
+              <p className='cost'>$50</p>
+              <p className='details'>2 <BsFillPersonFill className='icon' /> / 2 <MdNightlight className='icon' /></p>
+              <Link to='/rooms' className='link'><button className='btn'>See more</button></Link>
+              <Link to='/' className='reserve'><button className='btn btn-light'>Reserve</button></Link>
+            </div>
+          </div>
+        )
         }
 
         {/* !!!! design a room not available error too */}
