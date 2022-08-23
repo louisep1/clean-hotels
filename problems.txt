@@ -1,1 +1,9 @@
+1.) the backend currently fetches data for only one date, not the full range of database
+need to somehow refine for a particular room that matches all the dates requested
+
+
+
+BIG PROBLEMS:
 the database loses connection/times out after a few seconds of inactivity
+
+after inactivity, cannot proxy to the server (database not connected) => 500 internal server error
