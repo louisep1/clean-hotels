@@ -25,56 +25,57 @@ const searchRooms = async (req, res) => {
     current = new Date(newDate)
   }
 
-  // const dateQuery = dateArray.join(' OR availability.date=')
-  // console.log(dateArray)
-  // console.log(dateQuery)
+  const night1 = checkIn
+  const night2 = dateArray.length > 1 ? dateArray[1] : checkIn
+  const night3 = dateArray.length > 2 ? dateArray[2] : checkIn
+  const night4 = dateArray.length > 3 ? dateArray[3] : checkIn
+  const night5 = dateArray.length > 4 ? dateArray[4] : checkIn
+  const night6 = dateArray.length > 5 ? dateArray[5] : checkIn
+  const night7 = dateArray.length > 6 ? dateArray[6] : checkIn
 
   try {
-    const resultsArray = []
+    const query =
+      'SELECT * FROM rooms WHERE location=? AND available LIKE ? AND available LIKE ? AND available LIKE ? AND available LIKE ? AND available LIKE ? AND available LIKE ? AND available LIKE ?;'
 
-    const searchDates = await Promise.all(
-      dateArray.map(date => {
-        const query =
-          'SELECT * FROM availability INNER JOIN rooms ON availability.room_id = rooms.id WHERE rooms.location=? AND availability.available=? AND availability.date=?;'
+    const searchResults = await connection.query(
+      query,
+      [
+        location,
+        `%${night1}%`,
+        `%${night2}%`,
+        `%${night3}%`,
+        `%${night4}%`,
+        `%${night5}%`,
+        `%${night6}%`,
+        `%${night7}%`,
+      ],
+      (err, results) => {
+        if (err) throw new Error(err.message)
 
-        const searchResults = connection.query(
-          query,
-          [location, 1, date],
-          (err, results) => {
-            if (err) throw new Error(err.message)
-
-            if (results) {
-              // console.log(results)
-              resultsArray.push(results)
-              // res.json(results)
-            }
-          }
-        )
-        if (!searchResults) throw new Error('Could not search')
-      })
+        if (results) {
+          // console.log(results)
+          res.json(results)
+        }
+      }
     )
 
-    console.log(resultsArray)
-
-    // if (resultsArray.length > 0) {
-    //   res.json(resultsArray)
-    // }
+    if (!searchResults) throw new Error('Could not search')
 
     // const query =
-    //   'SELECT * FROM availability INNER JOIN rooms ON availability.room_id = rooms.id WHERE rooms.location=? AND availability.available=? AND availability.date=?;'
+    //   'SELECT * FROM availability INNER JOIN rooms ON availability.room_id = rooms.id WHERE rooms.location=? AND availability.available=? AND availability.date=? OR availability.date=? OR availability.date=? OR availability.date=? OR availability.date=? OR availability.date=? OR availability.date=?;'
 
     // const searchResults = await connection.query(
     //   query,
-    //   [location, 1, checkIn],
+    //   [location, 1, night1, night2, night3, night4, night5, night6, night7],
     //   (err, results) => {
     //     if (err) throw new Error(err.message)
 
     //     if (results) {
-    //       console.log(results)
     //       res.json(results)
     //     }
     //   }
     // )
+
     // if (!searchResults) throw new Error('Could not search')
   } catch (error) {
     console.log(error)

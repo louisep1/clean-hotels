@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 import { useDispatch, useSelector } from 'react-redux'
-import { searchRooms } from '../features/rooms/roomSlice'
+import { searchRooms, reset } from '../features/rooms/roomSlice'
 
 import { BsFillPersonFill } from 'react-icons/bs'
 import { MdNightlight } from 'react-icons/md'
@@ -35,6 +35,14 @@ const Reservation = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0)
+
+    setSearch(prevState => ({
+      ...prevState,
+      checkIn: new Date().toLocaleDateString('en-CA')
+    }))
+
+    return () => dispatch
+      (reset())
   }, [])
 
   // useEffect(() => {
@@ -85,6 +93,9 @@ const Reservation = () => {
 
   const handleSubmit = e => {
     e.preventDefault()
+
+    // !!! check this is ok here like this
+    dispatch(reset())
 
     // !!!check if date has already passed => error
     // !!!check that check-out date is after (or check-in is before)  =>  error
@@ -175,27 +186,28 @@ const Reservation = () => {
         )}
 
         {/* These are from the actual state: */}
-        {searchResults && !searching && (
+        {isSuccess && searchResults && !searching && (
           <div className='results-container'>
             <div className='title'>Results</div>
+
             {searchResults.map(result => (
               <div className="result" key={result.id}>
                 <img src={room} alt="room" className='img' />
                 <p className='room'>{result.type === 'single' ? 'Single ' : 'Double '} Room</p>
                 <p className='cost'>${result.rate}</p>
 
-                {/* !!!! not from the state: */}
+                {/* this bit is not coming from the state: */}
                 <p className='details'>2 <BsFillPersonFill className='icon' /> / 2 <MdNightlight className='icon' /></p>
                 <Link to='/rooms' className='link'><button className='btn'>See more</button></Link>
                 <Link to='/' className='reserve'><button className='btn btn-light'>Reserve</button></Link>
               </div>
             ))}
+
+            {searchResults.length === 0 && (<div className="text-md">Sorry, no available rooms matching your search criteria.</div>)}
           </div>
         )
         }
 
-        {/* !!!! design a room not available error too */}
-        {/* <div className="results-container"><div className="text-md">Sorry, no rooms were available matching your search.</div></div> */}
 
         {/* !!! maybe have either a modal or an actual separate page for reserving the actual room bit and makng the put/post calls */}
         {/* !!! should it be an entry for each room for each day ??? with a available: true/false boolean ??? */}

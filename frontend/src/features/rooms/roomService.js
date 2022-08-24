@@ -8,6 +8,7 @@ const searchRooms = async searchParams => {
   const { data } = await axios.get(
     `${API_URL}/filter/${location}&${checkIn}&${checkOut}`
   )
+
   return data
 }
 
