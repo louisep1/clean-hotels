@@ -5,6 +5,7 @@ import Rooms from './pages/Rooms'
 import Services from './pages/Services'
 import Reservation from './pages/Reservation'
 import Footer from './components/Footer'
+import BookingForm from './pages/BookingForm'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/rooms" element={<Rooms />} />
         <Route path="/services" element={<Services />} />
         <Route path="/reservation" element={<Reservation />} />
+        <Route path="/book" element={<BookingForm />} />
       </Routes>
       <Footer />
     </Router>

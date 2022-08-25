@@ -13,8 +13,6 @@ export const searchRooms = createAsyncThunk(
   '/searchRooms',
   async (searchParams, thunkAPI) => {
     try {
-      // return await roomService.searchRooms(searchParams)
-
       const rooms = await roomService.searchRooms(searchParams)
 
       const single = rooms.filter(room => room.type === 'single')[0]
@@ -27,76 +25,6 @@ export const searchRooms = createAsyncThunk(
         : double
         ? [double]
         : []
-
-      // !!! maybe adjust this so that dates bit does not get returned into the state
-
-      // const data = await roomService.searchRooms(searchParams)
-
-      // // Number of nights:
-      // let current = new Date(searchParams.checkIn)
-      // const end = new Date(searchParams.checkOut)
-      // const dateArray = []
-
-      // while (current < end) {
-      //   dateArray.push(new Date(current).toLocaleDateString('en-CA'))
-
-      //   let newDate = current.setDate(current.getDate() + 1)
-      //   current = new Date(newDate)
-      // }
-
-      // const nights = dateArray.length
-
-      // console.log(data)
-
-      // // group returned data by room:
-      // // var groupBy = function (xs, key) {
-      // //   return xs.reduce(function (rv, x) {
-      // //     ;(rv[x[key]] = rv[x[key]] || []).push(x)
-      // //     return rv
-      // //   }, {})
-      // // }
-
-      // // const single = data.filter(item => item.type === 'single')
-      // // console.log(single)
-
-      // // const groupByRoom = data.reduce((group, item) => {
-      // //   const { id } = item
-      // //   group[id] = group[id] ?? []
-      // //   group[id].push(item)
-      // //   return group
-      // // }, {})
-
-      // const groupByType = data.reduce((group, item) => {
-      //   const { type } = item
-      //   group[type] = group[type] ?? []
-      //   group[type].push(item)
-      //   return group
-      // }, {})
-
-      // console.log(groupByType)
-
-      // console.log(groupByType['single'][2])
-
-      // return data
-
-      // // // group returned data by room:
-      // // var groupBy = function (xs, key) {
-      // //   return xs.reduce(function (rv, x) {
-      // //     ;(rv[x[key]] = rv[x[key]] || []).push(x)
-      // //     return rv
-      // //   }, {})
-      // // }
-
-      // // const rooms = groupBy(data, 'id')
-
-      // // // console.log(rooms)
-      // // // console.log(rooms[0])
-
-      // // for (const room in rooms) {
-      // //   console.log(room.length)
-      // // }
-
-      // // return rooms
     } catch (error) {
       const message =
         (error.response &&

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { searchRooms, reset } from '../features/rooms/roomSlice'
@@ -18,17 +18,19 @@ const Reservation = () => {
   // ('' is also false)
 
   const [dateRange, setDateRange] = useState([])
+  const [nights, setNights] = useState(1)
 
   const [search, setSearch] = useState({
     location: 'Tokyo',
     checkIn: '',
     checkOut: '',
     guests: 1,
-    rooms: 1
+    rooms: 1,
   })
 
   const { location, checkIn, checkOut, guests, rooms } = search
 
+  const navigate = useNavigate()
   const dispatch = useDispatch()
   const { searchResults, isLoading, isSuccess } = useSelector(state => state.rooms)
 
@@ -45,22 +47,23 @@ const Reservation = () => {
       (reset())
   }, [])
 
-  // useEffect(() => {
-  //   // This useEffect loops through each date inbetween the check-in date, up to but not including the check-out date
-  //   let current = new Date(checkIn);
-  //   const end = new Date(checkOut);
-  //   const dateArray = []
+  useEffect(() => {
+    // This useEffect loops through each date inbetween the check-in date, up to but not including the check-out date
+    let current = new Date(checkIn);
+    const end = new Date(checkOut);
+    const dateArray = []
 
-  //   while (current < end) {
-  //     dateArray.push(new Date(current))
+    while (current < end) {
+      dateArray.push(new Date(current))
 
-  //     let newDate = current.setDate(current.getDate() + 1);
-  //     current = new Date(newDate);
-  //   }
+      let newDate = current.setDate(current.getDate() + 1);
+      current = new Date(newDate);
+    }
 
-  //   setDateRange(dateArray)
-  //   // !!! not sure if this is correct as not sure if it waits for the loop or not ?
-  // }, [checkOut])
+    setDateRange(dateArray)
+    setNights(dateArray.length)
+    // !!! not sure if this is correct as not sure if it waits for the loop or not ?
+  }, [checkOut])
 
 
   useEffect(() => {
@@ -190,16 +193,21 @@ const Reservation = () => {
           <div className='results-container'>
             <div className='title'>Results</div>
 
-            {searchResults.map(result => (
+            {/* if searching for 2 people and one room, filter out the single room option: */}
+            {/* !!! need to go back and adjust this for more than 2 people and more than 1 room options */}
+            {searchResults.filter(result => {
+              if (guests === 1) return result
+              if (guests > 1) return result.type === 'double'
+            }).map(result => (
               <div className="result" key={result.id}>
                 <img src={room} alt="room" className='img' />
                 <p className='room'>{result.type === 'single' ? 'Single ' : 'Double '} Room</p>
                 <p className='cost'>${result.rate}</p>
+                {/* !!! the cost is just for one room - currently unable to book two rooms (and therefore can't book for more than 2 people either) */}
 
-                {/* this bit is not coming from the state: */}
-                <p className='details'>2 <BsFillPersonFill className='icon' /> / 2 <MdNightlight className='icon' /></p>
+                <p className='details'>{guests} <BsFillPersonFill className='icon' /> / {rooms} <MdNightlight className='icon' /></p>
                 <Link to='/rooms' className='link'><button className='btn'>See more</button></Link>
-                <Link to='/' className='reserve'><button className='btn btn-light'>Reserve</button></Link>
+                <button className='reserve btn btn-light' onClick={() => navigate('/book', { state: { result, search: { ...search, nights, dateRange } } })}>Reserve</button>
               </div>
             ))}
 
