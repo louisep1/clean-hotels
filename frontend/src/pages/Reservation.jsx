@@ -195,21 +195,25 @@ const Reservation = () => {
 
             {/* if searching for 2 people and one room, filter out the single room option: */}
             {/* !!! need to go back and adjust this for more than 2 people and more than 1 room options */}
-            {searchResults.filter(result => {
-              if (guests === 1) return result
-              if (guests > 1) return result.type === 'double'
-            }).map(result => (
-              <div className="result" key={result.id}>
-                <img src={room} alt="room" className='img' />
-                <p className='room'>{result.type === 'single' ? 'Single ' : 'Double '} Room</p>
-                <p className='cost'>${result.rate}</p>
-                {/* !!! the cost is just for one room - currently unable to book two rooms (and therefore can't book for more than 2 people either) */}
+            {searchResults
+              // .filter(result => {
+              //   if (guests === 1) return result
+              //   if (guests > 1) return result.type === 'double'
+              // })
+              .filter(result => guests > 1 ? result.type === 'double' : result
+              )
+              .map(result => (
+                <div className="result" key={result.id}>
+                  <img src={room} alt="room" className='img' />
+                  <p className='room'>{result.type === 'single' ? 'Single ' : 'Double '} Room</p>
+                  <p className='cost'>${result.rate}</p>
+                  {/* !!! the cost is just for one room - currently unable to book two rooms (and therefore can't book for more than 2 people either) */}
 
-                <p className='details'>{guests} <BsFillPersonFill className='icon' /> / {rooms} <MdNightlight className='icon' /></p>
-                <Link to='/rooms' className='link'><button className='btn'>See more</button></Link>
-                <button className='reserve btn btn-light' onClick={() => navigate('/book', { state: { result, search: { ...search, nights, dateRange } } })}>Reserve</button>
-              </div>
-            ))}
+                  <p className='details'>{guests} <BsFillPersonFill className='icon' /> / {rooms} <MdNightlight className='icon' /></p>
+                  <Link to='/rooms' className='link'><button className='btn'>See more</button></Link>
+                  <button className='reserve btn btn-light' onClick={() => navigate('/book', { state: { result, search: { ...search, nights, dateRange } } })}>Reserve</button>
+                </div>
+              ))}
 
             {searchResults.length === 0 && (<div className="text-md">Sorry, no available rooms matching your search criteria.</div>)}
           </div>
