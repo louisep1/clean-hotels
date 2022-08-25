@@ -1,5 +1,4 @@
-1.) the backend currently fetches data for only one date, not the full range of database
-need to somehow refine for a particular room that matches all the dates requested
+1.) when you click the image slider with touchpage, doesn't work because it reads it as a swipe
 
 
 

@@ -9,7 +9,8 @@ import { MdNightlight } from 'react-icons/md'
 import Banner from '../components/Banner'
 import running from '../imgs/hotel-loading-gif.gif'
 
-import room from '../imgs/room-small-2.jpg'
+import singleRoom from '../imgs/room-single.jpg'
+import doubleRoom from '../imgs/room-double.jpg'
 
 const Reservation = () => {
   const [searching, setSearching] = useState(false)
@@ -196,15 +197,11 @@ const Reservation = () => {
             {/* if searching for 2 people and one room, filter out the single room option: */}
             {/* !!! need to go back and adjust this for more than 2 people and more than 1 room options */}
             {searchResults
-              // .filter(result => {
-              //   if (guests === 1) return result
-              //   if (guests > 1) return result.type === 'double'
-              // })
               .filter(result => guests > 1 ? result.type === 'double' : result
               )
               .map(result => (
                 <div className="result" key={result.id}>
-                  <img src={room} alt="room" className='img' />
+                  <img src={result.type === 'single' ? singleRoom : doubleRoom} alt="room" className='img' />
                   <p className='room'>{result.type === 'single' ? 'Single ' : 'Double '} Room</p>
                   <p className='cost'>${result.rate}</p>
                   {/* !!! the cost is just for one room - currently unable to book two rooms (and therefore can't book for more than 2 people either) */}
