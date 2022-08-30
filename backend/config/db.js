@@ -1,3 +1,4 @@
+// const mysql = require('mysql')
 const mysql = require('mysql')
 const dotenv = require('dotenv').config()
 
@@ -12,8 +13,8 @@ const connection = mysql.createConnection({
 connection.connect(err => {
   if (err) console.log(`Error connection: ${err.stack}`)
 
-  // console.log(`connected as ${connection.threadId}`)
-  console.log('db ' + connection.state)
+  console.log(`connected as ${connection.threadId}`)
+  // console.log('db ' + connection.state)
 })
 
 module.exports = connection

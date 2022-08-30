@@ -38,8 +38,15 @@ const Banner = ({ title, classes, slide }) => {
   }
 
   const handleSwipe = e => {
-    setSwipeEnd(e.changedTouches[0].screenX)
-    swipeStart > swipeEnd ? handleLeftClick() : handleRightClick()
+    const left = document.getElementById('left')
+    const right = document.getElementById('right')
+
+    if (swipeStart > left.getBoundingClientRect().right && swipeStart < right.getBoundingClientRect().left) {
+      setSwipeEnd(e.changedTouches[0].screenX)
+      swipeStart > swipeEnd ? handleRightClick() : handleLeftClick()
+    }
+
+    setSwipeStart(0)
   }
 
   return (
@@ -48,8 +55,8 @@ const Banner = ({ title, classes, slide }) => {
         <h1 className='title'>{title}</h1>
         {slide && (
           <>
-            <button className="arrow arrow-left" onClick={handleLeftClick}><FiChevronLeft /></button>
-            <button className="arrow arrow-right" onClick={handleRightClick}><FiChevronRight /></button>
+            <button className="arrow arrow-left" id='left' onClick={handleLeftClick}><FiChevronLeft /></button>
+            <button className="arrow arrow-right" id='right' onClick={handleRightClick}><FiChevronRight /></button>
             <div className="dots">
               {classArray.map((classes, i) => (
                 <div key={classes} className={`dot ${classArray[i] === slideClass ? 'dot-current' : 'dot-hover'}`} onClick={() => handleDotClick(i)}></div>

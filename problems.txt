@@ -1,4 +1,4 @@
-1.) when you click the image slider with touchpage, doesn't work because it reads it as a swipe
+Rewrite the backend because syntax doesn't seem to work (keeps erroring)
 
 
 
@@ -6,3 +6,9 @@ BIG PROBLEMS:
 the database loses connection/times out after a few seconds of inactivity
 
 after inactivity, cannot proxy to the server (database not connected) => 500 internal server error
+
+
+
+========================================
+Fixed: https://www.w3schools.com/jsref/met_element_getboundingclientrect.asp
+- when you click the image slider with touchpage, doesn't work because it reads it as a swipe
