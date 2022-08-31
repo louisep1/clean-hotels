@@ -15,9 +15,6 @@ export const searchRooms = createAsyncThunk(
     try {
       const rooms = await roomService.searchRooms(searchParams)
 
-      // const single = rooms.filter(room => room.type === 'single')[0]
-      // const double = rooms.filter(room => room.type === 'double')[0]
-
       // SINGLE ROOM:
       const allSingleResults = rooms.filter(room => room.type === 'single')
 
@@ -67,26 +64,6 @@ export const searchRooms = createAsyncThunk(
       console.log({ single: singleResult, double: doubleResult })
 
       return { single: singleResult, double: doubleResult }
-
-      // return [singleResult]
-
-      // if (!currentSingleRoom) {
-      //   console.log('No rooms')
-      // }
-
-      // if (currentSingleRoom) {
-      //   console.log(`Current room number id: ${currentSingleRoom}`)
-      // }
-
-      // console.log(allDoubleResults)
-
-      // return single && double
-      //   ? [single, double]
-      //   : single
-      //   ? [single]
-      //   : double
-      //   ? [double]
-      //   : []
     } catch (error) {
       const message =
         (error.response &&
