@@ -54,8 +54,9 @@ const BookingForm = () => {
 
       <form className='booking'>
         <div className="email">
+          <p>Enter your details to confirm booking</p>
           <label htmlFor="">Email address:</label>
-          <input type="text" />
+          <input type="text" placeholder='example@example.com' />
         </div>
         <button>Submit booking</button>
       </form>
