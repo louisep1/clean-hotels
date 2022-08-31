@@ -39,14 +39,28 @@ const BookingForm = () => {
 
     const booking = {
       email,
-      id: result[0].id,
-      room_date_id: [],
-      dates: [],
-      booking_date: new Date(),
+      room_id: result[0].id,
+      checkIn: search.checkIn,
+      checkOut: search.checkOut,
+      nights: search.nights,
+      // night1: result[0] ? result[0].date : null,
+      // night2: result[1] ? result[1].date : null,
+      // night3: result[2] ? result[2].date : null,
+      // night4: result[3] ? result[3].date : null,
+      // night5: result[4] ? result[4].date : null,
+      // night6: result[5] ? result[5].date : null,
+      // night7: result[6] ? result[6].date : null,
+      booking_date: new Date().toLocaleDateString('en-CA'),
+      paid_date: null,
+      total: result.map(date => date.rate).reduce((a, b) => a + b)
     }
 
-    console.log(email)
-    // submit both request
+    const reservedDatesId = search.dateRange
+
+    console.log(booking)
+    console.log(reservedDatesId)
+    // dispatch(newBooking(booking))
+    // dispatch(updateToReserved(reservedDatesId))
 
     setEmail('')
   }
