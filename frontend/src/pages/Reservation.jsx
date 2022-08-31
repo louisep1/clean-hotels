@@ -212,6 +212,7 @@ const Reservation = () => {
             {/* !!! need to go back and adjust this for more than 2 people and more than 1 room options */}
 
             {/* If there is a single room available matching your search: */}
+            {/* No display for number of rooms (but in this current case, will only ever be 1) */}
             {/* Show single room only if only 1 guest */}
             {searchResults.single && searchResults.single.length > 0 && guests === 1 && (
               <div className="result" key={searchResults.single[0].id}>
@@ -219,9 +220,10 @@ const Reservation = () => {
                 <p className='room'>Single Room</p>
                 <p className='cost'>${searchResults.single[0].rate}</p>
                 {/* !!! the cost is just for one room - currently unable to book two rooms (and therefore can't book for more than 2 people either) */}
-                <p className='details'>{guests} <BsFillPersonFill className='icon' /> / {rooms} <MdNightlight className='icon' /></p>
+                <p className='details'>{guests} <BsFillPersonFill className='icon' /> / {nights} <MdNightlight className='icon' /></p>
+                <p className='details'>{guests} <BsFillPersonFill className='icon' /> / {nights} <MdNightlight className='icon' /></p>
                 <Link to='/rooms' className='link'><button className='btn'>See more</button></Link>
-                <button className='reserve btn btn-light' onClick={() => navigate('/book', { state: { result: searchResults.single[0], search: { ...search, nights, dateRange } } })}>Reserve</button>
+                <button className='reserve btn btn-light' onClick={() => navigate('/book', { state: { result: searchResults.single, search: { ...search, nights, dateRange } } })}>Reserve</button>
               </div>
             )}
 
@@ -231,9 +233,9 @@ const Reservation = () => {
                 <img src={doubleRoom} alt="room" className='img' />
                 <p className='room'>Double Room</p>
                 <p className='cost'>${searchResults.double[0].rate}</p>
-                <p className='details'>{guests} <BsFillPersonFill className='icon' /> / {rooms} <MdNightlight className='icon' /></p>
+                <p className='details'>{guests} <BsFillPersonFill className='icon' /> / {nights} <MdNightlight className='icon' /></p>
                 <Link to='/rooms' className='link'><button className='btn'>See more</button></Link>
-                <button className='reserve btn btn-light' onClick={() => navigate('/book', { state: { result: searchResults.double[0], search: { ...search, nights, dateRange } } })}>Reserve</button>
+                <button className='reserve btn btn-light' onClick={() => navigate('/book', { state: { result: searchResults.double, search: { ...search, nights, dateRange } } })}>Reserve</button>
               </div>
             )}
 
