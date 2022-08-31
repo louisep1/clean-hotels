@@ -1,3 +1,5 @@
+// Reservation page:
+
 .form-container {
   // border: #333 solid 2px;
   // margin: 2rem;
@@ -61,6 +63,22 @@
     .icon {
       transform: translate(0, 2px);
       font-size: 1.1rem;
+    }
+  }
+}
+
+// Book page:
+
+.booking {
+  margin: 2rem;
+  width: 20rem;
+
+  .email {
+    display: grid;
+    grid-template-columns: 1fr;
+
+    input {
+      margin: 0.2rem 0;
     }
   }
 }
