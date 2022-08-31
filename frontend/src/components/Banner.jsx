@@ -4,8 +4,11 @@ import { FiChevronLeft, FiChevronRight } from 'react-icons/fi'
 const Banner = ({ title, classes, slide }) => {
   // if there is a slide feature, instead of showing classes as is, will only show the class being displayed
 
+  // For the image slider:
   const [classArray, setclassArray] = useState(slide ? classes.split(' ') : [])
   const [imgNo, setImgNo] = useState(0)
+
+  // Current slide:
   const [slideClass, setSlideClass] = useState(classes)
 
   const [swipeStart, setSwipeStart] = useState(0)
@@ -38,6 +41,8 @@ const Banner = ({ title, classes, slide }) => {
   }
 
   const handleSwipe = e => {
+    if (!slide) return
+
     const left = document.getElementById('left')
     const right = document.getElementById('right')
 

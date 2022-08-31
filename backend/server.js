@@ -4,9 +4,9 @@ const dotenv = require('dotenv').config()
 const { errorHandler } = require('./middleware/errorMiddleware')
 
 const app = express()
-// app.use(cors())
+app.use(cors())
 app.use(express.json())
-// app.use(express.urlencoded({ extended: false }))
+app.use(express.urlencoded({ extended: false }))
 
 app.use('/api/rooms', require('./routes/roomRoutes'))
 // app.use('/api/reservations', require('./routes/reservationRoutes'))

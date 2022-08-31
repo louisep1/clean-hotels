@@ -18,6 +18,45 @@ export const searchRooms = createAsyncThunk(
       const single = rooms.filter(room => room.type === 'single')[0]
       const double = rooms.filter(room => room.type === 'double')[0]
 
+      const allSingleResults = rooms.filter(room => room.type === 'single')
+      const allDoubleResults = rooms.filter(room => room.type === 'double')
+
+      let singleCount = 0
+      let currentSingleRoom = ''
+
+      allSingleResults.map(result => {
+        if (singleCount === searchParams.nights) return
+        if (result.id !== currentSingleRoom) {
+          currentSingleRoom = result.id
+          singleCount = 1
+          return
+        }
+        if (result.id === currentSingleRoom) {
+          singleCount += 1
+          return
+        }
+      })
+
+      const singleResult = allSingleResults.filter(
+        result => result.id === currentSingleRoom
+      )
+
+      console.log({ single: singleResult })
+
+      return { single: singleResult }
+
+      // return [singleResult]
+
+      // if (!currentSingleRoom) {
+      //   console.log('No rooms')
+      // }
+
+      // if (currentSingleRoom) {
+      //   console.log(`Current room number id: ${currentSingleRoom}`)
+      // }
+
+      // console.log(allDoubleResults)
+
       return single && double
         ? [single, double]
         : single

@@ -183,12 +183,17 @@ button:hover {
 
 .text {
   &,
+  &-xs,
   &-md {
     // border: 3px black solid;
     padding: 5px 0;
     line-height: 1.4;
     font-weight: 300;
     font-family: 'Roboto', sans-serif;
+  }
+
+  &-xs {
+    font-size: 1rem;
   }
 
   &-md {

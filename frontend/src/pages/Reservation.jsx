@@ -17,6 +17,7 @@ const Reservation = () => {
 
   // null is false, but {} is true
   // ('' is also false)
+  // [] is also true
 
   const [dateRange, setDateRange] = useState([])
   const [nights, setNights] = useState(1)
@@ -34,6 +35,19 @@ const Reservation = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const { searchResults, isLoading, isSuccess } = useSelector(state => state.rooms)
+
+
+  // Updates the check-out date to be the next day from the check in date:
+  const resetCheckOut = () => {
+    let date = new Date(checkIn);
+    date.setDate(date.getDate() + 1);
+
+    setSearch(prevState => ({
+      ...prevState,
+      checkOut: new Date(date).toLocaleDateString('en-CA')
+      // this en-CA formats dates as YYYY-MM-DD which is the required format
+    }))
+  }
 
 
   useEffect(() => {
@@ -61,23 +75,22 @@ const Reservation = () => {
       current = new Date(newDate);
     }
 
-    setDateRange(dateArray)
-    setNights(dateArray.length)
-    // !!! not sure if this is correct as not sure if it waits for the loop or not ?
+    if (dateArray.length > 7) {
+      alert('Maximum 7 days can be booked at a time')
+      resetCheckOut()
+    } else if (new Date(checkIn) >= new Date(checkOut)) {
+      alert('Check-out date cannot be before or on the check-in date.')
+    } else {
+      setDateRange(dateArray)
+      setNights(dateArray.length)
+
+    }
   }, [checkOut])
 
 
   useEffect(() => {
-    // Updates the check-out date to be the next day from the check in date
     if (checkIn) {
-      let date = new Date(checkIn);
-      date.setDate(date.getDate() + 1);
-
-      setSearch(prevState => ({
-        ...prevState,
-        checkOut: new Date(date).toLocaleDateString('en-CA')
-        // this en-CA formats dates as YYYY-MM-DD which is the required format
-      }))
+      resetCheckOut()
     }
   }, [checkIn])
 
@@ -98,20 +111,18 @@ const Reservation = () => {
   const handleSubmit = e => {
     e.preventDefault()
 
-    // !!! check this is ok here like this
     dispatch(reset())
 
     // !!!check if date has already passed => error
-    // !!!check that check-out date is after (or check-in is before)  =>  error
 
-    // (this is for future functionality)
-    // !!!check number of rooms <= number of people   otherwise  =>   error 
+    // in future: check number of rooms <= number of people  => otherwise  =>   error 
     setSearching(true)
 
     const searchParams = {
       location: location.toLowerCase(),
       checkIn,
-      checkOut
+      checkOut,
+      nights
     }
 
     // @@@@@@@@@@
@@ -143,12 +154,13 @@ const Reservation = () => {
 
                 <div className="input-group check-in">
                   <label htmlFor="">Check-in date</label>
-                  <input value={checkIn} name='checkIn' onChange={handleChange} type="date" />
+                  <input value={checkIn} name='checkIn' onChange={handleChange} type="date" min={new Date().toLocaleDateString('en-CA')} max={'2022-12-10'} />
                 </div>
 
                 <div className="input-group check-out">
-                  <label htmlFor="">Check-out date</label>
-                  <input value={checkOut} name='checkOut' onChange={handleChange} type="date" />
+                  <label htmlFor="">Check-out date **</label>
+                  <input value={checkOut} name='checkOut' onChange={handleChange} type="date" min={checkIn} max={'2022-12-10'} />
+                  {/* !!! Set a dynamic max date that is +7 days from checkIn */}
                 </div>
 
                 <div className="input-group guests">
@@ -174,8 +186,9 @@ const Reservation = () => {
 
               </div>
               <button className='btn my-3' type="submit">Check availability</button>
+              <p className='pt-2 text-xs'>** Bookings of up to 7 nights stay can be made</p>
             </form>
-            <div className="line"></div>
+
 
           </div>
         }
@@ -189,37 +202,48 @@ const Reservation = () => {
           </div>
         )}
 
-        {/* These are from the actual state: */}
+
+        {/* SEARCH RESULTS: */}
         {isSuccess && searchResults && !searching && (
           <div className='results-container'>
+            <div className="line"></div>
             <div className='title'>Results</div>
 
-            {/* if searching for 2 people and one room, filter out the single room option: */}
             {/* !!! need to go back and adjust this for more than 2 people and more than 1 room options */}
-            {searchResults
-              .filter(result => guests > 1 ? result.type === 'double' : result
-              )
-              .map(result => (
-                <div className="result" key={result.id}>
-                  <img src={result.type === 'single' ? singleRoom : doubleRoom} alt="room" className='img' />
-                  <p className='room'>{result.type === 'single' ? 'Single ' : 'Double '} Room</p>
-                  <p className='cost'>${result.rate}</p>
-                  {/* !!! the cost is just for one room - currently unable to book two rooms (and therefore can't book for more than 2 people either) */}
 
-                  <p className='details'>{guests} <BsFillPersonFill className='icon' /> / {rooms} <MdNightlight className='icon' /></p>
-                  <Link to='/rooms' className='link'><button className='btn'>See more</button></Link>
-                  <button className='reserve btn btn-light' onClick={() => navigate('/book', { state: { result, search: { ...search, nights, dateRange } } })}>Reserve</button>
-                </div>
-              ))}
+            {/* If there is a single room available matching your search: */}
+            {/* Show single room only if only 1 guest */}
+            {searchResults.single && searchResults.single.length > 0 && guests === 1 && (
+              <div className="result" key={searchResults.single[0].id}>
+                <img src={singleRoom} alt="room" className='img' />
+                <p className='room'>Single Room</p>
+                <p className='cost'>${searchResults.single[0].rate}</p>
+                {/* !!! the cost is just for one room - currently unable to book two rooms (and therefore can't book for more than 2 people either) */}
+                <p className='details'>{guests} <BsFillPersonFill className='icon' /> / {rooms} <MdNightlight className='icon' /></p>
+                <Link to='/rooms' className='link'><button className='btn'>See more</button></Link>
+                <button className='reserve btn btn-light' onClick={() => navigate('/book', { state: { result: searchResults.single[0], search: { ...search, nights, dateRange } } })}>Reserve</button>
+              </div>
+            )}
 
-            {searchResults.length === 0 && (<div className="text-md">Sorry, no available rooms matching your search criteria.</div>)}
+            {/* If there is a double room available matching your search: */}
+            {searchResults.double && searchResults.double.length > 0 && (
+              <div className="result" key={searchResults.double[0].id}>
+                <img src={doubleRoom} alt="room" className='img' />
+                <p className='room'>Double Room</p>
+                <p className='cost'>${searchResults.double[0].rate}</p>
+                <p className='details'>{guests} <BsFillPersonFill className='icon' /> / {rooms} <MdNightlight className='icon' /></p>
+                <Link to='/rooms' className='link'><button className='btn'>See more</button></Link>
+                <button className='reserve btn btn-light' onClick={() => navigate('/book', { state: { result: searchResults.double[0], search: { ...search, nights, dateRange } } })}>Reserve</button>
+              </div>
+            )}
+
+
+
+            {/* !!! later go back and add for double room too */}
+            {searchResults.single && searchResults.single.length === 0 && (<div className="text-md">Sorry, no available rooms matching your search criteria.</div>)}
           </div>
         )
         }
-
-
-        {/* !!! maybe have either a modal or an actual separate page for reserving the actual room bit and makng the put/post calls */}
-        {/* !!! should it be an entry for each room for each day ??? with a available: true/false boolean ??? */}
       </div >
     </>
   )

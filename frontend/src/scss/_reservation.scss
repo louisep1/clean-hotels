@@ -1,7 +1,7 @@
 .form-container {
   // border: #333 solid 2px;
   // margin: 2rem;
-  margin: 0 2rem;
+  margin: 0 2rem 2rem;
 }
 
 .reservation-form {
@@ -52,9 +52,10 @@
     grid-template-columns: repeat(6, 1fr);
     align-items: center;
     justify-items: center;
+    gap: 0.5rem;
 
     img {
-      width: 20rem;
+      width: 17rem;
     }
 
     .icon {
