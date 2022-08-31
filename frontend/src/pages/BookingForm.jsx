@@ -1,14 +1,11 @@
-// add the customers information input section on this page
-// submit button
-// send put request to backend x 2
-//     => update availability table to be false (not available) for selected room and dates
-//     => add a new reservation to the reservations table (to be created) 
+// !!! ERRORS => for if booking fails etc...
+// !!!  => update availability table to be false (not available) for selected room and dates
 
 
 import { useEffect, useState } from 'react'
 import { useNavigate, useLocation, Link } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-import { newBooking } from '../features/booking/bookingSlice'
+import { useDispatch, useSelector } from 'react-redux'
+import { newBooking, reset } from '../features/booking/bookingSlice'
 
 import { BsFillPersonFill } from 'react-icons/bs'
 import { MdNightlight } from 'react-icons/md'
@@ -27,6 +24,8 @@ const BookingForm = () => {
 
   const dispatch = useDispatch()
 
+  const { isSuccess, booking } = useSelector(state => state.booking)
+
   useEffect(() => {
     if (!location.state) {
       navigate(-1)
@@ -35,6 +34,10 @@ const BookingForm = () => {
     if (location && location.state && location.state.result && location.state.search) {
       console.log(result)
       console.log(search)
+    }
+
+    return () => {
+      dispatch(reset())
     }
   }, [location])
 
@@ -50,13 +53,6 @@ const BookingForm = () => {
       booking_date: new Date().toLocaleDateString('en-CA'),
       paid_date: null,
       total: result.map(date => date.rate).reduce((a, b) => a + b)
-      // night1: result[0] ? result[0].date : null,
-      // night2: result[1] ? result[1].date : null,
-      // night3: result[2] ? result[2].date : null,
-      // night4: result[3] ? result[3].date : null,
-      // night5: result[4] ? result[4].date : null,
-      // night6: result[5] ? result[5].date : null,
-      // night7: result[6] ? result[6].date : null,
     }
 
     const reservedDatesId = search.dateRange
@@ -75,8 +71,6 @@ const BookingForm = () => {
         <div className='results-container'>
           <div className='title py-4'>Booking details</div>
 
-          {/* !!! BACK BUTTON */}
-
           <div className="result" key={result[0].id}>
             <img src={result[0].type === 'single' ? singleRoom : doubleRoom} alt="room" className='img' />
             <p className='room'>{result[0].type === 'single' ? 'Single ' : 'Double '} Room</p>
@@ -84,12 +78,12 @@ const BookingForm = () => {
             <p className='details'>{search.guests} <BsFillPersonFill className='icon' /> / {search.nights} <MdNightlight className='icon' /></p>
             <div className="link"></div>
             <div className="reserve"></div>
-            {/* <Link to='/rooms' className='link'><button className='btn'>See more</button></Link>
-            <button className='reserve btn btn-light' >Reserve</button> */}
           </div>
+          <p className='text-xs'>Check in: {search.checkIn}</p>
+          <p className='text-xs'>{isSuccess && booking.email}</p>
         </div>)}
 
-      <form className='booking' onSubmit={handleSubmit}>
+      {!isSuccess && (<form className='booking' onSubmit={handleSubmit}>
         <div className="email">
           <p>Enter your details to confirm booking</p>
           <label className='pt-3' htmlFor="">Email address:</label>
@@ -97,7 +91,19 @@ const BookingForm = () => {
         </div>
         <button className='mt-2 btn' type='submit'>Confirm booking</button>
       </form>
+      )}
+
+      {
+        isSuccess && (
+          <p className='booking-success'>Your booking has been complete.</p>
+        )
+      }
+
+      <button className='btn m-4'>Back</button>
+
     </div>
+
+
   )
 }
 

@@ -195,7 +195,7 @@
 
       img {
         // width: 100%;
-        width: 20rem;
+        // width: 20rem;
       }
 
       .img {
@@ -248,5 +248,13 @@
 
   nav li {
     padding: 13px 20px;
+  }
+
+  .results-container {
+    .result {
+      img {
+        width: 12rem;
+      }
+    }
   }
 }

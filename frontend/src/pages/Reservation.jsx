@@ -221,7 +221,6 @@ const Reservation = () => {
                 <p className='cost'>${searchResults.single[0].rate}</p>
                 {/* !!! the cost is just for one room - currently unable to book two rooms (and therefore can't book for more than 2 people either) */}
                 <p className='details'>{guests} <BsFillPersonFill className='icon' /> / {nights} <MdNightlight className='icon' /></p>
-                <p className='details'>{guests} <BsFillPersonFill className='icon' /> / {nights} <MdNightlight className='icon' /></p>
                 <Link to='/rooms' className='link'><button className='btn'>See more</button></Link>
                 <button className='reserve btn btn-light' onClick={() => navigate('/book', { state: { result: searchResults.single, search: { ...search, nights, dateRange } } })}>Reserve</button>
               </div>

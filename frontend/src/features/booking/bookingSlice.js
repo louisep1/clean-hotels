@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import bookingService from './bookingService'
 
 const initialState = {
-  newBooking: {},
+  booking: {},
   isLoading: false,
   isSuccess: false,
   isError: false,
