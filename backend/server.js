@@ -9,7 +9,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
 app.use('/api/rooms', require('./routes/roomRoutes'))
-// app.use('/api/reservations', require('./routes/reservationRoutes'))
+app.use('/api/bookings', require('./routes/bookingRoutes'))
 
 app.use(errorHandler)
 

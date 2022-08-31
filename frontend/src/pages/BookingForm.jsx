@@ -43,6 +43,9 @@ const BookingForm = () => {
       checkIn: search.checkIn,
       checkOut: search.checkOut,
       nights: search.nights,
+      booking_date: new Date().toLocaleDateString('en-CA'),
+      paid_date: null,
+      total: result.map(date => date.rate).reduce((a, b) => a + b)
       // night1: result[0] ? result[0].date : null,
       // night2: result[1] ? result[1].date : null,
       // night3: result[2] ? result[2].date : null,
@@ -50,9 +53,6 @@ const BookingForm = () => {
       // night5: result[4] ? result[4].date : null,
       // night6: result[5] ? result[5].date : null,
       // night7: result[6] ? result[6].date : null,
-      booking_date: new Date().toLocaleDateString('en-CA'),
-      paid_date: null,
-      total: result.map(date => date.rate).reduce((a, b) => a + b)
     }
 
     const reservedDatesId = search.dateRange

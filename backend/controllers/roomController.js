@@ -1,7 +1,8 @@
 const connection = require('../config/db')
 
 // @@@@@  GET
-// @@@@@  /api/rooms/filter/tokyo&single&2022-09-01
+// @@@@@  /api/rooms//filter/:location&:checkIn&:checkOut  (/api/rooms//filter/tokyo&single&2022-09-01&2022-09-02)
+
 const searchRooms = (req, res) => {
   const { location, checkIn, checkOut } = req.params
 
@@ -29,7 +30,8 @@ const searchRooms = (req, res) => {
   // returns an empty array if ALL dates in the range are not available
 
   connection.query(query, [location, 1, checkIn, checkOut], (err, results) => {
-    if (err) throw new Error(err.message)
+    // if (err) throw new Error(err.message)
+    // !!!! this error doesn't work here because not async await
 
     if (results) {
       res.json(results)
