@@ -28,7 +28,16 @@ const newBooking = (req, res) => {
       if (err) {
         console.log(err.message)
       } else {
-        res.json({ result: 'success' })
+        res.json({
+          email,
+          room_id,
+          checkIn,
+          checkOut,
+          nights,
+          booking_date,
+          paid_date,
+          total,
+        })
       }
     }
   )

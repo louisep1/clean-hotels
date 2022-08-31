@@ -7,6 +7,8 @@
 
 import { useEffect, useState } from 'react'
 import { useNavigate, useLocation, Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { newBooking } from '../features/booking/bookingSlice'
 
 import { BsFillPersonFill } from 'react-icons/bs'
 import { MdNightlight } from 'react-icons/md'
@@ -22,6 +24,8 @@ const BookingForm = () => {
   const location = useLocation()
   const { result, search } = location.state
   const navigate = useNavigate()
+
+  const dispatch = useDispatch()
 
   useEffect(() => {
     if (!location.state) {
@@ -59,7 +63,7 @@ const BookingForm = () => {
 
     console.log(booking)
     console.log(reservedDatesId)
-    // dispatch(newBooking(booking))
+    dispatch(newBooking(booking))
     // dispatch(updateToReserved(reservedDatesId))
 
     setEmail('')
