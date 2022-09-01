@@ -10,5 +10,18 @@ app.use(express.urlencoded({ extended: false }))
 app.use('/api/rooms', require('./routes/roomRoutes'))
 app.use('/api/bookings', require('./routes/bookingRoutes'))
 
+// For heroku / deployment:
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../frontend/build')))
+
+  app.get('*', (req, res) =>
+    res.sendFile(
+      path.resolve(__dirname, '../', 'frontend', 'build', 'index.html')
+    )
+  )
+} else {
+  app.get('/', (req, res) => res.send('Please set to production'))
+}
+
 const PORT = process.env.PORT || 5000
 app.listen(PORT, () => console.log(`App is running on port ${PORT}`))
