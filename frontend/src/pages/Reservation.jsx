@@ -13,6 +13,9 @@ import singleRoom from '../imgs/room-single.jpg'
 import doubleRoom from '../imgs/room-double.jpg'
 
 const Reservation = () => {
+  const [tomorrow, setTomorrow] = useState('')
+  const [max, setMax] = useState('')
+
   const [searching, setSearching] = useState(false)
 
   // null is false, but {} is true
@@ -49,13 +52,17 @@ const Reservation = () => {
     }))
   }
 
-
   useEffect(() => {
     window.scrollTo(0, 0)
 
+    let today = new Date();
+    today.setDate(today.getDate() + 1);
+
+    setTomorrow(new Date(today).toLocaleDateString('en-CA'))
+
     setSearch(prevState => ({
       ...prevState,
-      checkIn: new Date().toLocaleDateString('en-CA')
+      checkIn: new Date(today).toLocaleDateString('en-CA')
     }))
 
     return () => dispatch
@@ -92,6 +99,11 @@ const Reservation = () => {
     if (checkIn) {
       resetCheckOut()
     }
+
+    let newMax = new Date(checkIn);
+    newMax.setDate(newMax.getDate() + 7);
+
+    setMax(new Date(newMax).toLocaleDateString('en-CA'))
   }, [checkIn])
 
   useEffect(() => {
@@ -153,12 +165,12 @@ const Reservation = () => {
 
                 <div className="input-group check-in">
                   <label htmlFor="">Check-in date</label>
-                  <input value={checkIn} name='checkIn' onChange={handleChange} type="date" min={new Date().toLocaleDateString('en-CA')} max={'2022-12-10'} />
+                  <input value={checkIn} name='checkIn' onChange={handleChange} type="date" min={tomorrow} max={'2022-12-10'} />
                 </div>
 
                 <div className="input-group check-out">
                   <label htmlFor="">Check-out date **</label>
-                  <input value={checkOut} name='checkOut' onChange={handleChange} type="date" min={checkIn} max={'2022-12-10'} />
+                  <input value={checkOut} name='checkOut' onChange={handleChange} type="date" min={checkIn} max={max} />
                   {/* !!! Set a dynamic max date that is +7 days from checkIn */}
                 </div>
 
