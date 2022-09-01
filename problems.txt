@@ -1,4 +1,4 @@
-
+page refresh after entering email on booking page anables you to book again? check and stop that from happening
 
 
 ========================================
