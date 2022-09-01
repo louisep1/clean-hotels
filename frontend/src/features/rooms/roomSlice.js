@@ -61,8 +61,6 @@ export const searchRooms = createAsyncThunk(
         result => result.id === currentDoubleRoom
       )
 
-      // console.log({ single: singleResult, double: doubleResult })
-
       return { single: singleResult, double: doubleResult }
     } catch (error) {
       const message =
@@ -73,6 +71,22 @@ export const searchRooms = createAsyncThunk(
         error.toString()
 
       return thunkAPI.rejectWithValue(message)
+    }
+  }
+)
+
+export const reserveRoom = createAsyncThunk(
+  '/api/rooms/reserve',
+  async (reservedDates, thunkAPI) => {
+    try {
+      return await roomService.reserveRoom(reservedDates)
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString()
     }
   }
 )
@@ -105,7 +119,17 @@ export const roomSlice = createSlice({
         state.message = action.payload
       })
 
-    // to be continued....
+      .addCase(reserveRoom.pending, state => {
+        state.isLoading = true
+      })
+      .addCase(reserveRoom.fulfilled, (state, action) => {
+        state.isLoading = false
+        state.isSuccess = true
+      })
+      .addCase(reserveRoom.rejected, (state, action) => {
+        state.isLoading = false
+        state.isError = true
+      })
   },
 })
 

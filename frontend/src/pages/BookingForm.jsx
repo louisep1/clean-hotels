@@ -1,11 +1,12 @@
 // !!! ERRORS => for if booking fails etc...
-// !!!  => update availability table to be false (not available) for selected room and dates
 
+// check for isSuccess for rooms as well as reservation
 
 import { useEffect, useState } from 'react'
 import { useNavigate, useLocation, Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { newBooking, reset } from '../features/booking/bookingSlice'
+import { newBooking, reset as resetBooking } from '../features/booking/bookingSlice'
+import { reserveRoom, reset as resetRoom } from '../features/rooms/roomSlice'
 
 import { BsFillPersonFill } from 'react-icons/bs'
 import { MdNightlight } from 'react-icons/md'
@@ -24,7 +25,8 @@ const BookingForm = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
-  const { isSuccess, booking } = useSelector(state => state.booking)
+  const { isSuccess: bookingSuccess, booking } = useSelector(state => state.booking)
+  const { isSuccess: roomSuccess } = useSelector(state => state.rooms)
 
   useEffect(() => {
     if (!location || !location.state) {
@@ -37,7 +39,8 @@ const BookingForm = () => {
     }
 
     return () => {
-      dispatch(reset())
+      dispatch(resetBooking())
+      dispatch(resetRoom())
     }
   }, [location])
 
@@ -62,16 +65,13 @@ const BookingForm = () => {
       available: false
     }
 
-    // console.log(search.dateRange.map(date => new Date(date).toLocaleDateString('en-CA')))
-
     console.log(result)
     console.log(result.map(night => night.room_date_id))
 
-    // console.log(booking)
-    // console.log(reservedDates)
+    console.log(reservedDates)
 
     dispatch(newBooking(booking))
-    // dispatch(updateToReserved(reservedDates))
+    dispatch(reserveRoom(reservedDates))
 
     setEmail('')
   }
@@ -91,10 +91,10 @@ const BookingForm = () => {
             <div className="reserve"></div>
           </div>
           <p className='text-xs'>Check in: {search.checkIn}</p>
-          <p className='text-xs'>{isSuccess && booking.email}</p>
+          <p className='text-xs'>{bookingSuccess && roomSuccess && booking.email}</p>
         </div>)}
 
-      {!isSuccess && (<form className='booking' onSubmit={handleSubmit}>
+      {!bookingSuccess && !roomSuccess && (<form className='booking' onSubmit={handleSubmit}>
         <div className="email">
           <p>Enter your details to confirm booking</p>
           <label className='pt-3' htmlFor="">Email address:</label>
@@ -105,12 +105,12 @@ const BookingForm = () => {
       )}
 
       {
-        isSuccess && (
+        bookingSuccess && roomSuccess && (
           <p className='booking-success'>Your booking has been complete.</p>
         )
       }
 
-      <button className='btn m-4'>Back</button>
+      <button className='btn m-4' onClick={() => navigate('/reservation')}>Back</button>
 
     </div>
 

@@ -239,9 +239,7 @@ const Reservation = () => {
             )}
 
 
-
-            {/* !!! later go back and add for double room too */}
-            {searchResults.single && searchResults.single.length === 0 && (<div className="text-md">Sorry, no available rooms matching your search criteria.</div>)}
+            {(searchResults.single && searchResults.single.length === 0) && (searchResults.double && searchResults.double.length === 0) && (<div className="text-md mt-4">Sorry, no available rooms matching your search criteria.</div>)}
           </div>
         )
         }

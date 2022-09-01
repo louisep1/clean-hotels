@@ -12,8 +12,15 @@ const searchRooms = async searchParams => {
   return data
 }
 
+const reserveRoom = async reservedDates => {
+  const { data } = await axios.put(`${API_URL}/reserve`, reservedDates)
+
+  return data
+}
+
 const roomService = {
   searchRooms,
+  reserveRoom,
 }
 
 export default roomService
