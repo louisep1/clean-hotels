@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const { searchRooms } = require('../controllers/roomController')
+const { searchRooms, reserveRoom } = require('../controllers/roomController')
 
 // router.get('/', (req, res) => {
 //   res.send('Test')
@@ -11,6 +11,7 @@ const { searchRooms } = require('../controllers/roomController')
 // http://localhost:5000/api/rooms/filter/tokyo/single/2022-09-01
 
 router.get('/filter/:location&:checkIn&:checkOut', searchRooms)
+router.put('/reserve/:id', reserveRoom)
 
 // router.get('/filter/:location&:type&:date', searchRooms)
 // http://localhost:5000/api/rooms/filter/tokyo&single&2022-09-01

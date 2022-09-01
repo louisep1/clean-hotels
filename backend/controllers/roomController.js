@@ -1,8 +1,7 @@
 const connection = require('../config/db')
 
 // @@@@@  GET
-// @@@@@  /api/rooms//filter/:location&:checkIn&:checkOut  (/api/rooms//filter/tokyo&single&2022-09-01&2022-09-02)
-
+// @@@@@  /api/rooms/filter/:location&:checkIn&:checkOut  (/api/rooms//filter/tokyo&single&2022-09-01&2022-09-02)
 const searchRooms = (req, res) => {
   const { location, checkIn, checkOut } = req.params
 
@@ -30,8 +29,9 @@ const searchRooms = (req, res) => {
   // returns an empty array if ALL dates in the range are not available
 
   connection.query(query, [location, 1, checkIn, checkOut], (err, results) => {
+    if (err) console.log(err)
     // if (err) throw new Error(err.message)
-    // !!!! this error doesn't work here because not async await
+    // !!!! this error doesn't work here because not async await syntax
 
     if (results) {
       res.json(results)
@@ -39,9 +39,39 @@ const searchRooms = (req, res) => {
   })
 }
 
-const reserveRooms = () => {}
+// @@@@@  PUT
+// @@@@@  /api/rooms/reserve/:id
+const reserveRoom = (req, res) => {
+  const { dateRoomIdArray, available } = req.body
+  // this is an array of dates
+
+  console.log(reservedDatesId)
+
+  // UPDATE users SET email = 'freddy@gmail.com' WHERE id = 2;
+
+  const queryArray = dateRoomIdArray.map(dateRoomId => {
+    return `
+        UPDATE availability
+        SET available = ${available ? 1 : 0}
+        WHERE id = ?;
+      `
+  })
+
+  const queryString = queryArray.join(' ')
+
+  // const query = `
+  // UPDATE availability
+  // SET available = ?
+  // WHERE id = ?
+  // `
+
+  connection.query(queryString, dateRoomIdArray, (err, results) => {
+    if (err) console.log(err)
+    console.log(results)
+  })
+}
 
 module.exports = {
   searchRooms,
-  reserveRooms,
+  reserveRoom,
 }

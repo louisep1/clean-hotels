@@ -61,7 +61,7 @@ export const searchRooms = createAsyncThunk(
         result => result.id === currentDoubleRoom
       )
 
-      console.log({ single: singleResult, double: doubleResult })
+      // console.log({ single: singleResult, double: doubleResult })
 
       return { single: singleResult, double: doubleResult }
     } catch (error) {

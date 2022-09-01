@@ -17,23 +17,23 @@ import doubleRoom from '../imgs/room-double.jpg'
 const BookingForm = () => {
 
   const [email, setEmail] = useState('')
+  const [result, setResult] = useState('')
+  const [search, setSearch] = useState('')
 
   const location = useLocation()
-  const { result, search } = location.state
   const navigate = useNavigate()
-
   const dispatch = useDispatch()
 
   const { isSuccess, booking } = useSelector(state => state.booking)
 
   useEffect(() => {
-    if (!location.state) {
+    if (!location || !location.state) {
       navigate(-1)
     }
 
     if (location && location.state && location.state.result && location.state.search) {
-      console.log(result)
-      console.log(search)
+      setSearch(location.state.search)
+      setResult(location.state.result)
     }
 
     return () => {
@@ -55,19 +55,23 @@ const BookingForm = () => {
       total: result.map(date => date.rate).reduce((a, b) => a + b)
     }
 
-    const reservedDatesId = search.dateRange
+    const reservedDates = {
+      dateRoomIdArray: search.dateRange,
+      available: false
+    }
 
-    console.log(booking)
-    console.log(reservedDatesId)
+    // console.log(booking)
+    // console.log(reservedDates)
+
     dispatch(newBooking(booking))
-    // dispatch(updateToReserved(reservedDatesId))
+    // dispatch(updateToReserved(reservedDates))
 
     setEmail('')
   }
 
   return (
     <div className='section'>
-      {location && location.state && location.state.result && location.state.search && (
+      {location && location.state && location.state.result && location.state.search && search && result && (
         <div className='results-container'>
           <div className='title py-4'>Booking details</div>
 
@@ -87,7 +91,7 @@ const BookingForm = () => {
         <div className="email">
           <p>Enter your details to confirm booking</p>
           <label className='pt-3' htmlFor="">Email address:</label>
-          <input className='my-1 p-1' type="text" placeholder='example@example.com' value={email} onChange={e => setEmail(e.target.value)} />
+          <input className='my-1 p-1' type="email" placeholder='example@example.com' value={email} onChange={e => setEmail(e.target.value)} />
         </div>
         <button className='mt-2 btn' type='submit'>Confirm booking</button>
       </form>
