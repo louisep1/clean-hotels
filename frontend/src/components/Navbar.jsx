@@ -5,9 +5,6 @@ import Logo from '../imgs/hotel-logo.jpg'
 const Navbar = () => {
   // get the url and style
   const { pathname } = useLocation()
-  // useEffect(() => {
-  //   console.log(location.pathname)
-  // }, [])
 
 
 

@@ -1,5 +1,3 @@
-// ADD ERROR => e.g. if query to search for rooms fails in the backend
-
 import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
@@ -36,7 +34,7 @@ const Reservation = () => {
 
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  const { searchResults, isLoading, isSuccess } = useSelector(state => state.rooms)
+  const { searchResults, isLoading, isSuccess, isError } = useSelector(state => state.rooms)
 
 
   // Updates the check-out date to be the next day from the check in date:
@@ -241,6 +239,8 @@ const Reservation = () => {
 
 
             {(searchResults.single && searchResults.single.length === 0) && (searchResults.double && searchResults.double.length === 0) && (<div className="text-md mt-4">Sorry, no available rooms matching your search criteria.</div>)}
+
+            {isError && (<div className="text-md mt-4">Oops. Something went wrong.</div>)}
           </div>
         )
         }

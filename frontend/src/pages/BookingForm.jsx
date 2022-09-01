@@ -1,5 +1,3 @@
-// !!! ERRORS => for if booking fails etc...
-
 import { useEffect, useState } from 'react'
 import { useNavigate, useLocation, Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
@@ -23,8 +21,8 @@ const BookingForm = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
-  const { isSuccess: bookingSuccess, booking } = useSelector(state => state.booking)
-  const { isSuccess: roomSuccess } = useSelector(state => state.rooms)
+  const { isSuccess: bookingSuccess, isError: bookingError, booking } = useSelector(state => state.booking)
+  const { isSuccess: roomSuccess, isError: roomError } = useSelector(state => state.rooms)
 
   useEffect(() => {
     if (!location || !location.state) {
@@ -103,6 +101,12 @@ const BookingForm = () => {
       {
         bookingSuccess && roomSuccess && (
           <p className='booking-success'>Your booking has been complete.</p>
+        )
+      }
+
+      {
+        bookingError && roomError && (
+          <p className='booking-success'>Oops. Something went wrong.</p>
         )
       }
 

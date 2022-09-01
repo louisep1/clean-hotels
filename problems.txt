@@ -1,17 +1,3 @@
-=> also rewrite select queries using references across multiple tables
-
-
-
-
-Maybe this is fixed now ? :
-
-Rewrite the backend because syntax doesn't seem to work (keeps erroring)
-
-BIG PROBLEMS:
-the database loses connection/times out after a few seconds of inactivity
-
-after inactivity, cannot proxy to the server (database not connected) => 500 internal server error
-
 
 
 
