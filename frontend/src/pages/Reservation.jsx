@@ -113,7 +113,7 @@ const Reservation = () => {
 
     dispatch(reset())
 
-    if (new Date(checkIn) > new Date()) {
+    if (new Date(checkIn) < new Date()) {
       alert('Cannot book rooms for dates that have already passed')
       return
     }
