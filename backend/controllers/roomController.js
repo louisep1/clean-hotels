@@ -43,37 +43,24 @@ const searchRooms = (req, res) => {
 // @@@@@  /api/rooms/reserve
 const reserveRoom = (req, res) => {
   const { dateRoomIdArray, available } = req.body
-  // this is an array of dates
 
-  // UPDATE users SET email = 'freddy@gmail.com' WHERE id = 2;
+  const queryArray = dateRoomIdArray.map(dateRoomId => 'id = ?')
+  const queryString = queryArray.join(' OR ')
 
-  // const queryArray = dateRoomIdArray.map(dateRoomId => {
-  //   return `UPDATE availability SET available = ${
-  //     available ? 1 : 0
-  //   } WHERE id = ?;`
-  // })
+  const query =
+    `UPDATE availability SET available = ? WHERE ` + queryString + ';'
 
-  // console.log(queryArray)
-
-  // const queryString = queryArray.join(' ')
-
-  // const query = `
-  // UPDATE availability
-  // SET available = ?
-  // WHERE id = ?
-  // `
-
-  const queryString = `UPDATE availability SET available = 0 WHERE id = 621;`
-
-  // connection.query(queryString, dateRoomIdArray, (err, results) => {
-  connection.query(queryString, (err, results) => {
-    if (err) {
-      console.log(err)
-    } else {
-      console.log('Success!')
-      console.log(results)
+  connection.query(
+    query,
+    [available === true ? 1 : 0, ...dateRoomIdArray],
+    (err, results) => {
+      if (err) {
+        console.log(err)
+      } else {
+        res.json(results)
+      }
     }
-  })
+  )
 }
 
 module.exports = {
