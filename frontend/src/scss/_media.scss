@@ -237,6 +237,11 @@
     padding-bottom: 0;
   }
 
+  .btn {
+    padding: 0.2rem 0.3rem;
+    font-size: 0.8rem;
+  }
+
   // .grid-2 {
   //   grid-template-columns: 1fr;
   // }
@@ -254,6 +259,10 @@
     .result {
       img {
         width: 12rem;
+      }
+
+      p {
+        font-size: 0.9rem;
       }
     }
   }
