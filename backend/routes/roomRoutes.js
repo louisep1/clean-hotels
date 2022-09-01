@@ -11,7 +11,7 @@ const { searchRooms, reserveRoom } = require('../controllers/roomController')
 // http://localhost:5000/api/rooms/filter/tokyo/single/2022-09-01
 
 router.get('/filter/:location&:checkIn&:checkOut', searchRooms)
-router.put('/reserve/:id', reserveRoom)
+router.put('/reserve', reserveRoom)
 
 // router.get('/filter/:location&:type&:date', searchRooms)
 // http://localhost:5000/api/rooms/filter/tokyo&single&2022-09-01

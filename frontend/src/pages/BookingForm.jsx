@@ -44,6 +44,8 @@ const BookingForm = () => {
   const handleSubmit = e => {
     e.preventDefault()
 
+    // !!! check for email before proceeding
+
     const booking = {
       email,
       room_id: result[0].id,
@@ -56,9 +58,14 @@ const BookingForm = () => {
     }
 
     const reservedDates = {
-      dateRoomIdArray: search.dateRange,
+      dateRoomIdArray: result.map(night => night.room_date_id),
       available: false
     }
+
+    // console.log(search.dateRange.map(date => new Date(date).toLocaleDateString('en-CA')))
+
+    console.log(result)
+    console.log(result.map(night => night.room_date_id))
 
     // console.log(booking)
     // console.log(reservedDates)
