@@ -24,7 +24,6 @@ const newBooking = (req, res) => {
     query,
     [email, room_id, checkIn, checkOut, nights, booking_date, paid_date, total],
     err => {
-      // if (err) throw new Error(err.message)
       if (err) {
         console.log(err.message)
       } else {

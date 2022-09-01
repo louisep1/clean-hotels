@@ -24,14 +24,12 @@ const searchRooms = (req, res) => {
       date >= ? AND date < ?;
     `
 
-  // !!! this QUERY returns all the dates available in this range, but it doesn't error if every date is not available,
-  // => so need to filter through this again - frontend?
-  // returns an empty array if ALL dates in the range are not available
+  // backend QUERY returns all the dates available in this range, doesn't error if every date is not available
+  // (returns an empty array if ALL dates in the range are not available)
+  // frontend checks that all dates in the range are available
 
   connection.query(query, [location, 1, checkIn, checkOut], (err, results) => {
     if (err) console.log(err)
-    // if (err) throw new Error(err.message)
-    // !!!! this error doesn't work here because not async await syntax
 
     if (results) {
       res.json(results)

@@ -1,7 +1,5 @@
 // !!! ERRORS => for if booking fails etc...
 
-// check for isSuccess for rooms as well as reservation
-
 import { useEffect, useState } from 'react'
 import { useNavigate, useLocation, Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
@@ -47,7 +45,10 @@ const BookingForm = () => {
   const handleSubmit = e => {
     e.preventDefault()
 
-    // !!! check for email before proceeding
+    if (!email) {
+      alert('Please enter your email')
+      return
+    }
 
     const booking = {
       email,
@@ -64,11 +65,6 @@ const BookingForm = () => {
       dateRoomIdArray: result.map(night => night.room_date_id),
       available: false
     }
-
-    console.log(result)
-    console.log(result.map(night => night.room_date_id))
-
-    console.log(reservedDates)
 
     dispatch(newBooking(booking))
     dispatch(reserveRoom(reservedDates))

@@ -10,9 +10,6 @@ const Rooms = () => {
   return (
     <>
       <Banner title='Rooms' />
-      {/* BOTH RESERVATION SEARCH AND ROOM TYPE DETAILS HERE */}
-      {/* SEPARATE PAGE FOR SEARCH RESULTS */}
-
       <div className="section grey">
 
         <div className="card">
@@ -20,7 +17,6 @@ const Rooms = () => {
           <div className="card-body">
             <div className="title">Single Room </div>
             <div className="text">Spacious single room with wider-sized bed.
-              {/* Our classic room for when you want to be away from home, whilst still feeling at home. */}
             </div>
             <Link to='/reservation' className='text'>Book now!</Link>
           </div>

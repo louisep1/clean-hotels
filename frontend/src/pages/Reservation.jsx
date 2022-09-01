@@ -1,3 +1,5 @@
+// ADD ERROR => e.g. if query to search for rooms fails in the backend
+
 import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
@@ -113,7 +115,10 @@ const Reservation = () => {
 
     dispatch(reset())
 
-    // !!!check if date has already passed => error
+    if (new Date(checkIn) > new Date()) {
+      alert('Cannot book rooms for dates that have already passed')
+      return
+    }
 
     // in future: check number of rooms <= number of people  => otherwise  =>   error 
     setSearching(true)
@@ -125,12 +130,8 @@ const Reservation = () => {
       nights
     }
 
-    // @@@@@@@@@@
-    // also need to include all the dates somehow, not just one
-    // Need to go back and fix the backend
-
+    // Frontend slice returns only rooms that are available for consecutive nights
     dispatch(searchRooms(searchParams))
-    // !!!return rooms that are available for consecutive nights only => if not, don't return
   }
 
   return (
