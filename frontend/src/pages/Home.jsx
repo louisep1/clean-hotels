@@ -17,46 +17,57 @@ const Home = () => {
           <p className='panel-text'>With cleanliness and comfort guaranteed, take a look at our locations</p>
         </div>
 
+
         <div className="postcard-container">
-          <div className="postcard postcard-tokyo">
-            <div className="postcard-title">
-              <div className="overlay">
-                <p className='postcard-title-text'>Tokyo</p>
+          <Link to='/reservation'>
+            <div className="postcard postcard-tokyo">
+              <div className="postcard-title">
+                <div className="overlay">
+                  <p className='postcard-title-text'>Tokyo</p>
+                </div>
               </div>
             </div>
-          </div>
+          </Link>
 
-          <div className="postcard postcard-ishigaki">
-            <div className="postcard-title">
-              <div className="overlay">
-                <p className='postcard-title-text'>Ishigaki</p>
+          <Link to='/reservation'>
+            <div className="postcard postcard-ishigaki">
+              <div className="postcard-title">
+                <div className="overlay">
+                  <p className='postcard-title-text'>Ishigaki</p>
+                </div>
               </div>
             </div>
-          </div>
+          </Link>
 
-          <div className="postcard postcard-kamakura">
-            <div className="postcard-title">
-              <div className="overlay">
-                <p className='postcard-title-text'>Kamakura</p>
+          <Link to='/reservation'>
+            <div className="postcard postcard-kamakura">
+              <div className="postcard-title">
+                <div className="overlay">
+                  <p className='postcard-title-text'>Kamakura</p>
+                </div>
               </div>
             </div>
-          </div>
+          </Link>
 
-          <div className="postcard postcard-yokohama">
-            <div className="postcard-title">
-              <div className="overlay">
-                <p className='postcard-title-text'>Yokohama</p>
+          <Link to='/reservation'>
+            <div className="postcard postcard-yokohama">
+              <div className="postcard-title">
+                <div className="overlay">
+                  <p className='postcard-title-text'>Yokohama</p>
+                </div>
               </div>
             </div>
-          </div>
+          </Link>
 
-          <div className="postcard postcard-okinawa">
-            <div className="postcard-title">
-              <div className="overlay">
-                <p className='postcard-title-text'>Okinawa</p>
+          <Link to='/reservation'>
+            <div className="postcard postcard-okinawa">
+              <div className="postcard-title">
+                <div className="overlay">
+                  <p className='postcard-title-text'>Okinawa</p>
+                </div>
               </div>
             </div>
-          </div>
+          </Link>
         </div>
       </div>
 

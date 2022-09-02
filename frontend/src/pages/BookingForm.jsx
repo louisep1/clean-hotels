@@ -78,11 +78,11 @@ const BookingForm = () => {
 
           <div className="result" key={result[0].id}>
             <img src={result[0].type === 'single' ? singleRoom : doubleRoom} alt="room" className='img' />
-            <p className='room'>{result[0].type === 'single' ? 'Single ' : 'Double '} Room</p>
+            <p className='room'>{result[0].type === 'single' ? 'Single ' : 'Double '} Room x {search.rooms}</p>
             <p className='cost'>${result[0].rate}</p>
             <p className='details'>{search.guests} <BsFillPersonFill className='icon' /> / {search.nights} <MdNightlight className='icon' /></p>
             <div className="link"></div>
-            <div className="reserve"></div>
+            <div className="reserve">{search.location}</div>
           </div>
           <p className='text-xs'>Check in: {search.checkIn}</p>
           <p className='text-xs'>{bookingSuccess && roomSuccess && booking.email}</p>

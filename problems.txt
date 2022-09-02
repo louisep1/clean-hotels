@@ -1,5 +1,12 @@
-page refresh after entering email on booking page anables you to book again? check and stop that from happening
+- results title shows on reeservaation before search
 
+- font sizes in mobile (including the facilities section on home)
+
+- !!! page refresh after entering email and submitting on booking page anables you to book again? check and stop that from happening
+
+- (at some point fix ability to adjust number of guests / rooms based on how many guests, etc...)
+
+- once done, add to portfolio
 
 ========================================
 Fixed: https://www.w3schools.com/jsref/met_element_getboundingclientrect.asp

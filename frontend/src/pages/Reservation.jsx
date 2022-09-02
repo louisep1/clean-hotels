@@ -160,6 +160,9 @@ const Reservation = () => {
                   <select value={location} name="location" id="hotel-location" onChange={handleChange}>
                     <option value='Tokyo'>Tokyo</option>
                     <option value='Yokohama'>Yokohama</option>
+                    <option value='Kamakura'>Kamakura</option>
+                    <option value='Okinawa'>Okinawa</option>
+                    <option value='Ishigaki'>Ishigaki</option>
                   </select>
                 </div>
 
@@ -171,7 +174,6 @@ const Reservation = () => {
                 <div className="input-group check-out">
                   <label htmlFor="">Check-out date **</label>
                   <input value={checkOut} name='checkOut' onChange={handleChange} type="date" min={checkIn} max={max} />
-                  {/* !!! Set a dynamic max date that is +7 days from checkIn */}
                 </div>
 
                 <div className="input-group guests">
