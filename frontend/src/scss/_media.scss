@@ -21,7 +21,7 @@
 @media (max-width: 750px) {
   // Utilities:
   .line {
-    margin: 1rem auto;
+    margin: 0.5rem auto 1.2rem;
   }
 
   .card {
@@ -144,8 +144,7 @@
 
   // Reservation page
   .form-container {
-    // margin: 0.4rem;
-    margin: 0;
+    margin: 0 0 0.6rem;
   }
 
   .reservation-form {
