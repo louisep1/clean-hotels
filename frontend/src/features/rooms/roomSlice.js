@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import roomService from './roomService'
 
 const initialState = {
-  searchResults: [],
+  searchResults: null,
   isLoading: false,
   isSuccess: true,
   isError: false,

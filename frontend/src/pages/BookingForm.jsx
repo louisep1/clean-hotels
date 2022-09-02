@@ -25,6 +25,12 @@ const BookingForm = () => {
   const { isSuccess: roomSuccess, isError: roomError } = useSelector(state => state.rooms)
 
   useEffect(() => {
+    window.onbeforeunload = () => {
+      navigate('/reservation')
+    };
+  }, [])
+
+  useEffect(() => {
     if (!location || !location.state) {
       navigate(-1)
     }
