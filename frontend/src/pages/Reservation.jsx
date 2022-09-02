@@ -199,7 +199,7 @@ const Reservation = () => {
 
               </div>
               <button className='btn my-3' type="submit">Check availability</button>
-              <p className='pt-2 text-xs'>** Bookings of up to 7 nights stay can be made</p>
+              <p className='py-2 text-xs'>** Bookings of up to 7 nights stay can be made</p>
             </form>
 
 
