@@ -72,10 +72,6 @@
       &-left {
         transform: translate(-2px, 0);
       }
-
-      // &-right {
-      //   transform: translate(1px, 0);
-      // }
     }
 
     .dots {
@@ -248,6 +244,10 @@
 
   .card-body {
     height: 11rem;
+  }
+
+  .panel-title {
+    font-size: 1.6rem;
   }
 
   .grid-2 {

@@ -83,7 +83,7 @@ const Home = () => {
 
       <div className="section my-4">
         <div className="panel">
-          <Link to='/services'><div className="panel-title">Facilities & Services</div></Link>
+          <Link to='/services'><div className="panel-title">Facilities &amp; Services</div></Link>
 
           <div className="facilities">
             <Link to='/services' className="grid-line">

@@ -82,16 +82,13 @@
 
 // Facilities section:
 .facilities {
-  // border: #000 3px solid;
   margin: 0.5rem 0;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   justify-items: center;
-  // gap: 1rem;
 }
 
 .grid-line {
-  // border: pink solid 3px;
   border-right: #000 solid 2px;
   width: 100%;
   margin: 5rem auto 2rem;
