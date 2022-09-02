@@ -24,23 +24,19 @@ $grey: rgb(235, 235, 235);
   padding: 1rem 0 0.5rem;
   height: 100%;
   width: 100%;
-  // border: pink 3px solid;
 }
 
 .overlay {
-  // border: pink 3px solid;
   width: 100%;
   height: 100%;
   position: absolute;
   top: 0;
   left: 0;
   background-color: rgba(0, 0, 0, 0.25);
-  // 0.25 or 0.3 or 0.4 ??
 }
 
 // Card:
 .card {
-  // border: black 3px solid;
   width: 80%;
   margin: 4rem auto;
   background-color: #fff;
@@ -103,20 +99,17 @@ $grey: rgb(235, 235, 235);
   // }
 
   &-body {
-    // border: pink 3px solid;
     height: 10rem;
     padding: 1rem;
 
     &-sm {
       height: 5rem;
-      // border: pink 3px solid;
     }
   }
 }
 
 // Panels for strips of text across the whole width of page (like half-sized banner)
 .panel {
-  // border: pink 3px solid;
   margin: 0.5rem 0;
   padding: 2rem;
   text-align: center;
@@ -127,11 +120,8 @@ $grey: rgb(235, 235, 235);
   }
 
   &-title {
-    // border: 3px black solid;
     padding: 5px 0;
     font-size: 2.5rem;
-    // font-weight: 400;
-    // font-weight: 600;
     font-family: 'Roboto', sans-serif;
   }
 
@@ -185,7 +175,6 @@ button:hover {
   &,
   &-xs,
   &-md {
-    // border: 3px black solid;
     padding: 5px 0;
     line-height: 1.4;
     font-weight: 300;

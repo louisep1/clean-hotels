@@ -25,7 +25,6 @@
   }
 
   .card {
-    // margin: 2rem auto;
     margin: 1rem auto 0;
   }
 
@@ -89,7 +88,7 @@
     }
   }
 
-  // Home page (and paneel in services):
+  // Home page (and panel in services):
   .panel {
     margin: 0;
 
@@ -113,7 +112,6 @@
 
   .background-panel {
     height: 20rem;
-    // border: #fff 3px solid;
 
     .panel {
       background-color: rgba(235, 235, 235, 0.2);
@@ -148,7 +146,6 @@
   }
 
   .reservation-form {
-    // grid-template-columns: 1fr 1fr;
     grid-template-columns: auto;
     grid-template-areas:
       'location location'
@@ -238,6 +235,10 @@
     padding-bottom: 0;
   }
 
+  .text-md {
+    font-size: 1.2rem;
+  }
+
   .title {
     font-size: 1.4rem;
   }
@@ -257,7 +258,6 @@
   }
 
   .grid-2 {
-    // grid-template-columns: 1fr;
     display: block;
   }
 

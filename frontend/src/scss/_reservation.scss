@@ -1,13 +1,10 @@
 // Reservation page:
 
 .form-container {
-  // border: #333 solid 2px;
-  // margin: 2rem;
   margin: 0 2rem 2rem;
 }
 
 .reservation-form {
-  // border: pink 3px solid;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 
@@ -20,7 +17,6 @@
 }
 
 .searching {
-  // border: black 3px solid;
   padding: 0 5rem;
   color: rgb(94, 131, 203);
 
@@ -29,26 +25,16 @@
     padding-bottom: 0.7rem;
   }
 
-  // &-gifs {
-  //   display: flex;
-  //   justify-content: space-between;
-  //   height: 8rem;
-  // }
-
   img {
     display: block;
-    // width: 25%;
-    // border: black 3px solid;
     margin: 0 auto;
   }
 }
 
 .results-container {
-  // border: black 3px solid;
   padding: 0 2rem 2rem;
 
   .result {
-    // border: black 3px solid;
     margin: 1rem auto;
     display: grid;
     grid-template-columns: repeat(6, 1fr);
@@ -68,7 +54,6 @@
 }
 
 // Book page:
-
 .booking {
   margin: 0 3rem 3rem;
   width: 20rem;

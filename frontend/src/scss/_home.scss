@@ -1,10 +1,8 @@
 // Postcards (for location)
 .postcard-container {
-  // border: 3px black solid;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   justify-items: center;
-  // gap: 10px;
   gap: 3rem 0;
   width: 90%;
   margin: 0 auto;
@@ -12,7 +10,6 @@
 }
 
 .postcard {
-  // border: black 3px solid;
   width: 20rem;
   height: 25rem;
   position: relative;
@@ -55,7 +52,6 @@
     height: 20%;
     text-align: center;
     font-size: 2.5rem;
-    // border: yellow 3px solid;
 
     &-text {
       padding-top: 15px;
@@ -64,7 +60,6 @@
 
   .overlay {
     border-radius: 0 0 20px 20px;
-    // background-color: rgba(0, 0, 0, 0.5);
   }
 }
 
@@ -72,7 +67,6 @@
 .background-panel {
   background: url('../imgs/room-single.jpg') no-repeat center center/cover;
   height: 30rem;
-  // border: #fff 3px solid;
 
   .panel {
     background-color: rgba(235, 235, 235, 0.2);

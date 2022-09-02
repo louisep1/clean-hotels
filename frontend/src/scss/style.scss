@@ -43,7 +43,6 @@ nav {
 
   .logo img {
     width: 65px;
-    // border: black 3px solid;
   }
 
   // text part of logo
@@ -99,11 +98,7 @@ nav {
   height: 30rem;
   position: relative;
   width: 100%;
-
-  // TESTING START =====================================
   transition: 1s;
-
-  // TESTING END =====================================
 
   &-home {
     background: url('../imgs/hotel-2-xs.jpg') no-repeat center center/cover;
@@ -143,19 +138,11 @@ nav {
     color: #fff;
     font-size: 4rem;
     position: absolute;
-    // top: 20%;
-    // left: 8%;
     top: 35%;
-    // left: 36%;
-
     text-align: center;
-    // width: max-content;
     width: 100%;
-    // background-color: rgba(0, 0, 0, 0.25);
-
     font-weight: 400;
     padding: 10px 20px;
-    // letter-spacing: 2px;
   }
 
   img {
@@ -214,12 +201,10 @@ footer {
   font-size: 0.9rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  // border: #000 3px solid;
 
   .links {
     line-height: 1.8;
     justify-self: center;
-    // justify-self: end;
   }
 }
 
