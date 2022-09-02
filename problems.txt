@@ -1,8 +1,6 @@
 error in backend if body/param data missing from frontend
 => maybe need to rewrite to include async await syntax, otherwise can't throw errors
 
-- font sizes in mobile (including the facilities section on home)
-
 
 - (at some point fix ability to adjust number of guests / rooms based on how many guests, etc...)
 - (number of rooms isn't saved in the backend in booking table, but room_id is so it is implicit)
