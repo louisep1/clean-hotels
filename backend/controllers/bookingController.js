@@ -12,17 +12,28 @@ const newBooking = (req, res) => {
     booking_date,
     paid_date,
     total,
+    guests,
   } = req.body
 
   const query = `
     INSERT INTO bookings 
-    (email, room_id, checkIn, checkOut, nights, booking_date, paid_date, total) 
-    values (?, ?, ?, ?, ?, ?, ?, ?);
+    (email, room_id, checkIn, checkOut, nights, booking_date, paid_date, total, guests) 
+    values (?, ?, ?, ?, ?, ?, ?, ?, ?);
   `
 
   connection.query(
     query,
-    [email, room_id, checkIn, checkOut, nights, booking_date, paid_date, total],
+    [
+      email,
+      room_id,
+      checkIn,
+      checkOut,
+      nights,
+      booking_date,
+      paid_date,
+      total,
+      guests,
+    ],
     err => {
       if (err) {
         console.log(err.message)
@@ -36,6 +47,7 @@ const newBooking = (req, res) => {
           booking_date,
           paid_date,
           total,
+          guests,
         })
       }
     }

@@ -62,7 +62,8 @@ const BookingForm = () => {
       nights: search.nights,
       booking_date: new Date().toLocaleDateString('en-CA'),
       paid_date: null,
-      total: result.map(date => date.rate).reduce((a, b) => a + b)
+      total: result.map(date => date.rate).reduce((a, b) => a + b),
+      guests: search.guests
     }
 
     const reservedDates = {
