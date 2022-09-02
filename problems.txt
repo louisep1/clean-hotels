@@ -8,10 +8,6 @@ error in backend if body/param data missing from frontend
 
 
 
-- ?? SOMETIMES results title shows on reservation page before search is sent => not sure why...
-
-
-
 
 
 
