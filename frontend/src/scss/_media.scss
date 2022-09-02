@@ -25,11 +25,16 @@
   }
 
   .card {
-    margin: 2rem auto;
+    // margin: 2rem auto;
+    margin: 1rem auto 0;
+  }
+
+  .grid-2 {
+    gap: 0 0.5rem;
   }
 
   .title {
-    font-size: 1.1rem;
+    font-size: 1.6rem;
   }
 
   .text {
@@ -84,8 +89,10 @@
     }
   }
 
-  // Home page:
+  // Home page (and paneel in services):
   .panel {
+    margin: 0;
+
     &-title {
       font-size: 2rem;
     }
@@ -193,11 +200,6 @@
         'img link'
         'img reserve';
 
-      img {
-        // width: 100%;
-        // width: 20rem;
-      }
-
       .img {
         grid-area: img;
       }
@@ -237,6 +239,10 @@
     padding-bottom: 0;
   }
 
+  .title {
+    font-size: 1.4rem;
+  }
+
   .btn {
     padding: 0.2rem 0.3rem;
     font-size: 0.8rem;
@@ -244,6 +250,7 @@
 
   .card-body {
     height: 11rem;
+    overflow-y: auto;
   }
 
   .panel-title {
