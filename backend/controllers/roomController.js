@@ -39,7 +39,7 @@ const searchRooms = (req, res) => {
 
 // @@@@@  PUT
 // @@@@@  /api/rooms/reserve
-const reserveRoom = (req, res) => {
+const reserveRoom = async (req, res) => {
   const { dateRoomIdArray, available } = req.body
 
   const queryArray = dateRoomIdArray.map(dateRoomId => 'id = ?')
@@ -48,17 +48,32 @@ const reserveRoom = (req, res) => {
   const query =
     `UPDATE availability SET available = ? WHERE ` + queryString + ';'
 
-  connection.query(
+  // connection.query(
+  //   query,
+  //   [available === true ? 1 : 0, ...dateRoomIdArray],
+  //   (err, results) => {
+  //     if (err) {
+  //       console.log(err)
+  //     } else {
+  //       res.json(results)
+  //     }
+  //   }
+  // )
+
+  const searchResult = await connection.query(
     query,
     [available === true ? 1 : 0, ...dateRoomIdArray],
     (err, results) => {
       if (err) {
         console.log(err)
       } else {
-        res.json(results)
+        return results
       }
     }
   )
+
+  console.log(results)
+  res.json(results)
 }
 
 module.exports = {

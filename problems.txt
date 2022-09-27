@@ -1,5 +1,6 @@
 error in backend if body/param data missing from frontend
 => maybe need to rewrite to include async await syntax, otherwise can't throw errors
+(for when params/body missing data etc...)
 
 
 - (at some point fix ability to adjust number of guests / rooms based on how many guests, etc...)
