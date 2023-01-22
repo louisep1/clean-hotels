@@ -13,7 +13,7 @@ CREATE TABLE rooms (
 --     id int NOT NULL,
 --     room_id int, 
 --     date DATE, 
---     available BOOL,
+--     available BOOLEAN,
 --     PRIMARY KEY (ID),
 --     FOREIGN KEY (room_id) REFERENCES Rooms(id)
 -- );
