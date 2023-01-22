@@ -8,16 +8,16 @@ app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
-app.use('/api/rooms', require('./routes/roomRoutes'))
-app.use('/api/bookings', require('./routes/bookingRoutes'))
+app.use('/api/rooms', require('./backend/routes/roomRoutes'))
+app.use('/api/bookings', require('./backend/routes/bookingRoutes'))
 
 // For heroku / deployment:
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../frontend/build')))
+  app.use(express.static(path.join(__dirname, './frontend/build')))
 
   app.get('*', (req, res) =>
     res.sendFile(
-      path.resolve(__dirname, '../', 'frontend', 'build', 'index.html')
+      path.resolve(__dirname, './', 'frontend', 'build', 'index.html')
     )
   )
 } else {
