@@ -1,0 +1,19 @@
+USE sql12592427;
+
+CREATE TABLE rooms (
+    id int NOT NULL,
+    room_number int(10),
+    location varchar(100),
+    type varchar(100),
+    rate int(10),
+    PRIMARY KEY (ID)
+);
+
+-- CREATE TABLE availability ( 
+--     id int NOT NULL,
+--     room_id int, 
+--     date DATE, 
+--     available BOOL,
+--     PRIMARY KEY (ID),
+--     FOREIGN KEY (room_id) REFERENCES Rooms(id)
+-- );
