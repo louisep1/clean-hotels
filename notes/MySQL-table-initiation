@@ -9,8 +9,10 @@ CREATE TABLE rooms (
     PRIMARY KEY (ID)
 );
 
+-- for a real project => store location/type/rate as ids, then have separate corresponding tables to match these ids to the value   
+
 -- CREATE TABLE availability ( 
---     id int NOT NULL,
+--     id int NOT NULL AUTO_INCREMENT,
 --     room_id int, 
 --     date DATE, 
 --     available BOOLEAN,
