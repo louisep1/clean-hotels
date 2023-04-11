@@ -62,7 +62,8 @@ const Reservation = () => {
 
     setSearch(prevState => ({
       ...prevState,
-      checkIn: new Date(today).toLocaleDateString('en-CA')
+      checkIn: new Date().toLocaleDateString('en-CA')
+      // checkIn: new Date(today).toLocaleDateString('en-CA')
     }))
 
     return () => dispatch
@@ -107,10 +108,10 @@ const Reservation = () => {
   }, [checkIn])
 
   useEffect(() => {
-    if (!isLoading) {
+    if (!isLoading || isError) {
       setSearching(false)
     }
-  }, [isLoading, isSuccess])
+  }, [isLoading, isSuccess, isError])
 
   const handleChange = e => {
     setSearch(prevState => ({
@@ -125,7 +126,7 @@ const Reservation = () => {
 
     dispatch(reset())
 
-    if (new Date(checkIn) < new Date()) {
+    if (new Date(checkIn) < new Date().toLocaleDateString('en-CA')) {
       alert('Cannot book rooms for dates that have already passed')
       return
     }
@@ -168,7 +169,8 @@ const Reservation = () => {
 
                 <div className="input-group check-in">
                   <label htmlFor="">Check-in date</label>
-                  <input value={checkIn} name='checkIn' onChange={handleChange} type="date" min={tomorrow} max={'2022-12-10'} />
+                  {/* <input value={checkIn} name='checkIn' onChange={handleChange} type="date" min={tomorrow} max={'2022-12-10'} /> */}
+                  <input value={checkIn} name='checkIn' onChange={handleChange} type="date" min={new Date().toLocaleDateString('en-CA')} />
                 </div>
 
                 <div className="input-group check-out">

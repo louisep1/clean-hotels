@@ -37,6 +37,7 @@ const newBooking = (req, res) => {
     err => {
       if (err) {
         console.log(err.message)
+        // !!! add proper errors
       } else {
         res.json({
           email,

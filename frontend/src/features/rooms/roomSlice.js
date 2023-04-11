@@ -69,7 +69,7 @@ export const searchRooms = createAsyncThunk(
           error.response.data.message) ||
         error.message ||
         error.toString()
-
+      console.log('Error')
       return thunkAPI.rejectWithValue(message)
     }
   }
