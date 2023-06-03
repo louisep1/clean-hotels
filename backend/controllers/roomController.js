@@ -59,21 +59,27 @@ const reserveRoom = async (req, res) => {
   //     }
   //   }
   // )
-
-  const searchResult = await connection.query(
-    query,
-    [available === true ? 1 : 0, ...dateRoomIdArray],
-    (err, results) => {
-      if (err) {
-        console.log(err)
-      } else {
-        return results
+  console.log('test')
+  try {
+    await connection.query(
+      query,
+      [available === true ? 1 : 0, ...dateRoomIdArray],
+      (err, results) => {
+        if (err) {
+          console.log(err)
+          // !!! if it errors, the frontend needs to not display the reservation confirmation message
+        } else {
+          console.log(results)
+          res.json(results)
+          return results
+        }
       }
-    }
-  )
-
-  console.log(results)
-  res.json(results)
+    )
+  } catch (error) {
+    console.log(error)
+    console.log('test 2')
+    // !!! if it errors, the frontend needs to not display the reservation confirmation message
+  }
 }
 
 module.exports = {

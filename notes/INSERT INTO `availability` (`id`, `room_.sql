@@ -1,6 +1,8 @@
-INSERT INTO rooms
-(id, room_number, location, type, rate)
-VALUES (null, 101, 'ishigaki', 'single', 30), (null, 102, 'ishigaki', 'single', 30), (null, 103, 'ishigaki', 'double', 50), (null, 104, 'ishigaki', 'single', 50), (null, 105, 'ishigaki', 'single', 50), (null, 106, 'ishigaki', 'single', 30);
+-- INSERT INTO rooms
+-- (id, room_number, location, type, rate)
+-- VALUES (null, 101, 'ishigaki', 'single', 30), (null, 102, 'ishigaki', 'single', 30), (null, 103, 'ishigaki', 'double', 50), (null, 104, 'ishigaki', 'single', 50), (null, 105, 'ishigaki', 'single', 50), (null, 106, 'ishigaki', 'single', 30);
+
+INSERT INTO rooms (id, room_number, location, type, rate) VALUES (1, 101, 'ishigaki', 'single', 30), (2, 102, 'ishigaki', 'single', 30), (3, 103, 'ishigaki', 'double', 50), (4, 104, 'ishigaki', 'single', 50), (5, 105, 'ishigaki', 'single', 50), (6, 106, 'ishigaki', 'single', 30);
 
 INSERT INTO rooms
 (id, room_number, location, type, rate)
