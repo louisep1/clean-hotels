@@ -92,7 +92,8 @@ const BookingForm = () => {
             <div className="reserve">{search.location}</div>
           </div>
           <p className='text-xs'>Check in: {search.checkIn}</p>
-          <p className='text-xs'>{bookingSuccess && roomSuccess && booking.email}</p>
+          <p className='bold-styled'>{bookingSuccess && roomSuccess ? 'CONFIRMED' : 'Unconfirmed'}</p>
+          <p className='text-xs pt-4'>{bookingSuccess && roomSuccess && booking.email}</p>
         </div>)}
 
       {!bookingSuccess && !roomSuccess && (<form className='booking' onSubmit={handleSubmit}>
@@ -112,7 +113,7 @@ const BookingForm = () => {
       }
 
       {
-        bookingError && roomError && (
+        bookingError || roomError && (
           <p className='booking-success'>Oops. Something went wrong.</p>
         )
       }

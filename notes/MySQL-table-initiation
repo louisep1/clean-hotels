@@ -19,3 +19,18 @@ CREATE TABLE rooms (
 --     PRIMARY KEY (ID),
 --     FOREIGN KEY (room_id) REFERENCES Rooms(id)
 -- );
+
+
+-- CREATE TABLE bookings (
+--     id int NOT NULL AUTO_INCREMENT,
+--     email varchar(100), 
+--     room_id int, 
+--     checkIn date, 
+--     checkOut date, 
+--     nights int(10), 
+--     booking_date date, 
+--     paid_date date, 
+--     total float, 
+--     guests int(10),
+--     PRIMARY KEY (ID)
+-- );
