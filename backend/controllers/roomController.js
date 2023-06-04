@@ -79,6 +79,7 @@ const reserveRoom = async (req, res) => {
     console.log(error)
     console.log('test 2')
     // !!! if it errors, the frontend needs to not display the reservation confirmation message
+    // throw some error
   }
 }
 
