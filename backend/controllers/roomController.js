@@ -31,7 +31,7 @@ const searchRooms = (req, res) => {
   connection.query(query, [location, 1, checkIn, checkOut], (err, results) => {
     if (err) {
       console.log(err)
-      res.status(500).send({ message: 'Search could not be retrieved.' })
+      res.status(500).send({ message: 'search could not be retrieved' })
     }
 
     if (results) {
@@ -62,7 +62,6 @@ const reserveRoom = async (req, res) => {
   //     }
   //   }
   // )
-  console.log('test')
   try {
     await connection.query(
       query,
@@ -70,6 +69,7 @@ const reserveRoom = async (req, res) => {
       (err, results) => {
         if (err) {
           console.log(err)
+          res.status(500).send({ message: 'room does not exist' })
           // !!! if it errors, the frontend needs to not display the reservation confirmation message
         } else {
           console.log('results', results)

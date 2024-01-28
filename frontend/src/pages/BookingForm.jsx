@@ -21,6 +21,7 @@ const BookingForm = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
+  // !!!  put these under a single end point:
   const { isSuccess: bookingSuccess, isError: bookingError, booking } = useSelector(state => state.booking)
   const { isSuccess: roomSuccess, isError: roomError } = useSelector(state => state.rooms)
 
@@ -68,12 +69,12 @@ const BookingForm = () => {
 
     const reservedDates = {
       dateRoomIdArray: result.map(night => night.room_date_id),
-      available: false
+      available: false  // !!! later change this to be in the backend
     }
 
-    dispatch(newBooking(booking))
+    dispatch(newBooking({ booking, reservedDates }))
+    // !!! once both creating a new booking and updating rooms to unavailable have been combined into one process in the backend, delete the second process (reserveRoom and all the state effects) in the frontend too:
     dispatch(reserveRoom(reservedDates))
-
     setEmail('')
   }
 

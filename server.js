@@ -11,7 +11,7 @@ app.use(express.urlencoded({ extended: false }))
 app.use('/api/rooms', require('./backend/routes/roomRoutes'))
 app.use('/api/bookings', require('./backend/routes/bookingRoutes'))
 
-// For heroku / deployment:
+// For deployment:
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, './frontend/build')))
 
