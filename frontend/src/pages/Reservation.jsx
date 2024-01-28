@@ -255,8 +255,6 @@ const Reservation = () => {
 
 
             {(searchResults.single && searchResults.single.length === 0) && (searchResults.double && searchResults.double.length === 0) && (<div className="text-md mt-4">Sorry, no available rooms matching your search criteria.</div>)}
-
-            {isError && (<div className="text-md mt-4">Oops. Something went wrong.</div>)}
           </div>
         )
         }
