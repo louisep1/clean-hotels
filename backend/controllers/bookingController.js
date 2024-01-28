@@ -1,6 +1,6 @@
 const connection = require('../config/db')
 
-// @@@@@  POTS
+// @@@@@  POST
 // @@@@@  /api/bookings/new
 const newBooking = (req, res) => {
   const {

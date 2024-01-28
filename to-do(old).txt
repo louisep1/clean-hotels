@@ -1,0 +1,32 @@
+error in backend if body/param data missing from frontend
+=> maybe need to rewrite to include async await syntax, otherwise can't throw errors
+(for when params/body missing data etc...)
+
+
+- (at some point fix ability to adjust number of guests / rooms based on how many guests, etc...)
+- (number of rooms isn't saved in the backend in booking table, but room_id is so it is implicit)
+- => could therefore maybe set a max number of rooms per booking (e.g. room_id_1, room_id_2, room_id_2) (max 3 rooms/booking)
+
+
+
+
+
+
+========================================
+fixed but with MINOR SIDE-useEffect
+
+=> now when you refresh the page, it redirects you off 
+=> but often redirects twice so you end up on home page or other page (not intended reservations page => but this is ok as it still prevents the user from double booking a room)
+
+- page refresh after entering email and submitting on booking page anables you to book again? check and stop that from happening => maybe fixed with this:
+
+useEffect(() => {
+    window.onbeforeunload = () => {
+      navigate('/reservation')
+    };
+  }, [])
+
+
+========================================
+Fixed: https://www.w3schools.com/jsref/met_element_getboundingclientrect.asp
+- when you click the image slider with touchpage, doesn't work because it reads it as a swipe
