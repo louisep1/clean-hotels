@@ -258,7 +258,7 @@ const Reservation = () => {
           </div>
         )
         }
-        {isError && (<div className="text-md p-4">Oops. Something went wrong.</div>)}
+        {isError && (<div className="p-4"><div className="text-md">Oops. Something went wrong.</div><i>(Note: This error is most likely due to limitations with free database hosting.)</i></div>)}
       </div >
     </>
   )
