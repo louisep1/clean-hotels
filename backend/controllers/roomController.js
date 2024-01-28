@@ -29,7 +29,10 @@ const searchRooms = (req, res) => {
   // frontend checks that all dates in the range are available
 
   connection.query(query, [location, 1, checkIn, checkOut], (err, results) => {
-    if (err) console.log(err)
+    if (err) {
+      console.log(err)
+      res.status(500).send({ message: 'Search could not be retrieved.' })
+    }
 
     if (results) {
       res.json(results)

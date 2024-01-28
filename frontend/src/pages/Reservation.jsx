@@ -260,6 +260,7 @@ const Reservation = () => {
           </div>
         )
         }
+        {isError && (<div className="text-md p-4">Oops. Something went wrong.</div>)}
       </div >
     </>
   )
