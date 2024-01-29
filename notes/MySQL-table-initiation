@@ -28,7 +28,7 @@ CREATE TABLE rooms (
 --     email varchar(100), 
 --     room_id int, 
 --     check_in date, 
---     check|out date, 
+--     check_out date, 
 --     nights int(10), 
 --     booking_date date, 
 --     paid_date date, 
