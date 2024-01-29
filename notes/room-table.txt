@@ -14,10 +14,10 @@ available: true
 
 == RESERVATIONS TABLE
 roomId: 1234567
-check-in-date
-check-out-date
-check-in-time: 14:00 (default)
-check-out-time: 11:00 (default)
+check_in
+check_out
+check_in-time: 14:00 (default)
+check_out-time: 11:00 (default)
 nights: 9
 bookedBy: email@email.com
 

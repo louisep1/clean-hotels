@@ -6,6 +6,8 @@ CREATE TABLE rooms (
     location varchar(100),
     type varchar(100),
     rate int(10),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY (ID)
 );
 
@@ -25,8 +27,8 @@ CREATE TABLE rooms (
 --     id int NOT NULL AUTO_INCREMENT,
 --     email varchar(100), 
 --     room_id int, 
---     checkIn date, 
---     checkOut date, 
+--     check_in date, 
+--     check|out date, 
 --     nights int(10), 
 --     booking_date date, 
 --     paid_date date, 
