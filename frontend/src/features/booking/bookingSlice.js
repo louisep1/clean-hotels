@@ -13,7 +13,6 @@ export const newBooking = createAsyncThunk(
   '/api/bookings/new',
   async (booking, thunkAPI) => {
     try {
-      console.log('booking', booking)
       return await bookingService.newBooking(booking)
     } catch (error) {
       const message =

@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import { useNavigate, useLocation, Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { newBooking, reset as resetBooking } from '../features/booking/bookingSlice'
-import { reserveRoom, reset as resetRoom } from '../features/rooms/roomSlice'
 
 import { BsFillPersonFill } from 'react-icons/bs'
 import { MdNightlight } from 'react-icons/md'
@@ -21,9 +20,7 @@ const BookingForm = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
-  // !!!  put these under a single end point:
   const { isSuccess: bookingSuccess, isError: bookingError, booking } = useSelector(state => state.booking)
-  const { isSuccess: roomSuccess, isError: roomError } = useSelector(state => state.rooms)
 
   useEffect(() => {
     window.onbeforeunload = () => {
@@ -43,7 +40,6 @@ const BookingForm = () => {
 
     return () => {
       dispatch(resetBooking())
-      dispatch(resetRoom())
     }
   }, [location])
 
@@ -73,8 +69,6 @@ const BookingForm = () => {
 
 
     dispatch(newBooking(booking))
-    // !!! once both creating a new booking and updating rooms to unavailable have been combined into one process in the backend, delete the second process (reserveRoom and all the state effects) in the frontend too:
-    dispatch(reserveRoom(reservedDateRoomIds))
     setEmail('')
   }
 
@@ -93,11 +87,11 @@ const BookingForm = () => {
             <div className="reserve">{search.location}</div>
           </div>
           <p className='text-xs'>Check in: {search.checkIn}</p>
-          <p className='bold-styled'>{bookingSuccess && roomSuccess ? 'CONFIRMED' : 'Unconfirmed'}</p>
-          <p className='text-xs pt-4'>{bookingSuccess && roomSuccess && booking.email}</p>
+          <p className='bold-styled'>{bookingSuccess ? 'CONFIRMED' : 'Unconfirmed'}</p>
+          <p className='text-xs pt-4'>{bookingSuccess && booking.email}</p>
         </div>)}
 
-      {!bookingSuccess && !roomSuccess && (<form className='booking' onSubmit={handleSubmit}>
+      {!bookingSuccess && (<form className='booking' onSubmit={handleSubmit}>
         <div className="email">
           <p>Enter your details to confirm booking</p>
           <label className='pt-3' htmlFor="">Email address:</label>
@@ -108,13 +102,13 @@ const BookingForm = () => {
       )}
 
       {
-        bookingSuccess && roomSuccess && (
+        bookingSuccess && (
           <p className='booking-success'>Your booking has been complete.</p>
         )
       }
 
       {
-        bookingError || roomError && (
+        bookingError && (
           <p className='booking-success'>Oops. Something went wrong.</p>
         )
       }

@@ -28,22 +28,6 @@ export const searchRooms = createAsyncThunk(
   }
 )
 
-export const reserveRoom = createAsyncThunk(
-  '/api/rooms/reserve',
-  async (reservedDates, thunkAPI) => {
-    try {
-      return await roomService.reserveRoom(reservedDates)
-    } catch (error) {
-      const message =
-        (error.response &&
-          error.response.data &&
-          error.response.data.message) ||
-        error.message ||
-        error.toString()
-    }
-  }
-)
-
 export const roomSlice = createSlice({
   name: 'rooms',
   initialState,
@@ -70,18 +54,6 @@ export const roomSlice = createSlice({
         state.isLoading = false
         state.isError = true
         state.message = action.payload
-      })
-
-      .addCase(reserveRoom.pending, state => {
-        state.isLoading = true
-      })
-      .addCase(reserveRoom.fulfilled, (state, action) => {
-        state.isLoading = false
-        state.isSuccess = true
-      })
-      .addCase(reserveRoom.rejected, (state, action) => {
-        state.isLoading = false
-        state.isError = true
       })
   },
 })

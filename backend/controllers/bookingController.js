@@ -21,7 +21,6 @@ const newBooking = async (req, res) => {
     await connection.query('START TRANSACTION')
     // const queryRoomStillAvailable = ''
 
-    console.log(reservedDateRoomIds)
     const queryDateArray = reservedDateRoomIds.map(dateRoomId => 'id = ?')
     const queryDateString = queryDateArray.join(' OR ')
 
@@ -51,8 +50,6 @@ const newBooking = async (req, res) => {
       guests,
     ])
     await connection.query('COMMIT')
-    console.log('response', response)
-    console.log('meta', meta)
     res.json({
       email,
       room_id,
