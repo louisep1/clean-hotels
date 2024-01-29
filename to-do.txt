@@ -5,4 +5,4 @@ INSERT INTO `availability` (`id`, `room_id`, `date`, `available`) VALUES (NULL, 
 
 1.) go back and fix column names to be uniform
 
-2.) go back and add created at and updated at columns for ALL tables	
+2.) go back and add created at and updated at columns for ALL tables

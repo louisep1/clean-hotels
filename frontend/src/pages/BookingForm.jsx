@@ -20,7 +20,7 @@ const BookingForm = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
-  const { isSuccess: bookingSuccess, isError: bookingError, booking } = useSelector(state => state.booking)
+  const { isSuccess: bookingSuccess, isError: bookingError, message, booking } = useSelector(state => state.booking)
 
   useEffect(() => {
     window.onbeforeunload = () => {
@@ -109,7 +109,7 @@ const BookingForm = () => {
 
       {
         bookingError && (
-          <p className='booking-success'>Oops. Something went wrong.</p>
+          <p className='booking-success'>{message === 'dates no longer available' ? 'Sorry, the room you selected is no longer available. Please search again.' : 'Oops. Something went wrong.'}</p>
         )
       }
 

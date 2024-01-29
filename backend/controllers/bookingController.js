@@ -19,26 +19,42 @@ const newBooking = async (req, res) => {
     } = req.body
     connection = await pool.getConnection()
     await connection.query('START TRANSACTION')
-    // const queryRoomStillAvailable = ''
 
-    const queryDateArray = reservedDateRoomIds.map(dateRoomId => 'id = ?')
-    const queryDateString = queryDateArray.join(' OR ')
+    const helperQueryDateArray = reservedDateRoomIds.map(dateRoomId => 'id = ?')
+    const helperQueryDateString = helperQueryDateArray.join(' OR ')
 
-    const querySetRoomUnavailable =
-      `UPDATE availability SET available = 0 WHERE ` + queryDateString + ';'
-    await connection.execute(querySetRoomUnavailable, reservedDateRoomIds)
+    const queryRoomStillAvailable =
+      `SELECT
+      id,
+      date,
+      available
+    FROM availability
+    WHERE ` +
+      helperQueryDateString +
+      ';'
+    const [availabilityData, availabilityMeta] = await connection.execute(
+      queryRoomStillAvailable,
+      reservedDateRoomIds
+    )
+    const datesNotAvailable = availabilityData.some(
+      date => date.available === 0
+    )
+    if (datesNotAvailable) {
+      throw new Error('dates no longer available')
+    }
 
-    // !!!!! FIRST, we need to check the room we are booking is actually still available => then change the room to unavailable => then create the booking for the room
-    // In this case, it is better to use transactions to roll back if query fails
-    // (problem: since we are not re-checking room availability, you can create multiple bookings for the same room in different tabs)
+    const queryUpdateRoomUnavailable =
+      `UPDATE availability SET available = 0 WHERE ` +
+      helperQueryDateString +
+      ';'
+    await connection.execute(queryUpdateRoomUnavailable, reservedDateRoomIds)
 
-    const query = `
+    const queryCreateBooking = `
     INSERT INTO bookings 
     (email, room_id, checkIn, checkOut, nights, booking_date, paid_date, total, guests) 
     values (?, ?, ?, ?, ?, ?, ?, ?, ?);
   `
-
-    const [response, meta] = await connection.query(query, [
+    const [response, meta] = await connection.query(queryCreateBooking, [
       email,
       room_id,
       checkIn,
@@ -63,11 +79,11 @@ const newBooking = async (req, res) => {
     })
   } catch (error) {
     // !!! later go back and test this rollback actually works
-    // !!! also when backend fails, frontend needs to show an error
-    console.log(error)
     if (connection) await connection.query('ROLLBACK')
-    res.status(500).send({ message: 'booking could not be created' })
+    const message = error.message || 'booking could not be created'
+    res.status(500).send({ message })
   } finally {
+    console.log('FINALLY')
     if (connection) connection.release()
   }
 }
