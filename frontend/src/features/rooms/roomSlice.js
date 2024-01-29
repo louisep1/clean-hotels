@@ -14,54 +14,7 @@ export const searchRooms = createAsyncThunk(
   async (searchParams, thunkAPI) => {
     try {
       const rooms = await roomService.searchRooms(searchParams)
-
-      // SINGLE ROOM:
-      const allSingleResults = rooms.filter(room => room.type === 'single')
-
-      let singleCount = 0
-      let currentSingleRoom = ''
-
-      allSingleResults.map(result => {
-        if (singleCount === searchParams.nights) return
-        if (result.id !== currentSingleRoom) {
-          currentSingleRoom = result.id
-          singleCount = 1
-          return
-        }
-        if (result.id === currentSingleRoom) {
-          singleCount += 1
-          return
-        }
-      })
-
-      const singleResult = allSingleResults.filter(
-        result => result.id === currentSingleRoom
-      )
-
-      // DOUBLE ROOM:
-      const allDoubleResults = rooms.filter(room => room.type === 'double')
-
-      let doubleCount = 0
-      let currentDoubleRoom = ''
-
-      allDoubleResults.map(result => {
-        if (doubleCount === searchParams.nights) return
-        if (result.id !== currentDoubleRoom) {
-          currentDoubleRoom = result.id
-          doubleCount = 1
-          return
-        }
-        if (result.id === currentDoubleRoom) {
-          doubleCount += 1
-          return
-        }
-      })
-
-      const doubleResult = allDoubleResults.filter(
-        result => result.id === currentDoubleRoom
-      )
-
-      return { single: singleResult, double: doubleResult }
+      return rooms
     } catch (error) {
       const message =
         (error.response &&

@@ -138,7 +138,8 @@ const Reservation = () => {
       location: location.toLowerCase(),
       checkIn,
       checkOut,
-      nights
+      nights,
+      guests
     }
 
     // Frontend slice returns only rooms that are available for consecutive nights
@@ -229,7 +230,7 @@ const Reservation = () => {
             {/* If there is a single room available matching your search: */}
             {/* No display for number of rooms (but in this current case, will only ever be 1) */}
             {/* Show single room only if only 1 guest */}
-            {searchResults.single && searchResults.single.length > 0 && guests === 1 && (
+            {searchResults.single && (
               <div className="result" key={searchResults.single[0].id}>
                 <img src={singleRoom} alt="room" className='img' />
                 <p className='room'>Single Room</p>
@@ -242,7 +243,7 @@ const Reservation = () => {
             )}
 
             {/* If there is a double room available matching your search: */}
-            {searchResults.double && searchResults.double.length > 0 && (
+            {searchResults.double && (
               <div className="result" key={searchResults.double[0].id}>
                 <img src={doubleRoom} alt="room" className='img' />
                 <p className='room'>Double Room</p>
@@ -254,7 +255,7 @@ const Reservation = () => {
             )}
 
 
-            {(searchResults.single && searchResults.single.length === 0) && (searchResults.double && searchResults.double.length === 0) && (<div className="text-md mt-4">Sorry, no available rooms matching your search criteria.</div>)}
+            {!searchResults.single && !searchResults.double && (<div className="text-md mt-4">Sorry, no available rooms matching your search criteria.</div>)}
           </div>
         )
         }
