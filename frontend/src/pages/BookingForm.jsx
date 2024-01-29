@@ -55,6 +55,8 @@ const BookingForm = () => {
       return
     }
 
+    const reservedDateRoomIds = result.map(night => night.room_date_id)
+
     const booking = {
       email,
       room_id: result[0].id,
@@ -64,17 +66,15 @@ const BookingForm = () => {
       booking_date: new Date().toLocaleDateString('en-CA'),
       paid_date: null,
       total: result.map(date => date.rate).reduce((a, b) => a + b),
-      guests: search.guests
+      guests: search.guests,
+      reservedDateRoomIds
     }
 
-    const reservedDates = {
-      dateRoomIdArray: result.map(night => night.room_date_id),
-      available: false  // !!! later change this to be in the backend
-    }
 
-    dispatch(newBooking({ booking, reservedDates }))
+
+    dispatch(newBooking(booking))
     // !!! once both creating a new booking and updating rooms to unavailable have been combined into one process in the backend, delete the second process (reserveRoom and all the state effects) in the frontend too:
-    dispatch(reserveRoom(reservedDates))
+    dispatch(reserveRoom(reservedDateRoomIds))
     setEmail('')
   }
 

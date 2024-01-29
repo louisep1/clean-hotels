@@ -45,6 +45,58 @@ const searchRooms = async (req, res) => {
   }
 }
 
+// @@@@@  PUT
+// @@@@@  /api/rooms/reserve
+const reserveRoom = async (req, res) => {
+  // const { dateRoomIdArray, available } = req.body
+  // const connection = await pool.getConnection()
+  // const queryArray = dateRoomIdArray.map(dateRoomId => 'id = ?')
+  // const queryString = queryArray.join(' OR ')
+
+  // const query =
+  //   `UPDATE availability SET available = 0 WHERE ` + queryString + ';'
+
+  // // connection.query(
+  // //   query,
+  // //   [available === true ? 1 : 0, ...dateRoomIdArray],
+  // //   (err, results) => {
+  // //     if (err) {
+  // //       console.log(err)
+  // //     } else {
+  // //       res.json(results)
+  // //     }
+  // //   }
+  // // )
+
+  // await connection.execute(query, dateRoomIdArray)
+  // res.send([])
+
+  // // try {
+  // //   await connection.query(
+  // //     query,
+  // //     [available === true ? 1 : 0, ...dateRoomIdArray],
+  // //     (err, results) => {
+  // //       if (err) {
+  // //         console.log(err)
+  // //         res.status(500).send({ message: 'room does not exist' })
+  // //         // !!! if it errors, the frontend needs to not display the reservation confirmation message
+  // //       } else {
+  // //         console.log('results', results)
+  // //         res.json(results)
+  // //         return results
+  // //       }
+  // //     }
+  // //   )
+  // // } catch (error) {
+  // //   console.log(error)
+  // //   console.log('test 2')
+  // //   // !!! if it errors, the frontend needs to not display the reservation confirmation message
+  // //   // throw some error
+  // // }
+  res.send([])
+}
+
 module.exports = {
   searchRooms,
+  reserveRoom,
 }

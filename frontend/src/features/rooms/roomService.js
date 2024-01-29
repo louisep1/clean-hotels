@@ -9,6 +9,8 @@ const searchRooms = async searchParams => {
     `${API_URL}/filter/${location}&${checkIn}&${checkOut}`
   )
 
+  console.log('Data', data)
+
   return data
 }
 
