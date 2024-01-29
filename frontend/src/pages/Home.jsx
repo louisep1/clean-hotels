@@ -16,8 +16,6 @@ const Home = () => {
           <div className='panel-title'>Discover</div>
           <p className='panel-text'>With cleanliness and comfort guaranteed, take a look at our locations</p>
         </div>
-
-
         <div className="postcard-container">
           <Link to='/reservation'>
             <div className="postcard postcard-tokyo">
@@ -28,7 +26,6 @@ const Home = () => {
               </div>
             </div>
           </Link>
-
           <Link to='/reservation'>
             <div className="postcard postcard-ishigaki">
               <div className="postcard-title">
@@ -38,7 +35,6 @@ const Home = () => {
               </div>
             </div>
           </Link>
-
           <Link to='/reservation'>
             <div className="postcard postcard-kamakura">
               <div className="postcard-title">
@@ -48,7 +44,6 @@ const Home = () => {
               </div>
             </div>
           </Link>
-
           <Link to='/reservation'>
             <div className="postcard postcard-yokohama">
               <div className="postcard-title">
@@ -58,7 +53,6 @@ const Home = () => {
               </div>
             </div>
           </Link>
-
           <Link to='/reservation'>
             <div className="postcard postcard-okinawa">
               <div className="postcard-title">
@@ -76,7 +70,6 @@ const Home = () => {
           <div className="panel">
             <Link to='/rooms'><div className='panel-title'>Room types</div></Link>
             <Link to='/rooms'><p className='panel-text'>Find a room that's right for you</p></Link>
-
           </div>
         </div>
       </div>
@@ -84,7 +77,6 @@ const Home = () => {
       <div className="section my-4">
         <div className="panel">
           <Link to='/services'><div className="panel-title">Facilities &amp; Services</div></Link>
-
           <div className="facilities">
             <Link to='/services' className="grid-line">
               <BiRestaurant />
@@ -106,14 +98,9 @@ const Home = () => {
               <FaParking />
               <p>Parking</p>
             </Link>
-
           </div>
         </div>
       </div>
-
-
-
-
     </>
   )
 }

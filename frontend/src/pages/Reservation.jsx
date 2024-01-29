@@ -39,7 +39,6 @@ const Reservation = () => {
   const dispatch = useDispatch()
   const { searchResults, isLoading, isSuccess, isError } = useSelector(state => state.rooms)
 
-
   // Updates the check-out date to be the next day from the check in date:
   const resetCheckOut = () => {
     let date = new Date(checkIn);
@@ -54,18 +53,14 @@ const Reservation = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0)
-
     let today = new Date();
     today.setDate(today.getDate() + 1);
-
     setTomorrow(new Date(today).toLocaleDateString('en-CA'))
-
     setSearch(prevState => ({
       ...prevState,
       checkIn: new Date().toLocaleDateString('en-CA')
       // checkIn: new Date(today).toLocaleDateString('en-CA')
     }))
-
     return () => dispatch
       (reset())
   }, [])
@@ -75,14 +70,11 @@ const Reservation = () => {
     let current = new Date(checkIn);
     const end = new Date(checkOut);
     const dateArray = []
-
     while (current < end) {
       dateArray.push(new Date(current))
-
       let newDate = current.setDate(current.getDate() + 1);
       current = new Date(newDate);
     }
-
     if (dateArray.length > 7) {
       alert('Maximum 7 days can be booked at a time')
       resetCheckOut()
@@ -91,19 +83,15 @@ const Reservation = () => {
     } else {
       setDateRange(dateArray)
       setNights(dateArray.length)
-
     }
   }, [checkOut])
-
 
   useEffect(() => {
     if (checkIn) {
       resetCheckOut()
     }
-
     let newMax = new Date(checkIn);
     newMax.setDate(newMax.getDate() + 7);
-
     setMax(new Date(newMax).toLocaleDateString('en-CA'))
   }, [checkIn])
 
@@ -120,20 +108,15 @@ const Reservation = () => {
     })
     )
   }
-
   const handleSubmit = e => {
     e.preventDefault()
-
     dispatch(reset())
-
     if (new Date(checkIn) < new Date().toLocaleDateString('en-CA')) {
       alert('Cannot book rooms for dates that have already passed')
       return
     }
-
     // in future: check number of rooms <= number of people  => otherwise  =>   error 
     setSearching(true)
-
     const searchParams = {
       location: location.toLowerCase(),
       checkIn,
@@ -141,22 +124,18 @@ const Reservation = () => {
       nights,
       guests
     }
-
-    // Frontend slice returns only rooms that are available for consecutive nights
     dispatch(searchRooms(searchParams))
   }
 
   return (
     <>
       <Banner title='Reservation' />
-
       <div className="section">
         {!searching &&
           <div className="form-container px-4">
             <p className='text-md'>Book your stay</p>
             <form onSubmit={handleSubmit}>
               <div className='reservation-form'>
-
                 <div className="input-group location">
                   <label htmlFor="hotel-location">Location</label>
                   <select value={location} name="location" id="hotel-location" onChange={handleChange}>
@@ -199,13 +178,10 @@ const Reservation = () => {
                     <option value={4}>4</option> */}
                   </select>
                 </div>
-
               </div>
               <button className='btn my-3' type="submit">Check availability</button>
               <p className='pt-2-xs'>** Bookings of up to 7 nights stay can be made</p>
             </form>
-
-
           </div>
         }
 
@@ -217,7 +193,6 @@ const Reservation = () => {
             </div>
           </div>
         )}
-
 
         {/* SEARCH RESULTS: */}
         {isSuccess && searchResults && !searching && (
@@ -253,7 +228,6 @@ const Reservation = () => {
                 <button className='reserve btn btn-light' onClick={() => navigate('/book', { state: { result: searchResults.double, search: { ...search, nights, dateRange } } })}>Reserve</button>
               </div>
             )}
-
 
             {!searchResults.single && !searchResults.double && (<div className="text-md mt-4">Sorry, no available rooms matching your search criteria.</div>)}
           </div>

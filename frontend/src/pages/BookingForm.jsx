@@ -32,12 +32,10 @@ const BookingForm = () => {
     if (!location || !location.state) {
       navigate(-1)
     }
-
     if (location && location.state && location.state.result && location.state.search) {
       setSearch(location.state.search)
       setResult(location.state.result)
     }
-
     return () => {
       dispatch(resetBooking())
     }
@@ -45,14 +43,11 @@ const BookingForm = () => {
 
   const handleSubmit = e => {
     e.preventDefault()
-
     if (!email) {
       alert('Please enter your email')
       return
     }
-
     const reservedDateRoomIds = result.map(night => night.room_date_id)
-
     const booking = {
       email,
       room_id: result[0].id,
@@ -65,9 +60,6 @@ const BookingForm = () => {
       guests: search.guests,
       reservedDateRoomIds
     }
-
-
-
     dispatch(newBooking(booking))
     setEmail('')
   }
@@ -100,24 +92,18 @@ const BookingForm = () => {
         <button className='mt-2 btn' type='submit'>Confirm booking</button>
       </form>
       )}
-
       {
         bookingSuccess && (
           <p className='booking-success'>Your booking has been complete.</p>
         )
       }
-
       {
         bookingError && (
           <p className='booking-success'>{message === 'dates no longer available' ? 'Sorry, the room you selected is no longer available. Please search again.' : 'Oops. Something went wrong.'}</p>
         )
       }
-
       <button className='btn m-4' onClick={() => navigate('/reservation')}>Back</button>
-
     </div>
-
-
   )
 }
 

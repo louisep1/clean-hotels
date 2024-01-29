@@ -49,9 +49,7 @@ const Services = () => {
               <div className="text-md center">Parking</div>
             </div>
           </div>
-
         </div>
-
 
         <div className="section grey">
           <div className="panel panel-white title">Additional</div>
@@ -70,11 +68,8 @@ const Services = () => {
                 <div className="text-md center">Recreational activities</div>
               </div>
             </div>
-
           </div>
         </div>
-
-
       </div>
     </>
   )
