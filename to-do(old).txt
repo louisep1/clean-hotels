@@ -1,13 +1,8 @@
 error in backend if body/param data missing from frontend
-=> maybe need to rewrite to include async await syntax, otherwise can't throw errors
-(for when params/body missing data etc...)
-
 
 - (at some point fix ability to adjust number of guests / rooms based on how many guests, etc...)
 - (number of rooms isn't saved in the backend in booking table, but room_id is so it is implicit)
 - => could therefore maybe set a max number of rooms per booking (e.g. room_id_1, room_id_2, room_id_2) (max 3 rooms/booking)
-
-
 
 
 
