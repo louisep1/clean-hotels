@@ -2,7 +2,7 @@ const pool = require('../config/db')
 const _ = require('lodash')
 
 // @@@@@  GET
-// @@@@@  /api/rooms/filter/:location&:checkIn&:checkOut  (/api/rooms//filter/tokyo&single&2022-09-01&2022-09-02)
+// @@@@@  /api/rooms/filter/:location&:checkIn&:checkOut  (/api/rooms/filter/tokyo&single&2022-09-01&2022-09-02&1&1)
 const searchRooms = async (req, res) => {
   try {
     const { location, checkIn, checkOut, nights, guests } = req.params
