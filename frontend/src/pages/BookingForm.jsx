@@ -51,8 +51,8 @@ const BookingForm = () => {
     const booking = {
       email,
       room_id: result[0].id,
-      checkIn: search.checkIn,
-      checkOut: search.checkOut,
+      check_in: search.checkIn,
+      check_out: search.checkOut,
       nights: search.nights,
       booking_date: new Date().toLocaleDateString('en-CA'),
       paid_date: null,

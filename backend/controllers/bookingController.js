@@ -8,8 +8,8 @@ const newBooking = async (req, res) => {
     const {
       email,
       room_id,
-      checkIn,
-      checkOut,
+      check_in,
+      check_out,
       nights,
       booking_date,
       paid_date,
@@ -51,14 +51,14 @@ const newBooking = async (req, res) => {
 
     const queryCreateBooking = `
     INSERT INTO bookings 
-    (email, room_id, checkIn, checkOut, nights, booking_date, paid_date, total, guests) 
+    (email, room_id, check_in, check_out, nights, booking_date, paid_date, total, guests) 
     values (?, ?, ?, ?, ?, ?, ?, ?, ?);
   `
     const [response, meta] = await connection.query(queryCreateBooking, [
       email,
       room_id,
-      checkIn,
-      checkOut,
+      check_in,
+      check_out,
       nights,
       booking_date,
       paid_date,
@@ -69,8 +69,8 @@ const newBooking = async (req, res) => {
     res.json({
       email,
       room_id,
-      checkIn,
-      checkOut,
+      check_in,
+      check_out,
       nights,
       booking_date,
       paid_date,
