@@ -78,7 +78,6 @@ const newBooking = async (req, res) => {
       guests,
     })
   } catch (error) {
-    // !!! later go back and test this rollback actually works
     if (connection) await connection.query('ROLLBACK')
     const message = error.message || 'booking could not be created'
     res.status(500).send({ message })
