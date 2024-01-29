@@ -83,7 +83,6 @@ const newBooking = async (req, res) => {
     const message = error.message || 'booking could not be created'
     res.status(500).send({ message })
   } finally {
-    console.log('FINALLY')
     if (connection) connection.release()
   }
 }
