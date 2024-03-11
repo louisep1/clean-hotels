@@ -1,0 +1,4 @@
+- obviously there needs to be some data entry for tickets
+- SQL written a bit roughly - consider using an orm to connect to the db instead
+- improve checks before granting db access
+- improve errors
