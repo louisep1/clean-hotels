@@ -4,6 +4,7 @@ const _ = require('lodash')
 // @@@@@  GET
 // @@@@@  /api/rooms/filter/:location&:checkIn&:checkOut  (/api/rooms/filter/tokyo&single&2022-09-01&2022-09-02&1&1)
 const searchRooms = async (req, res) => {
+  console.log('START')
   try {
     const { location, checkIn, checkOut, nights, guests } = req.params
     const query = `
@@ -59,6 +60,7 @@ const searchRooms = async (req, res) => {
       res.send([])
     }
   } catch (error) {
+    console.log('CATCH')
     console.log(error)
     res.status(500).send({ message: 'search could not be retrieved' })
   }
