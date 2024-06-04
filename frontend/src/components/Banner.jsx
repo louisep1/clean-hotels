@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi'
 
-const Banner = ({ title, classes, slide }) => {
+const Banner = ({ title, classes, slide = false }) => {
   // if there is a slide feature, instead of showing classes as is, will only show the class being displayed
 
   // For the image slider:
@@ -72,10 +72,6 @@ const Banner = ({ title, classes, slide }) => {
       </div>
     </div >
   )
-}
-
-Banner.defaultProps = {
-  slide: false
 }
 
 export default Banner
